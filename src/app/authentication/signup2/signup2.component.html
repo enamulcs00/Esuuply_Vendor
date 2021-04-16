@@ -1,0 +1,124 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/background/login-register.jpg) no-repeat center center;background-size: cover;">
+    <div class="auth-box on-sidebar">
+        <div>
+            <div class="logo">
+                <span class="db"><img src="assets/images/logo-icon.svg" alt="logo" /></span>
+                <h5 class="font-medium m-b-20 pt-2">Register for the admin dashboard</h5>
+            </div>
+            <!-- Form -->
+            <ul ngbNav #nav="ngbNav" class="nav-tabs custom-tab">
+                <li ngbNavItem class="">
+                  <a ngbNavLink class="text-white">Sign up with email</a>
+                  <ng-template ngbNavContent>
+                    <div class="row">
+                        <div class="col-12">
+                            <form class="form-horizontal m-t-20" action="index.html">
+                                <div class="form-group row ">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group row">
+                                    <div class="col-md-12 ">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)" class="text-white">Terms</a></label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group text-center ">
+                                    <div class="col-xs-12 p-b-20 ">
+                                        <button class="btn btn-block btn-lg btn-theme " type="submit ">SIGN UP</button>
+                                    </div>
+                                </div>
+                           
+                            </form>
+                        </div>
+                    </div>
+                  </ng-template>
+                </li>
+                <li ngbNavItem>
+                  <a ngbNavLink class="text-white ">Sign up with phone no.</a>
+                  <ng-template ngbNavContent>
+                    <div class="row">
+                        <div class="col-12">
+                            <form class="form-horizontal m-t-20" action="index.html">
+                                <div class="form-group row ">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=""  placeholder="Phone No.">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12 ">
+                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group row">
+                                    <div class="col-md-12 ">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)" class="text-white">Terms</a></label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group text-center ">
+                                    <div class="col-xs-12 p-b-20 ">
+                                        <button class="btn btn-block btn-lg btn-theme " type="submit ">SIGN UP</button>
+                                    </div>
+                                </div>
+                               
+                            </form>
+                        </div>
+                    </div>
+                  </ng-template>
+                </li>
+              </ul>
+              <div [ngbNavOutlet]="nav"></div>
+              <div class="form-group m-b-0 m-t-10 ">
+                <div class="col-sm-12 text-center text-white">
+                    Already have an account? <a routerLink="/login" class="text-white m-l-5 "><b>Sign In</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

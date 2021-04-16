@@ -1,0 +1,704 @@
+<!-- <div class="row mb-2">
+    <div class="col-md-12 text-right">
+        <div class="d-flex">
+            <div ngbDropdown container="body" class="mr-2 ml-auto">
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Filter on date</button>
+                <div ngbDropdownMenu>
+                    <button ngbDropdownItem>Hourly</button>
+                    <button ngbDropdownItem>Daily</button>
+                    <button ngbDropdownItem>Weekly</button>
+                    <button ngbDropdownItem>Monthly </button>
+                </div>
+            </div>
+            <!-- <div ngbDropdown container="body">
+                <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Filter on partner</button>
+                <div ngbDropdownMenu>
+                    <button ngbDropdownItem>Partner 1</button>
+                    <button ngbDropdownItem>Partner 2</button>
+                    <button ngbDropdownItem>Partner 3</button>
+                    <button ngbDropdownItem>Partner 4</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="row">
+     column -->
+    <!--div class="col-sm-12 col-lg-4">
+        <div class="card bg-light-warning no-card-border">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-10">
+                        <span>Total Sales</span>
+                        <h4>&euro; 3,567.53</h4>
+                    </div>
+                    <div class="ml-auto">
+                         <div class="line-chart m-b-40">
+                            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                                [legend]="lineChartLegend" [chartType]="lineChartType">
+                            </canvas>
+                        </div> >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   column -->
+    <!--div class="col-sm-12 col-lg-4">
+        <div class="card bg-light-info no-card-border">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="m-r-10">
+                        <span>Total Orders </span>
+                        <h4>3,567.53</h4>
+                    </div>
+                    <div class="ml-auto">
+                         <div class="line-chart m-b-40">
+                            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                                [legend]="lineChartLegend" [chartType]="lineChartType">
+                            </canvas>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-4">
+        <div class="card bg-light-success no-card-border">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="m-r-10">
+                        <span>Product Sold</span>
+                        <h4>5769</h4>
+                    </div>
+                    <div class="ml-auto">
+                         <div id="foo" style="width: 100px; height: 55px"></div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="card-group">
+    <!-- Column -->
+    <div class="card">
+        <div class="card-body text-center">
+            <h4 class="text-center text-info">Product Sold
+            </h4>
+            <h2>1200</h2>
+            <div class="row p-t-10 p-b-10">
+                <!-- Column -->
+                <div class="col text-center align-self-center">
+                    <div data-label="20%" class="css-bar m-b-0 css-bar-primary css-bar-20">
+                        <i class="display-6 fas fa-chart-line"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-up text-success"></i>
+                        <br> 12056</h4>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-down text-danger"></i>
+                        <br> 145</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="card">
+        <div class="card-body text-center">
+            <h4 class="text-center text-danger">Total Sales
+            </h4>
+            <h2>2500</h2>
+            <div class="row p-t-10 p-b-10">
+                <!-- Column -->
+                <div class="col text-center align-self-center">
+                    <div data-label="20%" class="css-bar m-b-0 css-bar-danger css-bar-20">
+                        <i class="display-6 mdi mdi-star-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-up text-success"></i>
+                        <br> 21456</h4>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-down text-danger"></i>
+                        <br> 145</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <div class="card">
+        <div class="card-body text-center">
+            <h4 class="text-center text-danger">Net Sales
+            </h4>
+            <h2> &euro; 2500</h2>
+            <div class="row p-t-10 p-b-10">
+                <!-- Column -->
+                <div class="col text-center align-self-center">
+                    <div data-label="20%" class="css-bar m-b-0 css-bar-danger css-bar-20">
+                        <i class="display-6 mdi mdi-star-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-up text-success"></i>
+                        <br> 21456</h4>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-down text-danger"></i>
+                        <br> 145</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+    <!-- <div class="card">
+        <div class="card-body text-center">
+            <h4 class="text-center text-cyan">Shipping Revenue</h4>
+            <h2> &euro; 1200</h2>
+            <div class="row p-t-10 p-b-10">
+                 Column 
+                <div class="col text-center align-self-center">
+                    <div data-label="20%" class="css-bar m-b-0 css-bar-success css-bar-20">
+                        <i class="display-6 fas fa-chart-pie "></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-up text-success"></i>
+                        <br> 12465</h4>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="font-medium m-b-0">
+                        <i class="ti-angle-down text-danger"></i>
+                        <br> 145</h4>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Column -->
+</div>
+<div class="card">
+    <div class="card-body">
+     
+        <!-- <div class="row  pt-3"> -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg bg-primary">
+                  <i class="sl-icon-people text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Total Users
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">223</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class=" fas fa-chart-line text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Total Sales
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">113</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class=" fas fa-chart-line text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Product Sold
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">113</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class=" fas fa-chart-pie text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Shipping Revenue
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light"> &euro; 560</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class="fas fa-chart-bar text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Total Net sales
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light"> &euro;113</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg bg-primary">
+                  <i class="fab fa-first-order  text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Total Orders
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">23</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Card -->
+            <!-- </div> -->
+
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class="fas fa-th text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Total Item Sold
+
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">50</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class="fas fa-percent text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Discounted orders
+
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">10</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class="fas fa-users text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Website Visitors
+
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">20</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Card -->
+            <!-- </div> -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-3"> -->
+                <!-- Card -->
+                <!-- <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <span class="btn btn-circle btn-lg btn-primary">
+                  <i class="fas fa-eye text-white"></i>
+                </span>
+                            </div>
+                            <div>
+                                Website Views
+                            </div>
+                            <div class="ml-auto">
+                                <h2 class="m-b-0 font-light">20</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div> -->
+            
+        <!-- </div> -->
+        <div class="card">
+            <div class="card-body">
+                <h4>Top Categories - Items Sold</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Category</th>
+                            <th>Items Sold</th>
+                            <th>Net Sale</th>
+                        </tr>
+                        <tr>
+                            <td>Category 1</td>
+                            <td>453</td>
+                            <td>&euro;4543</td>
+                        </tr>
+                        <tr>
+                            <td>Category 1</td>
+                            <td>200</td>
+                            <td>&euro;14543</td>
+                        </tr>
+                        <tr>
+                            <td>Category 1</td>
+                            <td>243</td>
+                            <td>&euro;3000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4>Top Products - Items Sold</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Food Item</th>
+                            <th>Items Sold</th>
+                            <th>Net Sale</th>
+                        </tr>
+                        <tr>
+                            <td>Category 1</td>
+                            <td>453</td>
+                            <td>&euro;4543</td>
+                        </tr>
+                        <tr>
+                            <td>Category 1</td>
+                            <td>200</td>
+                            <td>&euro;14543</td>
+                        </tr>
+                        <tr>
+                            <td>Category 1</td>
+                            <td>243</td>
+                            <td>&euro;3000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-12 text-right">
+                <button class="btn btn-primary mb-2"><i class="sl-icon-cloud-download"></i> Export CSV</button>
+            </div>
+            <div class="col-md-4">
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <span class="btn btn-circle btn-md bg-danger text-white"><i
+              class=" fas fa-credit-card font-16"></i></span>
+                            </div>
+                            <div class="m-l-10">
+                                <h5 class="mb-0 m-t-10"> Total Payment Received </h5>
+                                <h2 class="m-b-0 font-light">&euro; 450</h2>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card -->
+            </div>
+            <!-- col-md-4 -->
+
+            <!-- col-md-4 -->
+            <div class="col-md-4">
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-body card-box p-2">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <span class="btn btn-circle btn-md bg-danger text-white"><i
+              class="far fa-money-bill-alt font-16"></i></span>
+                            </div>
+                            <div class="m-l-10">
+                                <h5 class="mb-0 m-t-10"> Total Earning of Vendors</h5>
+                                <h2 class="m-b-0 font-light"> &euro; 200</h2>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card -->
+            </div>
+            <!-- col-md-4 -->
+            <!-- col-md-4 -->
+            <!-- <div class="col-md-4"> -->
+            <!-- Card -->
+            <!-- <div class="card">
+    <div class="card-body card-box p-2">
+      <label>Service Fees</label>
+      <div class="input-group">
+        <input aria-describedby="basic-addon1" aria-label="" class="form-control" placeholder="" value="10%"
+          type="text">
+        <div class="input-group-append"><button class="btn mr-0 btn-info" type="button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+            <!-- Card -->
+            <!-- </div> -->
+            <div class="col-md-4">
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-body card-box  p-2">
+                        <div class="d-flex align-items-center">
+                            <!-- <div class="ml-auto">
+          <span class="btn btn-circle btn-sm bg-danger text-white"><i
+              class="far fa-money-bill-alt font-16"></i></span>
+            </div> -->
+
+                            <div class="m-l-10 w-100">
+                                <h5> Total Payment Received Day</h5>
+                                <form class="d-flex">
+                                    <div class="form-group hidden ">
+                                        <div class="input-group">
+                                            <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!" tabindex="-1">
+                                            <ng-template #t let-date let-focused="focused">
+                                                <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                                                  {{ date.day }}
+                                                </span>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6 pl-0  pr-0 mb-2">
+                                        <div class="input-group">
+                                            <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate" [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class=" fas fa-calendar-alt"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ml-2 col-6 pl-0 pr-0 mb-2">
+                                        <div class="input-group">
+                                            <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate" [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class=" fas fa-calendar-alt"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="d-flex">
+                                    <h5 class="m-b-0 font-light"> <span class="btn btn-circle btn-sm bg-danger text-white p-2"><i
+                  class="far fa-money-bill-alt font-16 "></i></span> Card: &euro; 150</h5>
+                                    <!-- <h5 class="m-b-0 font-light pl-2"> <span class="btn btn-circle btn-sm bg-danger text-white p-2"><i
+                  class="far fa-money-bill-alt font-16 "></i></span> Cash: &euro; 150</h5> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card -->
+            </div>
+
+            <!-- Column -->
+            <div class="col-md-12">
+                <h3>All Transaction </h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="">
+                            <table class="table v-middle product-overview" id="zero_config">
+                                <thead>
+                                    <tr>
+
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Vendor ID</th>
+                                        <th>Payment Method</th>
+                                        <th>Amount</th>
+                                        <th>Fees</th>
+                                        <!-- <th>Status</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                        <td>1 </td>
+                                        <td>KFC </td>
+                                        <td>kfc333</td>
+                                        <td><label class="label label-success">Paypal</label></td>
+                                        <td>&euro;250</td>
+                                        <td>10%</td>
+                                        <!-- <td> <select class="custom-select b-0">
+              <option selected="">Enable</option>
+              <option value="1">Disable</option>
+            </select></td> -->
+                                    </tr>
+                                    <tr>
+
+                                        <td>2 </td>
+                                        <td>Dominos </td>
+                                        <td>domi333</td>
+                                        <td><label class="label label-success">Paypal</label></td>
+                                        <td>&euro;250</td>
+                                        <td>10%</td>
+                                        <!-- <td> <select class="custom-select b-0">
+              <option selected="">Enable</option>
+              <option value="1">Disable</option>
+            </select></td> -->
+                                    </tr>
+                                    <tr>
+
+                                        <td>3 </td>
+                                        <td>Cafe </td>
+                                        <td>caf434</td>
+                                        <td><label class="label label-success">Paypal</label></td>
+                                        <td>&euro;250</td>
+                                        <td>10%</td>
+                                        <!-- <td> <select class="custom-select b-0">
+              <option selected="">Enable</option>
+              <option value="1">Disable</option>
+            </select></td> -->
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h4>Net Profit</h4>
+            <!-- <div>
+                        <span class="btn-circle btn-lg btn btn-outline-secondary">
+                            <i class="ti-shopping-cart"></i>
+                        </span>
+                    </div> -->
+
+
+
+        </div>
+        <div class=" text-white">
+            <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+      </canvas>
+        </div>
+    </div>
+
+
+</div>
