@@ -15,13 +15,18 @@ import { AuthenticationRoutes } from './authentication.routing';
 import { DetailFormComponent } from './detail-form/detail-form.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NgOtpInputModule } from  'ng-otp-input';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule, 
     RouterModule.forChild(AuthenticationRoutes),
     NgbModule,
     MatSlideToggleModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     NotfoundComponent,
@@ -31,6 +36,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
     Login2Component,
     Signup2Component,
     DetailFormComponent
-  ]
+  ],
+ // providers: []
 })
 export class AuthenticationModule {}

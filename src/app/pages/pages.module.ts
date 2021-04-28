@@ -73,6 +73,7 @@ import { FranchiseseditComponent } from './franchisesedit/franchisesedit.compone
 import { FranchiseaddComponent } from './franchiseadd/franchiseadd.component';
 import { FranchisedetailComponent } from './franchisedetail/franchisedetail.component';
 import { FranchiserequestComponent } from './franchiserequest/franchiserequest.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -94,6 +95,7 @@ CommonModule,
     MatFormFieldModule,
     MatPaginatorModule,
     MatSortModule,
+    HttpClientModule,
     DragDropModule,
     MatNativeDateModule
   

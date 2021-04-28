@@ -12,23 +12,25 @@
                   <ng-template ngbNavContent>
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" id="loginform" action="index.html">
+                            <form class="form-horizontal m-t-20" id="loginform" [formGroup]="loginwithEmail">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="text" formControlName="email" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" required>
+                                    
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
                                 </div>
+                                
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <input type="checkbox" formControlName="remember" class="custom-control-input" id="customCheck1">
                                             <label class="custom-control-label text-white" for="customCheck1">Remember me</label>
                                             <a (click)="showRecoverForm()" href="javascript:void(0)" id="to-recover" class="text-white float-right"><i class="fa fa-lock m-r-5"></i> Forgot password</a>
                                         </div>
@@ -63,13 +65,11 @@
                   <ng-template ngbNavContent>
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" id="loginform1" action="index.html">
+                            <form class="form-horizontal m-t-20" id="loginform1" [formGroup]="loginWithPhone">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <select class="form-control form-control-lg">
-                                          <option value="">+91</option>
-                                          <option value="">+32</option>
-                                          <option value="">+3322</option>
+                                      <select class="form-control form-control-lg" name="code">
+                                        <option *ngFor="let code of countrycode" [value]="code.dial_code"> {{code.dial_code}}</option>
                                           </select>
                                     </div>
                                     <input type="text" class="form-control form-control-lg" placeholder="Phone no." aria-label="Username" aria-describedby="basic-addon1" required>
@@ -115,6 +115,21 @@
                     Don't have an account? <a routerLink="/signup2" class="text-white m-l-5"><b>Sign Up</b></a>
                 </div>
             </div>
+            <div class="border bg-light">
+                <span class="text-danger"
+                *ngIf="submitted && errorHandlingSignup('email', 'required')">
+                Email is required!
+                </span>
+                <span class="text-danger"
+                *ngIf="errorHandlingSignup('email', 'pattern')">
+                Email is invalid!
+                </span>
+                <span class="text-danger"
+                *ngIf="submitted && errorHandlingSignup('password', 'required')">
+                Password is required!
+                </span>
+            </div>
+            
         </div>
         <div id="recoverform" [ngClass]="{'d-block': recoverform}">
             <div class="logo">
