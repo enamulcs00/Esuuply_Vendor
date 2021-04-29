@@ -12,30 +12,54 @@
                   <ng-template ngbNavContent>
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" action="index.html">
+                            <form class="form-horizontal m-t-20" [formGroup]="signUpWithEmail">
                                 <div class="form-group row ">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="First Name">
+                                        <input class="form-control form-control-lg" (keydown.space)="$event.preventDefault()"type="text" placeholder="First Name" formControlName="firstName">
+                                        <p class="text-danger"
+                *ngIf="submitted && errorHandlingSignup('firstName', 'required')">First name is required!</p>
+                <p class="text-danger"
+                *ngIf="errorHandlingSignup('firstName', 'pattern')">First name should alphabetic only!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row ">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Last Name">
+                                        <input class="form-control form-control-lg" type="text" placeholder="Last Name"(keydown.space)="$event.preventDefault()" formControlName="lastName">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingSignup('lastName', 'required')">Last name is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingSignup('lastName', 'pattern')">Last name should alphabetic only!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Email">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Email" formControlName="email">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingSignup('email', 'required')">Email is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingSignup('email', 'pattern')">Email is not valid!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Password">
+                                        <input class="form-control form-control-lg" type="password" placeholder="Password" formControlName="password">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingSignup('password', 'required')">Password is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingSignup('password', 'minlength')">Minlength of password should 8!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password">
+                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password" formControlName="confirmPassword">
+                                        <p class="text-danger"
+                                *ngIf="submitted && errorHandlingSignup('confirmPassword', 'required')">
+                                Confirm password is required!
+                                    </p>
+                            <p class="text-danger"
+                                *ngIf="(signUpWithEmail.get('confirmPassword').value.length>0) && signUpWithEmail.get('password').value !=  signUpWithEmail.get('confirmPassword').value">
+                                Password mismatched!
+                                </p>
                                     </div>
                                 </div>
                                 <!-- <div class="form-group row">
@@ -48,7 +72,7 @@
                                 </div> -->
                                 <div class="form-group text-center ">
                                     <div class="col-xs-12 p-b-20 ">
-                                        <button class="btn btn-block btn-lg btn-theme " type="submit ">SIGN UP</button>
+                                        <button class="btn btn-block btn-lg btn-theme" type="button" (click)="signUpEmail()">SIGN UP</button>
                                     </div>
                                 </div>
                            
@@ -62,15 +86,23 @@
                   <ng-template ngbNavContent>
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" action="index.html">
+                            <form class="form-horizontal m-t-20" [formGroup]="signUpWithPhone">
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="First Name">
+                                        <input class="form-control form-control-lg" type="text" placeholder="First Name" (keydown.space)="$event.preventDefault()"formControlName="firstName">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingphone('firstName', 'required')">First name is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingphone('firstName', 'pattern')">First name should alphabetic only!</p>
                                     </div>
                                 </div>
-                                <div class="form-group row ">
+                                <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Last Name">
+                                        <input class="form-control form-control-lg" formControlName="lastName"type="text" (keydown.space)="$event.preventDefault()" placeholder="Last Name">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingphone('lastName', 'required')">Last name is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingphone('lastName', 'pattern')">Last name should alphabetic only!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row ">
@@ -78,29 +110,61 @@
                                         <!-- <input class="form-control form-control-lg" type="text" required=""  placeholder="Phone No."> -->
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                              <select class="form-control form-control-lg">
-                                                
-                                                  <option *ngFor="let code of countrycode" [value]="code.dial_code"> {{code.dial_code}}</option>
-                                                  
+                                              <select class="form-control form-control-lg" (change)="someMethod($event.target.value)">
+                                                <option *ngFor="let code of countrycode" [value]="code.dial_code"> {{code.dial_code}}</option>
                                                   </select>
                                             </div>
-                                            <input type="text" class="form-control form-control-lg" placeholder="Phone no." aria-label="Username" aria-describedby="basic-addon1" required>
+                                            <input type="text" class="form-control form-control-lg" placeholder="Phone no."  
+                                            aria-label="Username" aria-describedby="basic-addon1" formControlName="phone">
+                                          
                                         </div>
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingphone('phone', 'required')">
+                                        Phone number is required!
+                                    </p>
+                                    <p class="text-danger"
+                                        *ngIf="errorHandlingphone('phone', 'maxlength')">
+                                        Maximum length should 15!
+                                </p>
+                                    <p class="text-danger"
+                                    *ngIf="errorHandlingphone('phone', 'minlength')">
+                                    Minimum length should 7!
+                            </p>
+                                <p class="text-danger"
+                                    *ngIf="errorHandlingphone('phone', 'pattern')">
+                                    Please enter valid phone no!
+                        </p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Email">
+                                        <input class="form-control form-control-lg" type="text" required=" " placeholder="Email" formControlName="email">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingphone('email', 'required')">Email is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingphone('email', 'pattern')">Email is not valid!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Password">
+                                        <input class="form-control form-control-lg" formControlName="password" type="password" required=" " placeholder="Password">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingphone('password', 'required')">Password is required!</p>
+                                        <p class="text-danger"
+                                        *ngIf="errorHandlingphone('password', 'minlength')">Minlength of password should 8!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password">
+                                        <input class="form-control form-control-lg" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandlingphone('confirmPassword', 'required')">
+                                        Confirm password is required!
+                                            </p>
+                                    <p class="text-danger"
+                                        *ngIf="(signUpWithPhone.get('confirmPassword').value.length>0) && signUpWithPhone.get('password').value !=  signUpWithPhone.get('confirmPassword').value">
+                                        Password mismatched!
+                                        </p>
                                     </div>
                                 </div>
                                 <!-- <div class="form-group row">
@@ -113,7 +177,7 @@
                                 </div> -->
                                 <div class="form-group text-center ">
                                     <div class="col-xs-12 p-b-20 ">
-                                        <button class="btn btn-block btn-lg btn-theme " type="submit ">SIGN UP</button>
+                                        <button class="btn btn-block btn-lg btn-theme" type="button" (click)="phoneSignUp()">SIGN UP</button>
                                     </div>
                                     <div class="form-group m-b-0 m-t-10 ">
                                         <div class="col-sm-12 text-center text-white">

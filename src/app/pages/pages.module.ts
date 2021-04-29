@@ -74,6 +74,7 @@ import { FranchiseaddComponent } from './franchiseadd/franchiseadd.component';
 import { FranchisedetailComponent } from './franchisedetail/franchisedetail.component';
 import { FranchiserequestComponent } from './franchiserequest/franchiserequest.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -96,6 +97,7 @@ CommonModule,
     MatPaginatorModule,
     MatSortModule,
     HttpClientModule,
+    NgxSpinnerModule,
     DragDropModule,
     MatNativeDateModule
   

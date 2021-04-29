@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   NgbModal,
   ModalDismissReasons,
@@ -20,7 +21,7 @@ export class NavigationComponent implements AfterViewInit {
 
   public showSearch = false;
   public element1: any;
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,private router:Router) {}
 
   // This is for Notifications
   notifications: Object[] = [
@@ -98,5 +99,12 @@ export class NavigationComponent implements AfterViewInit {
   closeBox(){
     let element1 = document.getElementById("arrow-close").parentElement;
     element1.classList.remove("sidebar_slide");
+  }
+  logout()
+  {
+    localStorage.removeItem('token')
+    this.router.navigate(['login'])
+   //  this.router.navigate([''])
+    //  this.openDialog(1)
   }
 }

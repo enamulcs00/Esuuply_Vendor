@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">
-                                        <button  class="btn btn-block btn-lg btn-theme" type="submit"  routerLink="/vendor_detail">Log In</button>
+                                        <button  class="btn btn-block btn-lg btn-theme" type="submit" (click)="login()">Log In</button>
                                     </div>
                                 </div>
                                 <!-- <div class="row">
@@ -68,22 +68,22 @@
                             <form class="form-horizontal m-t-20" id="loginform1" [formGroup]="loginWithPhone">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <select class="form-control form-control-lg" name="code">
+                                      <select class="form-control form-control-lg"  formControlName="code">
                                         <option *ngFor="let code of countrycode" [value]="code.dial_code"> {{code.dial_code}}</option>
                                           </select>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Phone no." aria-label="Username" aria-describedby="basic-addon1" required>
+                                    <input type="text" class="form-control form-control-lg" placeholder="Phone no." formControlName="phone" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                    <input type="password" class="form-control form-control-lg" placeholder="Password" formControlName="password"aria-label="Password" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <input type="checkbox" formControlName="remember"class="custom-control-input" id="customCheck1">
                                             <label class="custom-control-label text-white" for="customCheck1">Remember me</label>
                                             <a (click)="otpFrom()" href="javascript:void(0)" id="to-recover" class="text-white float-right"><i class="fa fa-lock m-r-5"></i> Forgot password</a>
                                         </div>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">
-                                        <button  class="btn btn-block btn-lg btn-theme" type="submit" routerLink="/vendor_detail" >Log In</button>
+                                        <button  class="btn btn-block btn-lg btn-theme" type="submit" (click)="phoneLogin()">Log In</button>
                                     </div>
                                 </div>
                                 <!-- <div class="row">
@@ -115,19 +115,39 @@
                     Don't have an account? <a routerLink="/signup2" class="text-white m-l-5"><b>Sign Up</b></a>
                 </div>
             </div>
-            <div class="border bg-light">
-                <span class="text-danger"
+            <div class="err_box">
+                <p class="text-danger"
                 *ngIf="submitted && errorHandlingSignup('email', 'required')">
                 Email is required!
-                </span>
-                <span class="text-danger"
+            </p>
+                <p class="text-danger"
                 *ngIf="errorHandlingSignup('email', 'pattern')">
                 Email is invalid!
-                </span>
-                <span class="text-danger"
+            </p>
+                <p class="text-danger"
                 *ngIf="submitted && errorHandlingSignup('password', 'required')">
                 Password is required!
-                </span>
+            </p>
+            <p class="text-danger"
+            *ngIf="isphoneLogin && errorHandlingphone('phone', 'required')">
+            Phone number is required!
+        </p>
+            <p class="text-danger"
+            *ngIf="errorHandlingphone('phone', 'pattern')">
+            Phone number is invalid!
+        </p>
+        <p class="text-danger"
+            *ngIf="errorHandlingphone('phone', 'maxlength')">
+            Maximum length of phone number should be 15!
+        </p>
+        <p class="text-danger"
+            *ngIf="errorHandlingphone('phone', 'minlength')">
+            Minimum length of phone number should be 7!
+        </p>
+            <p class="text-danger"
+            *ngIf="isphoneLogin && errorHandlingphone('password', 'required')">
+            Password is required!
+        </p>
             </div>
             
         </div>

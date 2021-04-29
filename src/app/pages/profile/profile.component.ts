@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SharedService } from 'src/app/authentication/shared.service';
+import Swal from 'sweetalert2';
 @Component({
   templateUrl: 'profile.component.html'
 })
@@ -6,9 +8,11 @@ export class ProfileComponent {
 
   checked:string;
   days:string[]=['sun','mon','tue','wed','thu','fri','sat']
-    constructor() { }
+  profileData: any;
+    constructor(private service:SharedService) { }
   
     ngOnInit(): void {
+      this.getProfile()
     }
     check(e,ref){
       if(ref=='mon' && e.checked){
@@ -36,5 +40,17 @@ export class ProfileComponent {
     remove(){
       let removed = document.querySelector('.row.mb-2'); 
       console.log(removed);
+    }
+    getProfile(){
+      let url =`admin/getProfile`
+      this.service.getApi(url).subscribe((res:any)=>{
+        console.log('Res of get profile',res)
+        if(res.statusCode==200){
+          this.profileData = res.data
+        }
+        else {
+          Swal.fire('Oops',res.message,'error')
+        }
+      })
     }
 }

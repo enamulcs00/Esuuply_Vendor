@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
-
+import { AuthGuard } from './auth.guard';
 
 export const Approutes: Routes = [
   {
@@ -12,7 +12,7 @@ export const Approutes: Routes = [
     children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { 
-        path: 'dashboard',
+        path: 'dashboard', canActivate: [AuthGuard],
         loadChildren: () => import('./dashboards/dashboard.module').then(m => m.DashboardModule)
       },
       {
@@ -50,7 +50,7 @@ export const Approutes: Routes = [
       },
       { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
       {
-        path: 'pages',
+        path: 'pages',canActivate: [AuthGuard],
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
       }
     ]
