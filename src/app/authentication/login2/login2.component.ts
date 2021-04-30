@@ -24,6 +24,11 @@ export class Login2Component implements OnInit{
   }
   countrycode: any;
   code: any;
+  otpvalue: number;
+  CountryCode:any = +93
+  IsphoneRecover:boolean = false
+  isSubmitted:boolean = false
+  recoveryForm:FormGroup
   isphoneLogin:boolean = false
   submitted:boolean = false
   loginwithEmail:FormGroup
@@ -32,6 +37,7 @@ export class Login2Component implements OnInit{
   recoverform = false;
   phonecode = false;
   otp= false;
+  phoneRecover:FormGroup
   loginWithPhone:FormGroup
   showRecoverForm() {
     this.loginform = !this.loginform;
@@ -42,7 +48,10 @@ export class Login2Component implements OnInit{
     this.loginform = !this.loginform;
     this.otp = !this.otp;
   }
-
+  CancelForgot(){
+    this.loginform = !this.loginform;
+    this.recoverform = !this.recoverform;
+  }
   openWindowCustomClass(content3) {
     this.modalService.open(content3, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
@@ -52,6 +61,15 @@ export class Login2Component implements OnInit{
     this.phonecode = true;
   }
   ngOnInit(){
+    this.phoneRecover = this.fb.group({
+      CountryCode:[this.code],
+      phone:['',Validators.compose([Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
+         ,Validators.maxLength(15),Validators.minLength(7)])],
+  })
+    this.phoneRecover.get('CountryCode').setValue(this.code)
+    this.recoveryForm = this.fb.group({
+      email:['',[Validators.required,Validators.email,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/)]],
+    })
     this.loginwithEmail = this.fb.group({
       email:['',[Validators.required,Validators.email,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/)]],
     password:['',Validators.required],
@@ -84,12 +102,19 @@ export class Login2Component implements OnInit{
         })
       }
   }
+  ClosePhone(){
+    this.otpFrom()
+  }
   public errorHandlingSignup = (control: string, error: string) => {
     return this.loginwithEmail.controls[control].hasError(error);
   }
   public errorHandlingphone = (control: string, error: string) => {
     return this.loginWithPhone.controls[control].hasError(error);
   }
+  public errorPhoneRecoverForm = (control: string, error: string) => {
+    return this.phoneRecover.controls[control].hasError(error);
+  }
+
   // someMethod(value)
   // {
   //   console.log('Value of code',value,'PhoneCode val',this.code);
@@ -178,6 +203,105 @@ export class Login2Component implements OnInit{
       Swal.fire('Oops','Please Enter Required Fields','error')
       this.spinner.hide()
     }
-   
 }
+recover() {
+
+  this.isSubmitted = true
+  this.spinner.show()
+  let data = this.recoveryForm.value
+  
+  this.service.forgot(data).subscribe((response:any) => {
+    console.log('Reset',response)
+    this.spinner.hide()
+    if(response.statusCode==200) {
+      this.isSubmitted = false
+      Swal.fire('Success',`Link has been sent to ${this.recoveryForm.value.email}`,'success')
+      this.loginform = !this.loginform;
+      this.recoverform = !this.recoverform;
+    } else {
+      this.recoveryForm.reset()
+      Swal.fire('Oops',response['message'],'error')
+    }
+  }, error => {
+    this.spinner.hide()
+    Swal.fire('Oops',error['message'],'error')
+    console.log(error)
+  })
+}
+recoverForPhone(content3) {
+
+  this.IsphoneRecover = true
+  this.spinner.show()
+  let data = {
+    "phoneNo":this.phoneRecover.value.phone,
+    "dialCode":this.phoneRecover.value.CountryCode
+    }
+  
+  this.service.forgotPhone(data).subscribe((response:any) => {
+    console.log('Reset',response)
+    this.spinner.hide()
+    
+    if(response.statusCode==200) {
+      this.openWindowCustomClass(content3)
+      this.IsphoneRecover = false
+      Swal.fire('Success',response.message,'success')
+     
+      // this.loginform = !this.loginform;
+      // this.recoverform = !this.recoverform;
+    } else {
+     // this.phoneRecover.reset()
+      Swal.fire('Oops',response['message'],'error')
+    }
+  }, error => {
+    this.spinner.hide()
+    Swal.fire('Oops',error['message'],'error')
+    console.log(error)
+  })
+}
+// showRecoverForm() {
+//   this.showPasswordRecoveryForm = !this.showPasswordRecoveryForm
+// }
+gotoVerify()
+{
+console.log('This is otp',this.otpvalue)
+ const data = {
+  "phoneNo":this.phoneRecover.value.phone,
+  "dialCode":this.phoneRecover.value.CountryCode,
+    "secretCode": this.otpvalue
+}
+  this.service.verifyPhone(data).subscribe((res:any)=>
+    {
+      if(res.statusCode == 200)
+      {
+        sessionStorage.setItem('token',res.data.accessToken)
+    
+     // this.router.navigate(['profilesetup'])
+      }
+      else{
+        this.submitted = true;
+        
+       Swal.fire('Oops',res.message,'error')
+      }
+    })
+}
+onOtpChange(event)
+  {
+    this.otpvalue = event
+    console.log(this.otpvalue);
+    
+  }
+  sendOtp(){
+    let obj = {
+      "phoneNo":this.phoneRecover.value.phone,
+      "dialCode":this.phoneRecover.value.CountryCode
+    }
+    this.service.sentOtp(obj).subscribe((res:any)=>{
+      console.log(res,"OTP SENT");
+      if(res.statusCode == 200){
+        Swal.fire('Otp',res.message,'success')
+      }else{
+        Swal.fire('Oops',res.message,'error')
+      }
+    })
+  }
 }

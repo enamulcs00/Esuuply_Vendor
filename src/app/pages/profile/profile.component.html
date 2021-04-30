@@ -1,10 +1,17 @@
+<style>
+  .sebm-google-map-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+  }
+</style>
 <div class="row">
     <!-- Column -->
     <div class="col-lg-4 col-xlg-3 col-md-5">
         <div class="card">
             <div class="card-body text-center">
                 <div class="m-t-30 text-center">
-                    <img [src]="profileData.image?profileData.image:'assets/images/users/1.jpg'" class="rounded-circle" width="150" />               
+                    <img [src]="(profileData?.image)?(profileData?.image):'assets/images/users/1.jpg'" class="rounded-circle" width="150" height="150" />               
                 </div>
                 <div class="upload-btn-wrapper">
                     <button class="btn-upload"><i class="mdi mdi-pencil"></i></button>
@@ -22,9 +29,10 @@
                 <h6>{{profileData?.dialCode+'-'+profileData?.phoneNo}}</h6>
                 <small class="text-muted p-t-30 db">Address</small>
                 <h6>{{profileData?.location?.address}}</h6>
-                <div class="map-box">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508"
-                        width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div >
+                  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="14">
+                    <agm-marker [latitude]="lat" [agmFitBounds]="true" [longitude]="lng"></agm-marker>
+               </agm-map>
                 </div>
             </div>
         </div>
@@ -67,7 +75,7 @@
                     <ng-template ngbTabContent>
                       <div class="card p-3">    
                         <h4 class="">Vendor Detail</h4>
-                          <form action="#">
+                          <form [formGroup]="profileForm">
                             <div class="form-body">
                               <div class="card-body">
                                   <!-- <div class="row">
@@ -80,7 +88,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">First Name</label>
-                                      <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                      <input type="text" id="firstName" class="form-control" placeholder="John doe" formControlName="firstName">
                         
                                     </div>
                                   </div>
@@ -88,7 +96,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Last Name</label>
-                                      <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                      <input type="text" id="firstName" class="form-control" placeholder="John doe" formControlName="lastName">
                         
                                     </div>
                                   </div>
@@ -97,8 +105,8 @@
                                     <div class="form-group has-success">
                                       <div class="form-group">
                                         <label class="control-label">Upload Vendor Profile</label>
-                                        <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file"
-                                            ><label class="custom-file-label" for="inputGroupFile01">Choose file</label></div>
+                                        <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01" type="file" name="image"
+                                            ><label class="custom-file-label" for="inputGroupFile01">{{fileName}}</label></div>
                                       </div>
                                     </div>
                                   </div>
@@ -116,7 +124,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Restaurant Name</label>
-                                      <input type="number" id="firstName" class="form-control" placeholder="Restaurant name">
+                                      <input type="text" id="firstName" class="form-control" placeholder="Restaurant name" formControlName="resturant">
                         
                                     </div>
                                   </div>
@@ -126,7 +134,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Date of birth</label>
-                                      <input type="date" id="firstName" class="form-control" placeholder="">
+                                      <input type="date" id="firstName" class="form-control" [max]="service.getToday()" placeholder="" formControlName="dob">
                         
                                     </div>
                                   </div>
@@ -134,13 +142,13 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Email</label>
-                                      <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com">
+                                      <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Are you currently delivering right now?*</label>
-                                      <select name="" id="" class="form-control">
+                                      <select name="isDelivery" id="" class="form-control">
                                         <option value="yes">Yes</option>
                                         <option value="no">No</option>
                                       </select>
@@ -157,14 +165,14 @@
                                   <div class="col-md-6">
                                     <div class="form-group has-danger">
                                       <label class="control-label">Zip</label>
-                                      <input type="text" id="zip" class="form-control form-control-danger" placeholder="eg:44343">
+                                      <input type="text" id="zip" formControlName="zip" class="form-control form-control-danger" placeholder="eg:44343">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group has-danger">
                                       <label class="control-label">
                                         Type of restaurant</label>
-                                      <input type="text" id="zip" class="form-control form-control-danger" placeholder="eg:44343">
+                                      <input type="text" id="zip" class="form-control form-control-danger" formControlName="resturantType" placeholder="eg:44343">
                                     </div>
                                   </div>
                                   <!--/span-->
@@ -178,7 +186,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group has-danger">
                                       <label class="control-label">City</label>
-                                      <input type="text" id="city" class="form-control form-control-danger" placeholder="Berlin">
+                                      <input type="text" id="city" class="form-control form-control-danger" placeholder="Berlin" formControlName="city">
                                     </div>
                                   </div>
                                   <!-- <div class="col-md-6">
@@ -207,7 +215,8 @@
                                   <div class="col-md-12">
                                     <div class="form-group has-danger">
                                       <label class="control-label">Address</label>
-                                      <textarea name="" id="" cols="30" rows="5" class="form-control"
+                                      <textarea name="" id="" cols="30" rows="5" class="form-control" #ref ngx-google-places-autocomplete #placesRef="ngx-places"
+                                      (onAddressChange)="AddressChange($event,ref.value)" formControlName="address"
                                         placeholder="#433 New garden Complex"></textarea>
                                     </div>
                                   </div>
@@ -399,8 +408,8 @@
                                                   </div>                     
                                                 </div>
                                               <div class="col-md-12">                        
-                                                  <button type="submit" class="btn btn-primary mr-3" routerLink="/dashboard">
-                                                    Save</button>
+                                                  <button type="submit" class="btn btn-primary mr-3" (click)="updateProfile()">
+                                                    Update</button>
                                                   <!-- <button type="button" class="btn btn-dark" >Cancel</button> -->
                                                 </div>
                                               </div>                   

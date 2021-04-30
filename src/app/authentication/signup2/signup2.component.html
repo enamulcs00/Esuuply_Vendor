@@ -13,50 +13,42 @@
                     <div class="row">
                         <div class="col-12">
                             <form class="form-horizontal m-t-20" [formGroup]="signUpWithEmail">
-                                <div class="form-group row ">
+                                <div class="form-group row cstm_fld mb-0">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" (keydown.space)="$event.preventDefault()"type="text" placeholder="First Name" formControlName="firstName">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                 *ngIf="submitted && errorHandlingSignup('firstName', 'required')">First name is required!</p>
-                <p class="text-danger"
-                *ngIf="errorHandlingSignup('firstName', 'pattern')">First name should alphabetic only!</p>
+                <p class="erroe_msg"
+                *ngIf="errorHandlingSignup('firstName', 'pattern')"> First name should alphabetic only!</p>
                                     </div>
-                                </div>
-                                <div class="form-group row ">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" type="text" placeholder="Last Name"(keydown.space)="$event.preventDefault()" formControlName="lastName">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingSignup('lastName', 'required')">Last name is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingSignup('lastName', 'pattern')">Last name should alphabetic only!</p>
                                     </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" type="text" required=" " placeholder="Email" formControlName="email">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingSignup('email', 'required')">Email is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingSignup('email', 'pattern')">Email is not valid!</p>
                                     </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" type="password" placeholder="Password" formControlName="password">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingSignup('password', 'required')">Password is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingSignup('password', 'minlength')">Minlength of password should 8!</p>
                                     </div>
-                                </div>
-                                <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password" formControlName="confirmPassword">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                 *ngIf="submitted && errorHandlingSignup('confirmPassword', 'required')">
                                 Confirm password is required!
                                     </p>
-                            <p class="text-danger"
+                            <p class="erroe_msg"
                                 *ngIf="(signUpWithEmail.get('confirmPassword').value.length>0) && signUpWithEmail.get('password').value !=  signUpWithEmail.get('confirmPassword').value">
                                 Password mismatched!
                                 </p>
@@ -71,11 +63,10 @@
                                     </div>
                                 </div> -->
                                 <div class="form-group text-center ">
-                                    <div class="col-xs-12 p-b-20 ">
+                                    <div class="col-xs-12 mb-0">
                                         <button class="btn btn-block btn-lg btn-theme" type="button" (click)="signUpEmail()">SIGN UP</button>
                                     </div>
                                 </div>
-                           
                             </form>
                         </div>
                     </div>
@@ -90,18 +81,18 @@
                                 <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" type="text" placeholder="First Name" (keydown.space)="$event.preventDefault()"formControlName="firstName">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('firstName', 'required')">First name is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingphone('firstName', 'pattern')">First name should alphabetic only!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" formControlName="lastName"type="text" (keydown.space)="$event.preventDefault()" placeholder="Last Name">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('lastName', 'required')">Last name is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingphone('lastName', 'pattern')">Last name should alphabetic only!</p>
                                     </div>
                                 </div>
@@ -118,19 +109,19 @@
                                             aria-label="Username" aria-describedby="basic-addon1" formControlName="phone">
                                           
                                         </div>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('phone', 'required')">
                                         Phone number is required!
                                     </p>
-                                    <p class="text-danger"
+                                    <p class="erroe_msg"
                                         *ngIf="errorHandlingphone('phone', 'maxlength')">
                                         Maximum length should 15!
                                 </p>
-                                    <p class="text-danger"
+                                    <p class="erroe_msg"
                                     *ngIf="errorHandlingphone('phone', 'minlength')">
                                     Minimum length should 7!
                             </p>
-                                <p class="text-danger"
+                                <p class="erroe_msg"
                                     *ngIf="errorHandlingphone('phone', 'pattern')">
                                     Please enter valid phone no!
                         </p>
@@ -139,29 +130,29 @@
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <input class="form-control form-control-lg" type="text" required=" " placeholder="Email" formControlName="email">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('email', 'required')">Email is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingphone('email', 'pattern')">Email is not valid!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" formControlName="password" type="password" required=" " placeholder="Password">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('password', 'required')">Password is required!</p>
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="errorHandlingphone('password', 'minlength')">Minlength of password should 8!</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
                                         <input class="form-control form-control-lg" formControlName="confirmPassword" type="password" placeholder="Confirm Password">
-                                        <p class="text-danger"
+                                        <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('confirmPassword', 'required')">
                                         Confirm password is required!
                                             </p>
-                                    <p class="text-danger"
+                                    <p class="erroe_msg"
                                         *ngIf="(signUpWithPhone.get('confirmPassword').value.length>0) && signUpWithPhone.get('password').value !=  signUpWithPhone.get('confirmPassword').value">
                                         Password mismatched!
                                         </p>

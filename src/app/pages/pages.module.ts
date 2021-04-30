@@ -75,6 +75,8 @@ import { FranchisedetailComponent } from './franchisedetail/franchisedetail.comp
 import { FranchiserequestComponent } from './franchiserequest/franchiserequest.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -85,6 +87,7 @@ CommonModule,
     MatSlideToggleModule,
     MatExpansionModule,
     NgbModule,
+    AgmCoreModule,
     QuillModule.forRoot(),
     ChartsModule,
     ChartistModule,
@@ -99,7 +102,8 @@ CommonModule,
     HttpClientModule,
     NgxSpinnerModule,
     DragDropModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    GooglePlaceModule
   
   ],
   declarations: [

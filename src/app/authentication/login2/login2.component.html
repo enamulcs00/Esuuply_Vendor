@@ -159,17 +159,24 @@
             </div>
             <div class="row m-t-20">
                 <!-- Form -->
-                <form class="col-12" action="index.html" >
+                <form class="col-12" [formGroup]="recoveryForm">
                     <!-- email -->
                     <div class="form-group row">
                         <div class="col-12">
-                            <input class="form-control form-control-lg" type="email" required="" placeholder="Email">
+                            <input class="form-control form-control-lg" type="email" required="" placeholder="Email" formControlName="email">
+                            <p class="text-white" *ngIf="isSubmitted && recoveryForm.controls['email'].errors?.required">This field is required</p>
                         </div>
                     </div>
                     <!-- pwd -->
                     <div class="row m-t-20">
                         <div class="col-12">
-                            <button class="btn btn-block btn-lg btn-info text-white" type="submit" name="action">Reset</button>
+                            <button class="btn btn-block btn-lg btn-info text-white" type="button" name="action" (click)="CancelForgot()">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="row m-t-20">
+        
+                        <div class="col-12">
+                            <button class="btn btn-block btn-lg btn-info text-white" type="button" name="action" (click)="recover()">Reset</button>
                         </div>
                     </div>
                 </form>
@@ -183,26 +190,46 @@
             </div>
             <div class="row m-t-20">
                 <!-- Form -->
-                <form class="col-12" action="index.html" >
+                <form class="col-12" [formGroup]="phoneRecover" >
                     <!-- email -->
                     <div class="form-group row">
                         <div class="col-12">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <select class="form-control form-control-lg">
-                                      <option value="">+91</option>
-                                      <option value="">+32</option>
-                                      <option value="">+3322</option>
+                                  <select class="form-control form-control-lg" formControlName="CountryCode">
+                                    <option *ngFor="let code of countrycode;" [value]="code.dial_code"> {{code.dial_code}}</option>
                                       </select>
                                 </div>
-                                <input type="text" class="form-control form-control-lg" placeholder="Phone no." aria-label="Username" aria-describedby="basic-addon1" required>
+                                <input type="text" class="form-control form-control-lg" placeholder="Phone no." aria-label="Username" aria-describedby="basic-addon1" required formControlName="phone">
+                                
                             </div>
+                            <p class="text-white"
+                                *ngIf="IsphoneRecover && errorPhoneRecoverForm('phone', 'required')">
+                                Phone number is required!
+                            </p>
+                                <p class="text-white"
+                                *ngIf="errorPhoneRecoverForm('phone', 'pattern')">
+                                Phone number is invalid!
+                            </p>
+                            <p class="text-white"
+                                *ngIf="errorPhoneRecoverForm('phone', 'maxlength')">
+                                Maximum length of phone number should be 15!
+                            </p>
+                            <p class="text-white"
+                                *ngIf="errorPhoneRecoverForm('phone', 'minlength')">
+                                Minimum length of phone number should be 7!
+                            </p>
                         </div>
                     </div>
                     <!-- pwd -->
                     <div class="row m-t-20">
                         <div class="col-12">
-                            <button class="btn btn-block btn-lg btn-info text-white" type="submit" name="action" (click)="openWindowCustomClass(content3)">Send</button>
+                            <button class="btn btn-block btn-lg btn-info text-white" type="submit" name="action" (click)="ClosePhone()">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="row m-t-20">
+                        <div class="col-12">
+                            <button class="btn btn-block btn-lg btn-info text-white" type="submit" name="action" (click)="recoverForPhone(content3)">Send</button>
                         </div>
                     </div>
                 </form>
@@ -218,8 +245,8 @@
         <h3>OTP</h3>
         <ng-otp-input  class="otp-box" (onInputChange)="onOtpChange($event)"  [config]="{length:4}"></ng-otp-input>
         <div class="d-flex mt-3 align-items-center">
-            <button class="btn btn-primary"  (click)="modal.dismiss(); clicked()">Submit</button>
-            <a href="javascript:void()" class="ml-auto">Resend</a>
+            <button class="btn btn-primary"  (click)="gotoVerify()">Submit</button>
+            <a href="javascript:void()" class="ml-auto" (click)="sendOtp()">Resend</a>
         </div>
     </div>
   

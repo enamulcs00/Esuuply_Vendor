@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 import { SharedService } from '../shared.service';
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup2.component.html'
+  templateUrl: './signup2.component.html',
+  styleUrls: ['./signup2.scss']
 })
 export class Signup2Component implements OnInit{
   countrycode: any;

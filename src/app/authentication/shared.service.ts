@@ -30,12 +30,39 @@ httpOptions: { headers: HttpHeaders; };
   {
     return this.http.post(`${this.baseUrl}`+url,data,this.getAuth());
   }
+  putApi(url,data)
+  {
+    return this.http.put(`${this.baseUrl}`+url,data,this.getAuth());
+  }
   signIn(data)
   {
   return this.http.post(`${this.baseUrl}admin/login`,data);
+  }
+  forgot(data)
+  {
+  return this.http.post(`${this.baseUrl}admin/forgotPasswordWithEmail`,data);
+  }
+  forgotPhone(data)
+  {
+  return this.http.post(`${this.baseUrl}admin/forgotPasswordWithPhone`,data);
+  }
+  changePassword(data)
+  {
+  return this.http.post(`${this.baseUrl}admin/changePassword`,data,this.getAuth());
   }
   getApi(url)
     {
       return this.http.get(`${this.baseUrl}`+url,this.getAuth());
     }
+    getToday(): string {
+      return new Date().toISOString().split('T')[0]
+      }
+      verifyPhone(data)
+  {
+  return this.http.post(`${this.baseUrl}admin/verifyOtp`,data);
+  }
+  sentOtp(data)
+  {
+  return this.http.post(`${this.baseUrl}admin/sendOtp`,data);
+  }
 }

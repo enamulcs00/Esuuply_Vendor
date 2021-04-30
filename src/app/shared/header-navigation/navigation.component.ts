@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
+import { Component, AfterViewInit, EventEmitter, Output, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   NgbModal,
@@ -7,6 +7,8 @@ import {
   NgbCarouselConfig
 } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { SharedService } from 'src/app/authentication/shared.service';
+import Swal from 'sweetalert2';
 declare var $: any;
 
 @Component({
@@ -14,14 +16,15 @@ declare var $: any;
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements AfterViewInit {
+export class NavigationComponent implements AfterViewInit ,OnInit{
   @Output() toggleSidebar = new EventEmitter<void>();
 
   public config: PerfectScrollbarConfigInterface = {};
 
   public showSearch = false;
   public element1: any;
-  constructor(private modalService: NgbModal,private router:Router) {}
+  profileData: any;
+  constructor(private modalService: NgbModal,private router:Router,private service:SharedService) {}
 
   // This is for Notifications
   notifications: Object[] = [
@@ -106,5 +109,23 @@ export class NavigationComponent implements AfterViewInit {
     this.router.navigate(['login'])
    //  this.router.navigate([''])
     //  this.openDialog(1)
+  }
+  ngOnInit(){
+    this.getProfile()
+  }
+  getProfile(){
+      
+    let url =`admin/getProfile`
+    this.service.getApi(url).subscribe((res:any)=>{
+      console.log('Res of get profile',res)
+      if(res.statusCode==200){
+        this.profileData = res.data
+             }
+      else {
+        Swal.fire('Oops',res.message,'error')
+      }
+    },error=>{
+      Swal.fire('Oops',error.message,'error')
+    })
   }
 }
