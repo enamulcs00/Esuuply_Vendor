@@ -62,11 +62,11 @@ export class Login2Component implements OnInit{
   }
   ngOnInit(){
     this.phoneRecover = this.fb.group({
-      CountryCode:[this.code],
+
       phone:['',Validators.compose([Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
          ,Validators.maxLength(15),Validators.minLength(7)])],
   })
-    this.phoneRecover.get('CountryCode').setValue(this.code)
+    
     this.recoveryForm = this.fb.group({
       email:['',[Validators.required,Validators.email,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/)]],
     })
@@ -115,12 +115,6 @@ export class Login2Component implements OnInit{
     return this.phoneRecover.controls[control].hasError(error);
   }
 
-  // someMethod(value)
-  // {
-  //   console.log('Value of code',value,'PhoneCode val',this.code);
-  //   this.countryCode = value;
-  //   this.code = value
-  // }
   login() {
   
     let url = `admin/login`
@@ -157,8 +151,12 @@ export class Login2Component implements OnInit{
         console.log(error)
       })
    }else if(this.loginwithEmail.invalid){
+    this.spinner.hide()
+    setTimeout(() => {
+      this.submitted = false
+    }, 4000);
       Swal.fire('Oops','Please Enter Required Fields','error')
-      this.spinner.hide()
+      
     }
     
   }
@@ -200,8 +198,12 @@ export class Login2Component implements OnInit{
         console.log(error)
       })
    }else if(this.loginWithPhone.invalid){
+    this.spinner.hide()
+    setTimeout(() => {
+      this.isphoneLogin = false
+    }, 4000);
       Swal.fire('Oops','Please Enter Required Fields','error')
-      this.spinner.hide()
+      
     }
 }
 recover() {
@@ -228,13 +230,18 @@ recover() {
     console.log(error)
   })
 }
+someMethod(value)
+  {
+    console.log('Value of code',value,'PhoneCode val',this.phonecode);
+    this.countryCode = value;
+  }
 recoverForPhone(content3) {
 
   this.IsphoneRecover = true
   this.spinner.show()
   let data = {
     "phoneNo":this.phoneRecover.value.phone,
-    "dialCode":this.phoneRecover.value.CountryCode
+    "dialCode":this.countryCode == null ? this.code : this.countryCode
     }
   
   this.service.forgotPhone(data).subscribe((response:any) => {
@@ -266,7 +273,7 @@ gotoVerify()
 console.log('This is otp',this.otpvalue)
  const data = {
   "phoneNo":this.phoneRecover.value.phone,
-  "dialCode":this.phoneRecover.value.CountryCode,
+  "dialCode":this.countryCode == null ? this.code : this.countryCode,
     "secretCode": this.otpvalue
 }
   this.service.verifyPhone(data).subscribe((res:any)=>
@@ -293,7 +300,7 @@ onOtpChange(event)
   sendOtp(){
     let obj = {
       "phoneNo":this.phoneRecover.value.phone,
-      "dialCode":this.phoneRecover.value.CountryCode
+      "dialCode":this.countryCode == null ? this.code : this.countryCode
     }
     this.service.sentOtp(obj).subscribe((res:any)=>{
       console.log(res,"OTP SENT");
@@ -302,6 +309,8 @@ onOtpChange(event)
       }else{
         Swal.fire('Oops',res.message,'error')
       }
+    },err=>{
+      Swal.fire('Oops',err.message,'error')
     })
   }
 }

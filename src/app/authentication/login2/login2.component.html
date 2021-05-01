@@ -196,7 +196,7 @@
                         <div class="col-12">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                  <select class="form-control form-control-lg" formControlName="CountryCode">
+                                  <select class="form-control form-control-lg" (change)="someMethod($event.target.value)">
                                     <option *ngFor="let code of countrycode;" [value]="code.dial_code"> {{code.dial_code}}</option>
                                       </select>
                                 </div>

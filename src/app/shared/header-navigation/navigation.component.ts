@@ -112,6 +112,11 @@ export class NavigationComponent implements AfterViewInit ,OnInit{
   }
   ngOnInit(){
     this.getProfile()
+    this.service.subject.subscribe(res=>{
+      if(res==true){
+        this.getProfile();
+      }
+    })
   }
   getProfile(){
       

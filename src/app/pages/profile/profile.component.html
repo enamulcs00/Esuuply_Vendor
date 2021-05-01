@@ -11,12 +11,12 @@
         <div class="card">
             <div class="card-body text-center">
                 <div class="m-t-30 text-center">
-                    <img [src]="(profileData?.image)?(profileData?.image):'assets/images/users/1.jpg'" class="rounded-circle" width="150" height="150" />               
+                    <img [src]="(ProfilePic)?(ProfilePic):'assets/images/users/1.jpg'" class="rounded-circle" width="150" height="150" />               
                 </div>
-                <div class="upload-btn-wrapper">
+                <!-- <div class="upload-btn-wrapper">
                     <button class="btn-upload"><i class="mdi mdi-pencil"></i></button>
                     <input type="file" name="myfile" />
-                  </div>
+                  </div> -->
             </div>
             <div>
                 <hr> </div>
@@ -25,10 +25,10 @@
                 <h6>{{profileData?.firstName+' '+profileData?.lastName}}</h6>
                 <small class="text-muted">Email address </small>
                 <h6>{{profileData?.email}}</h6>
-                <small class="text-muted p-t-30 db">Phone</small>
-                <h6>{{profileData?.dialCode+'-'+profileData?.phoneNo}}</h6>
+                <small class="text-muted p-t-30 db" *ngIf="profileData?.dialCode && profileData?.phoneNo">Phone</small>
+                <h6 *ngIf="profileData?.dialCode && profileData?.phoneNo">{{profileData?.dialCode+'-'+profileData?.phoneNo}}</h6>
                 <small class="text-muted p-t-30 db">Address</small>
-                <h6>{{profileData?.location?.address}}</h6>
+                <h6>{{address}}</h6>
                 <div >
                   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="14">
                     <agm-marker [latitude]="lat" [agmFitBounds]="true" [longitude]="lng"></agm-marker>
@@ -50,7 +50,7 @@
                                     <br>
                                     <p class="text-muted">{{profileData?.firstName+' '+profileData?.lastName}}</p>
                                 </div>
-                                <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
+                                <div class="col-md-3 col-xs-6 b-r" *ngIf="profileData?.dialCode && profileData?.phoneNo"> <strong>Mobile</strong>
                                     <br>
                                     <p class="text-muted">{{profileData?.dialCode+'-'+profileData?.phoneNo}}</p>
                                 </div>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6"> <strong>Location</strong>
                                     <br>
-                                    <p class="text-muted">{{profileData?.location?.address}}</p>
+                                    <p class="text-muted">{{address}}</p>
                                 </div>
                             </div>
                             <hr>
@@ -89,7 +89,14 @@
                                     <div class="form-group">
                                       <label class="control-label">First Name</label>
                                       <input type="text" id="firstName" class="form-control" placeholder="John doe" formControlName="firstName">
-                        
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('firstName', 'required')">
+                                      First name is required!
+                                  </p>
+                                  <p class="text-danger"
+                                      *ngIf=" errorHandling('firstName', 'pattern')">
+                                      First name should alphabetic!
+                                  </p>
                                     </div>
                                   </div>
                                   <!--/span-->
@@ -97,7 +104,14 @@
                                     <div class="form-group">
                                       <label class="control-label">Last Name</label>
                                       <input type="text" id="firstName" class="form-control" placeholder="John doe" formControlName="lastName">
-                        
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('lastName', 'required')">
+                                      Last name is required!
+                                  </p>
+                                  <p class="text-danger"
+                                      *ngIf=" errorHandling('lastName', 'pattern')">
+                                      Last name should alphabetic!
+                                  </p>
                                     </div>
                                   </div>
                                    <!--/span-->
@@ -105,8 +119,14 @@
                                     <div class="form-group has-success">
                                       <div class="form-group">
                                         <label class="control-label">Upload Vendor Profile</label>
-                                        <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01" type="file" name="image"
-                                            ><label class="custom-file-label" for="inputGroupFile01">{{fileName}}</label></div>
+                                        <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01" type="file" formControlName="image"
+                                            ><label class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName}}</label>
+                                            <p class="text-danger"
+                                            *ngIf="submitted && errorHandling('image', 'required')">
+                                            Vendor Profile is required!
+                                        </p>
+                                        
+                                          </div>
                                       </div>
                                     </div>
                                   </div>
@@ -125,7 +145,10 @@
                                     <div class="form-group">
                                       <label class="control-label">Restaurant Name</label>
                                       <input type="text" id="firstName" class="form-control" placeholder="Restaurant name" formControlName="resturant">
-                        
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('resturant', 'required')">
+                                      Resturant name is required!
+                                  </p>
                                     </div>
                                   </div>
                                 </div>
@@ -135,7 +158,10 @@
                                     <div class="form-group">
                                       <label class="control-label">Date of birth</label>
                                       <input type="date" id="firstName" class="form-control" [max]="service.getToday()" placeholder="" formControlName="dob">
-                        
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('dob', 'required')">
+                                      Date of birth is required!
+                                  </p>
                                     </div>
                                   </div>
                                   <!--/span-->
@@ -143,14 +169,22 @@
                                     <div class="form-group">
                                       <label class="control-label">Email</label>
                                       <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email">
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('email', 'required')">
+                                      Email is required!
+                                  </p>
+                                  <p class="text-danger"
+                                      *ngIf=" errorHandling('email', 'pattern')">
+                                      Email is not valid!
+                                  </p>
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Are you currently delivering right now?*</label>
                                       <select name="isDelivery" id="" class="form-control">
-                                        <option value="yes">Yes</option>
-                                        <option value="no">No</option>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
                                       </select>
                                     </div>
                                   </div>
@@ -166,6 +200,23 @@
                                     <div class="form-group has-danger">
                                       <label class="control-label">Zip</label>
                                       <input type="text" id="zip" formControlName="zip" class="form-control form-control-danger" placeholder="eg:44343">
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('zip', 'required')">
+                                      Zip code is required!
+                                  </p>
+                                  <p class="text-danger"
+                                      *ngIf=" errorHandling('zip', 'pattern')">
+                                      Zip code should numeric!
+                                  </p>
+                                  <p class="text-danger"
+                                      *ngIf=" errorHandling('zip', 'minlength')">
+                                      Minlength of zip code should 5!
+                                  </p>
+                                  <p class="text-danger"
+                                      *ngIf=" errorHandling('zip', 'maxlength')">
+                                      Maxlength of zip code should 7!
+                                  </p>
+                                  
                                     </div>
                                   </div>
                                   <div class="col-md-6">
@@ -173,6 +224,10 @@
                                       <label class="control-label">
                                         Type of restaurant</label>
                                       <input type="text" id="zip" class="form-control form-control-danger" formControlName="resturantType" placeholder="eg:44343">
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('resturantType', 'required')">
+                                      Type of restaurant is required!
+                                  </p>
                                     </div>
                                   </div>
                                   <!--/span-->
@@ -187,6 +242,10 @@
                                     <div class="form-group has-danger">
                                       <label class="control-label">City</label>
                                       <input type="text" id="city" class="form-control form-control-danger" placeholder="Berlin" formControlName="city">
+                                      <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('city', 'required')">
+                                      City is required!
+                                  </p>
                                     </div>
                                   </div>
                                   <!-- <div class="col-md-6">
@@ -218,7 +277,11 @@
                                       <textarea name="" id="" cols="30" rows="5" class="form-control" #ref ngx-google-places-autocomplete #placesRef="ngx-places"
                                       (onAddressChange)="AddressChange($event,ref.value)" formControlName="address"
                                         placeholder="#433 New garden Complex"></textarea>
-                                    </div>
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandling('addres', 'required')">
+                                        Address is required!
+                                    </p>
+                                      </div>
                                   </div>
                                   <!--/span-->
                                 </div>

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,12 @@ imageUrl = "http://dev.webdevelopmentsolution.net:3006/";
 baseUrl = "http://dev.webdevelopmentsolution.net:3006/api/v1/";
 httpOptions: { headers: HttpHeaders; };
   constructor(private http: HttpClient) { }
+  public subject = new BehaviorSubject<boolean>(false)
+
+  profileUpdate():Observable<any>
+  {
+    return this.subject.asObservable()
+  }
   getAuth()
   {
     const authorization = localStorage.getItem('token');

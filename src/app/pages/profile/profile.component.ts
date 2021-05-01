@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class ProfileComponent {
 profileForm:FormGroup
   checked:string;
+  submitted:boolean = false
   lat:any = 40.7127753;
   lng:any = -74.0059728;
   fileName:string = 'Choose file'
@@ -21,21 +22,24 @@ profileForm:FormGroup
   days:string[]=['sun','mon','tue','wed','thu','fri','sat']
   profileData: any;
   files: any;
+  ProfilePic:any;
+  address:any='Mohali, Punjab, India'
     constructor(private router:Router,private service:SharedService,private fb:FormBuilder,private spinner:NgxSpinnerService) { }
   
     ngOnInit(): void {
+      
       this.getProfile()
       this.profileForm = this.fb.group({
         email:['',[Validators.required,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/)]],
         firstName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
         lastName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
-        resturant:[''],
-        dob:[''],
-        zip:[''],
-        image:[''],
-        address:[''],
-        city:[''],
-        resturantType:['']
+        resturant:['',[Validators.required]],
+        dob:['',Validators.required],
+        zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(5),Validators.maxLength(7)]],
+        image:['',Validators.required],
+        address:['',Validators.required],
+        city:['',Validators.required],
+        resturantType:['',Validators.required]
       })
     }
     check(e,ref){
@@ -57,21 +61,24 @@ profileForm:FormGroup
         <input type="time" placeholder="" class="form-control">
       </div>
       <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-      <div class="col-md-2"><a href="javascript:void(0)" ><i class="far fa-times-circle"></i></a></div>
+      <div class="col-md-2"><a href="javascript:void(0)" ><i class="far fa-times-circle" onclick="remove()"></i></a></div>
         `; 
         document.querySelector('.showInputField').appendChild(row); 
     } 
     remove(){
       let removed = document.querySelector('.row.mb-2'); 
-      console.log(removed);
+      console.log('Remove item called',removed);
     }
     getProfile(){
       
       let url =`admin/getProfile`
       this.service.getApi(url).subscribe((res:any)=>{
-        console.log('Res of get profile',res)
+        console.log('Res of get profile birth',res.data.birthDate)
         if(res.statusCode==200){
           this.profileData = res.data
+          this.ProfilePic = res.data.image,
+          this.fileName = this.profileData.image.split('/').pop()
+          this.address = res.data.location.address
           this.profileForm.get('firstName').setValue(res.data.firstName)
           this.profileForm.get('lastName').setValue(res.data.lastName)
           this.profileForm.get('email').setValue(res.data.email)
@@ -82,7 +89,7 @@ profileForm:FormGroup
           this.profileForm.get('resturantType').setValue(res.data.typeOfRestaurant)
           this.profileForm.get('address').setValue(res.data.location.address)
           this.profileForm.get('city').setValue(res.data.city)
-          this.fileName = this.profileData.image.split('/').pop()
+          
           this.lat = this.profileData.location.coordinates[1];
         this.lng = this.profileData.location.coordinates[0];
         }
@@ -94,6 +101,7 @@ profileForm:FormGroup
     public AddressChange(address: any,ref:any) {
       //setting address from API to local variable
       console.log('Address',address,"Ref",ref);
+      this.address = ref
       this.profileForm.controls['address'].setValue(ref)
       this.lat = address.geometry.location.lat()
       this.lng = address.geometry.location.lng()
@@ -110,13 +118,16 @@ profileForm:FormGroup
       this.spinner.show()
       let formdata = new FormData()
       formdata.append('file', fileData);
+      // formdata.append('type','profilePic')
       this.service.postApi(url, formdata).subscribe((res: any) => {
         this.spinner.hide()
         console.log(res.data)
         if (res.statusCode==200) {
+          // this.service.subject.next(true)
        Swal.fire('Success','File uploded','success')
           console.log("upload data res=>>", res.data)
           this.files = res.data.filePath
+          this.ProfilePic = res.data.filePath
         } else {
           this.spinner.hide()
           Swal.fire('Oops',res.message,'error')
@@ -143,7 +154,12 @@ profileForm:FormGroup
         }
       }
     }
+    public errorHandling = (control: string, error: string) => {
+      return this.profileForm.controls[control].hasError(error);
+    }
     updateProfile(){
+      this.submitted = true
+      this.spinner.show()
       let url = `admin/updateProfile`
    let obj =   {
         "city": this.profileForm.value.city,
@@ -223,16 +239,27 @@ profileForm:FormGroup
             }
         ]
     }
-    this.service.putApi(url,obj).subscribe((res:any)=>{
-      console.log("Update profile",res)
-      if(res.statusCode==200){
-        this.router.navigate(['dashboard'])
-        Swal.fire('Success',res.message,'success')
-      }else{
-        Swal.fire('Oops',res.message,'error')
-      }
-    },error=>{
-      Swal.fire('Oops','Something went wrong','error')
-    })
+    if(this.profileForm.valid){
+      this.service.putApi(url,obj).subscribe((res:any)=>{
+        console.log("Update profile",res)
+        if(res.statusCode==200){
+          this.spinner.hide()
+          this.submitted = false
+          this.service.subject.next(true)
+          this.router.navigate(['dashboard'])
+          Swal.fire('Success',res.message,'success')
+        }else{
+          this.spinner.hide()
+          Swal.fire('Oops',res.message,'error')
+        }
+      },error=>{
+        this.spinner.hide()
+        Swal.fire('Oops','Something went wrong','error')
+      })
+    }else if(this.profileForm.invalid){
+      this.spinner.hide()
+      Swal.fire('Oops','Please fill all field correctly','error')
+    }
+    
     }
 }
