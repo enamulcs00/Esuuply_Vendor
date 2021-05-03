@@ -1,13 +1,15 @@
 .cstm_fld {
     input {
-        margin-bottom: 25px;
+        margin-bottom: 0px;
+        
     }
 }
 
 .erroe_msg {
     color: #fff;
     font-weight: 600;
-    font-size: 13px;
-    position: absolute;
+    font-size: 13px;    
     bottom: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }

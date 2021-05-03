@@ -18,6 +18,14 @@ export const ROUTES: RouteInfo[] = [
         extralink: false,
         submenu: []
     },
+    {
+        path: 'pages/profile',
+        title: 'General',
+        icon: 'mdi mdi-account-settings-variant',
+        class: '',
+        extralink: false,
+        submenu: []
+    },
     // {
     //     path: 'apps/chat',
     //     title: 'Inbox',
@@ -115,14 +123,14 @@ export const ROUTES: RouteInfo[] = [
         extralink: false,
         submenu: []
     },
-    // {
-    //     path: '/pages/timeslot',
-    //     title: 'Timeslots',
-    //     icon: ' fas fa-clock',
-    //     class: '',
-    //     extralink: false,
-    //     submenu: []
-    // },
+    {
+        path: '/pages/timeslot',
+        title: 'Timeslots',
+        icon: ' fas fa-clock',
+        class: '',
+        extralink: false,
+        submenu: []
+    },
     {
         path: '',
         title: 'Inventory',
