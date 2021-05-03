@@ -13,6 +13,8 @@ import { SharedService } from '../shared.service';
 export class Signup2Component implements OnInit{
   countrycode: any;
   phonecode: any;
+  url:any;
+  role:any = 'shop'
   submitted:boolean = false
   signUpWithEmail:FormGroup
   countryCode: any;
@@ -30,7 +32,9 @@ export class Signup2Component implements OnInit{
          password:['',[Validators.required,Validators.minLength(8)]],
          firstName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
          lastName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
-         confirmPassword:['',Validators.required]
+         confirmPassword:['',Validators.required],
+         
+         role:[''],
     })
     this.signUpWithPhone = this.fb.group({
       phone:['',Validators.compose([Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
@@ -40,6 +44,7 @@ export class Signup2Component implements OnInit{
         firstName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
         lastName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
         
+         role:[''],
         confirmPassword:['',Validators.required]
     })
   }
@@ -54,23 +59,35 @@ export class Signup2Component implements OnInit{
     console.log('Value of code',value,'PhoneCode val',this.phonecode);
     this.countryCode = value;
   }
+  changeRole(e) {
+if(e.target.value=='shop'){
+this.role='shop'
+}else if(e.target.value=='franchise'){
+  this.role = 'franchise'
+}
+}
   signUpEmail(){
+    if(this.role ==  'shop'){
+this.url = `admin/register/shop` 
+ }else if(this.role == 'franchise'){
+   this.url = `admin/register/franchise`
+ }
     this.spinner.show()
-    let url = `admin/register/shop`
+    
     this.submitted = true;
     const data =
     {
       "firstName":this.signUpWithEmail.controls['firstName'].value,
       "lastName":this.signUpWithEmail.controls['lastName'].value,
       "email":this.signUpWithEmail.controls['email'].value,
-      
+    
       "password":this.signUpWithEmail.controls['password'].value,
       "confirmPassword":this.signUpWithEmail.controls['password'].value,
      // "dialCode":this.countryCode == null ? this.phonecode : this.countryCode
     }
     if(!this.signUpWithEmail.invalid)
     {
-      this.service.signUp(url,data).subscribe((res:any)=>
+      this.service.signUp(this.url,data).subscribe((res:any)=>
       {
         console.log('Res of signup',res);
         
@@ -79,7 +96,7 @@ export class Signup2Component implements OnInit{
           this.spinner.hide()
           Swal.fire('Success',res.message,'success')
           sessionStorage.setItem('token',res.data.accessToken)
-          this.router.navigate(['dashboard'])
+          this.router.navigate([`vendor_detail/${this.role}`])
           this.submitted = false
         }
         else{
@@ -119,7 +136,7 @@ this.spinner.show()
           this.spinner.hide()
           Swal.fire('Success',res.message,'success')
           sessionStorage.setItem('token',res.data.accessToken)
-          this.router.navigate(['dashboard'])
+          this.router.navigate(['vendor_detail'])
         }
         else{
           this.spinner.hide()

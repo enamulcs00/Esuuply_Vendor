@@ -37,7 +37,7 @@ export const AuthenticationRoutes: Routes = [
         component: Signup2Component
       },
       {
-        path: 'vendor_detail',
+        path: 'vendor_detail/:role',
         component: DetailFormComponent
       },
     ]

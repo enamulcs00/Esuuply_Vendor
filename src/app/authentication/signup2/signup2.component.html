@@ -74,9 +74,10 @@
                                 </div> -->
                                 <div class="form-group">
                                     <ul class="d-flex">
-                                        <li class="pr-2 text-white"><input type="radio" class="mr-1" name="yes">Shop</li>
-                                        <li class="text-white"><input type="radio" class="mr-1" name="yes">Franchise</li>
-                                      </ul>
+                                        <li class="pr-2 text-white"><input type="radio" name="role" class="mr-1" (change)="changeRole($event)" value="shop" checked>Shop</li>
+                                        <li class="text-white"><input type="radio" class="mr-1" name="role" (change)="changeRole($event)" value="franchise">Franchise</li>
+                                    </ul>
+                                
                                 </div>
                                 <div class="form-group text-center ">
                                     <div class="col-xs-12 mb-0">
@@ -192,11 +193,11 @@
                                     <div class="col-xs-12 p-b-20 ">
                                         <button class="btn btn-block btn-lg btn-theme" type="button" (click)="phoneSignUp()">SIGN UP</button>
                                     </div>
-                                    <div class="form-group m-b-0 m-t-10 ">
+                                    <!-- <div class="form-group m-b-0 m-t-10 ">
                                         <div class="col-sm-12 text-center text-white">
                                             Already have an account? <a routerLink="/login" class="text-white m-l-5 "><b>Sign In</b></a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                
                             </form>
@@ -206,11 +207,11 @@
                 </li>
               </ul>
               <div [ngbNavOutlet]="nav"></div>
-              <!-- <div class="form-group m-b-0 m-t-10 ">
+              <div class="form-group m-b-0 m-t-10 ">
                 <div class="col-sm-12 text-center text-white">
                     Already have an account? <a routerLink="/login" class="text-white m-l-5 "><b>Sign In</b></a>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

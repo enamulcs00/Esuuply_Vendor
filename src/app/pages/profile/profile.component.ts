@@ -39,6 +39,7 @@ profileForm:FormGroup
         image:['',Validators.required],
         address:['',Validators.required],
         city:['',Validators.required],
+        isDelivery:['',Validators.required],
         resturantType:['',Validators.required]
       })
     }
@@ -89,7 +90,7 @@ profileForm:FormGroup
           this.profileForm.get('resturantType').setValue(res.data.typeOfRestaurant)
           this.profileForm.get('address').setValue(res.data.location.address)
           this.profileForm.get('city').setValue(res.data.city)
-          
+          this.profileForm.get('isDelivery').setValue(res.data.deliveringRightNow)
           this.lat = this.profileData.location.coordinates[1];
         this.lng = this.profileData.location.coordinates[0];
         }

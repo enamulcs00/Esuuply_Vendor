@@ -18,6 +18,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 @NgModule({
   imports: [
     CommonModule, 
@@ -28,7 +29,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    GooglePlaceModule
   ],
   declarations: [
     NotfoundComponent,
