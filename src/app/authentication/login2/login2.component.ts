@@ -14,18 +14,19 @@ import { SharedService } from '../shared.service';
 })
 export class Login2Component implements OnInit{
   countryCode: any;
+  
   constructor(private spinner:NgxSpinnerService, private modalService: NgbModal,private service:SharedService,private fb:FormBuilder,private router:Router){
     this.service.getJson().subscribe((res:any)=>
     {
       this.countrycode = res.countryArray
       this.code = res.countryArray[0].dial_code
-      
+      console.log(this.code,'code')
     })
   }
   countrycode: any;
   code: any;
   otpvalue: number;
-  CountryCode:any = +93
+  CountryCode:any
   IsphoneRecover:boolean = false
   isSubmitted:boolean = false
   recoveryForm:FormGroup
@@ -54,6 +55,11 @@ export class Login2Component implements OnInit{
   }
   openWindowCustomClass(content3) {
     this.modalService.open(content3, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
+  }
+  fetchNews(e){
+    this.loginWithPhone.get('code').setValue(this.CountryCode?this.CountryCode:this.code)
+    console.log("Clicked Tab",e);
+    
   }
   clicked(){
     console.log("hele");
@@ -92,9 +98,11 @@ export class Login2Component implements OnInit{
         remember: formData.remember
       })
     }
+   // debugger
     if(localStorage.getItem('rememberForPhone')) {
       let formData = JSON.parse(localStorage.getItem('rememberForPhone'))
-      this.loginWithPhone.get('code').setValue(formData.code)
+      this.CountryCode = formData.code
+      this.loginWithPhone.get('code').setValue(formData.code?formData.code:this.code)
         this.loginWithPhone.patchValue({
           phone: formData.phone,
           password: formData.password,
@@ -232,9 +240,10 @@ recover() {
 }
 someMethod(value)
   {
-    console.log('Value of code',value,'PhoneCode val',this.phonecode);
+    
     this.countryCode = value;
   }
+  
 recoverForPhone(content3) {
 
   this.IsphoneRecover = true
@@ -281,7 +290,7 @@ console.log('This is otp',this.otpvalue)
       if(res.statusCode == 200)
       {
         sessionStorage.setItem('token',res.data.accessToken)
-    
+    Swal.fire('Success',res.message,'success')
      // this.router.navigate(['profilesetup'])
       }
       else{

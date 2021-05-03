@@ -61,7 +61,7 @@
                   </ng-template>
                 </li>
                 <li ngbNavItem [ngClass]="{'active':phonecode}">
-                  <a ngbNavLink class="text-white">Login with phone no.</a>
+                  <a ngbNavLink class="text-white" (click)="fetchNews($event)">Login with phone no.</a>
                   <ng-template ngbNavContent>
                     <div class="row">
                         <div class="col-12">
