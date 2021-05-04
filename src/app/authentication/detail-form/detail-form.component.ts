@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
   templateUrl: './detail-form.component.html',
   styleUrls: ['./detail-form.component.css']
 })
-export class DetailFormComponent implements OnInit {
+export class DetailFormComponent implements OnInit ,AfterViewInit{
   checked:string;
   profileForm:FormGroup
   formForShop:FormGroup
@@ -43,10 +43,19 @@ export class DetailFormComponent implements OnInit {
         this.role = res.role
       })
     }
-  
-    ngOnInit(): void {
-      
+  ngAfterViewInit(){
+    
     this.getProfile()
+
+  }
+    ngOnInit(): void {
+      this.service.getJson().subscribe((res:any)=>
+      {
+        this.countrycode = res.countryArray
+        this.phonecode = res.countryArray[0].dial_code
+      })
+      
+  this.getProfile()
       this.profileForm = this.fb.group({
         email:['',[Validators.required,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/)]],
         firstName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
@@ -54,9 +63,10 @@ export class DetailFormComponent implements OnInit {
         resturant:['',[Validators.required]],
         dob:['',Validators.required],
         zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(5),Validators.maxLength(7)]],
-        image:['',Validators.required],
+        image:[''],
         address:['',Validators.required],
         city:['',Validators.required],
+        isDelivery:['',Validators.required],
         resturantType:['',Validators.required]
       })
       this.formForShop = this.fb.group({
@@ -71,7 +81,56 @@ export class DetailFormComponent implements OnInit {
         address:['',Validators.required],
       
       })
+      
     }
+    public errorHandling = (control: string, error: string) => {
+      return this.profileForm.controls[control].hasError(error);
+    }
+    updateFranchaise(){
+      this.submitted = true
+      this.spinner.show()
+      let url = `admin/updateProfile`
+   let obj =   {
+    "city": this.profileForm.value.city,
+    "email":this.profileForm.value.email,
+  
+    "firstName": this.profileForm.value.firstName,
+    "lastName": this.profileForm.value.lastName,
+    "birthDate": this.profileForm.value.dob,
+    "shopName": this.profileForm.value.resturant,
+    "address": this.profileForm.value.address,
+    "zipCode": this.profileForm.value.zip,
+    "deliveringRightNow": this.profileForm.value.isDelivery,
+    "typeOfRestaurant": this.profileForm.value.resturantType,
+    "image": this.files,
+        "latitude":this.lat.toString(),
+        "longitude":this.lng.toString(),
+        
+    }
+    if(this.profileForm.valid){
+      this.service.putApi(url,obj).subscribe((res:any)=>{
+        console.log("Update profile",res)
+        if(res.statusCode==200){
+          this.router.navigate(['dashboard'])
+          this.spinner.hide()
+          this.submitted = false
+          this.service.subject.next(true)
+         
+          Swal.fire('Success',res.message,'success')
+        }else{
+          this.spinner.hide()
+          Swal.fire('Oops',res.message,'error')
+        }
+      },error=>{
+        this.spinner.hide()
+        Swal.fire('Oops','Something went wrong','error')
+      })
+    }else if(this.profileForm.invalid){
+      this.spinner.hide()
+      Swal.fire('Oops','Please fill all field correctly','error')
+    }
+    }
+
     sendFile(fileData) {
       let url = `admin/uploadFile`
       this.spinner.show()
@@ -155,14 +214,20 @@ export class DetailFormComponent implements OnInit {
         if(res.statusCode==200){
           this.profileData = res.data
           this.ProfilePic = res.data.image,
+          this.files = res.data.image
           this.fileName = this.profileData.image.split('/').pop()
-          this.address = res.data.location.address
           this.profileForm.get('firstName').setValue(res.data.firstName)
           this.profileForm.get('lastName').setValue(res.data.lastName)
           this.profileForm.get('email').setValue(res.data.email)
           this.profileForm.get('dob').setValue(res.data.birthDate)
+          this.profileForm.get('resturant').setValue(res.data.shopName)
           
+          this.profileForm.get('image').setValue(res.data.image)
+          this.profileForm.get('zip').setValue(res.data.zipCode)
+          this.profileForm.get('resturantType').setValue(res.data.typeOfRestaurant)
           this.profileForm.get('address').setValue(res.data.location.address)
+          this.profileForm.get('city').setValue(res.data.city)
+          this.profileForm.get('isDelivery').setValue(res.data.deliveringRightNow)
         
           this.lat = this.profileData.location.coordinates[1];
         this.lng = this.profileData.location.coordinates[0];
@@ -170,6 +235,7 @@ export class DetailFormComponent implements OnInit {
           this.formForShop.get('lastName').setValue(res.data.lastName)
           this.formForShop.get('email').setValue(res.data.email)
           this.formForShop.get('dob').setValue(res.data.birthDate)
+          this.formForShop.get('location').setValue(res.data.city)
           this.formForShop.get('phone').setValue(res.data.phoneNo)
           this.formForShop.get('dialCode').setValue(res.data.dialCode?res.data.dialCode:this.phonecode)
           this.formForShop.get('address').setValue(res.data.location.address)
@@ -205,11 +271,12 @@ export class DetailFormComponent implements OnInit {
         "firstName": this.formForShop.value.firstName,
         "lastName": this.formForShop.value.lastName,
         "birthDate": this.formForShop.value.dob,
+        "city": this.formForShop.value.location,
       //  "shopName": this.formForShop.value.resturant,
         "address": this.formForShop.value.address,
         
       "phoneNo":this.formForShop.controls['phone'].value,
-      
+      "image": this.files,
      "dialCode":this.countryCode == null ? this.phonecode : this.countryCode,
         "latitude":this.lat.toString(),
         "longitude":this.lng.toString(),
@@ -222,7 +289,7 @@ export class DetailFormComponent implements OnInit {
           this.router.navigate(['dashboard'])
           this.spinner.hide()
           this.submitted = false
-          this.service.subject.next(true)
+         this.service.subject.next(true)
          
           Swal.fire('Success',res.message,'success')
         }else{

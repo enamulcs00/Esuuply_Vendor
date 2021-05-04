@@ -93,11 +93,14 @@ this.url = `admin/register/shop`
         
         if(res.statusCode == 200)
         {
-          this.spinner.hide()
+          localStorage.setItem('token',res.data.accessToken)
+          localStorage.setItem('signupData',JSON.stringify(data))
+        
           Swal.fire('Success',res.message,'success')
           sessionStorage.setItem('token',res.data.accessToken)
           this.router.navigate([`vendor_detail/${this.role}`])
           this.submitted = false
+          this.spinner.hide()
         }
         else{
           this.spinner.hide()
@@ -112,8 +115,13 @@ Swal.fire('Oops','Please fill all field correctly','error')
     }
   }
   phoneSignUp(){
+    if(this.role ==  'shop'){
+      this.url = `admin/register/shop` 
+       }else if(this.role == 'franchise'){
+         this.url = `admin/register/franchise`
+       }
 this.spinner.show()
-    let url = `admin/register/shop`
+    //let url = `admin/register/shop`
     this.submitted = true;
     const data =
     {
@@ -127,16 +135,18 @@ this.spinner.show()
     }
     if(!this.signUpWithPhone.invalid)
     {
-      this.service.signUp(url,data).subscribe((res:any)=>
+      this.service.signUp(this.url,data).subscribe((res:any)=>
       {
         console.log('Res of signup with phone',res);
         
         if(res.statusCode == 200)
         {
-          this.spinner.hide()
+          localStorage.setItem('signupData',JSON.stringify(data))
+          localStorage.setItem('token',res.data.accessToken)
           Swal.fire('Success',res.message,'success')
           sessionStorage.setItem('token',res.data.accessToken)
-          this.router.navigate(['vendor_detail'])
+          this.router.navigate([`vendor_detail/${this.role}`])
+          this.spinner.hide()
         }
         else{
           this.spinner.hide()

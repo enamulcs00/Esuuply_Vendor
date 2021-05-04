@@ -22,7 +22,14 @@
                 <div class="form-group">
                   <label class="control-label">First Name</label>
                   <input type="text" id="firstName" class="form-control" placeholder="John" formControlName="firstName">
-  
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('firstName', 'required')">
+                  First name is required!
+              </p>
+              <p class="text-danger"
+                  *ngIf=" errorHandling('firstName', 'pattern')">
+                  First name should alphabetic!
+              </p>
                 </div>
               </div>
               <!--/span-->
@@ -30,7 +37,14 @@
                 <div class="form-group">
                   <label class="control-label">Last Name</label>
                   <input type="text" id="firstName" class="form-control" placeholder="doe" formControlName="lastName">
-  
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('lastName', 'required')">
+                  Last name is required!
+              </p>
+              <p class="text-danger"
+                  *ngIf=" errorHandling('lastName', 'pattern')">
+                  Last name should alphabetic!
+              </p>
                 </div>
               </div>
               <!--/span-->
@@ -38,9 +52,14 @@
                 <div class="form-group has-success">
                   <div class="form-group">
                     <label class="control-label">Upload Vendor Profile</label>
-                    <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file" (change)="uploadFile($event)" formControlName="image"><label
-                        class="custom-file-label" for="inputGroupFile01">{{fileName}}</label></div>
-                  </div>
+                    <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file" (change)="uploadFile($event)" name="image"><label
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
+                      </div>
+                      <!-- <p class="text-danger"
+                      *ngIf="submitted && errorHandling('image', 'required')">
+                      Vendor Profile is required!
+                  </p> -->
+                      </div>
                 </div>
               </div>
               <!--/span-->         
@@ -48,8 +67,11 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Restaurant Name</label>
-                  <input type="number" id="firstName" class="form-control" placeholder="Restaurant name" formControlName="resturant">
-  
+                  <input type="text" id="firstName" class="form-control" placeholder="Restaurant name" formControlName="resturant">
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('resturant', 'required')">
+                  Restaurant Name is required!
+              </p>
                 </div>
               </div>
             </div>
@@ -58,58 +80,103 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Date of birth</label>
-                  <input type="date" id="firstName" class="form-control" placeholder="" formControlName="dob">
-  
+                  <input type="date" id="firstName" class="form-control" placeholder="" [max]="service.getToday()" formControlName="dob">
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('dob', 'required')">
+                  Date of birth is required!
+              </p>
                 </div>
               </div>
               <!--/span-->
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Email</label>
-                  <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email">
+                  <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email" >
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('email', 'required')">
+                  Email is required!
+              </p>
+              <p class="text-danger"
+                  *ngIf=" errorHandling('email', 'pattern')">
+                  Email is not valid!
+              </p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Are you currently delivering right now?*</label>
-                  <select name="" id="" class="form-control">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                  <select name="" id="" class="form-control"  formControlName="isDelivery">
+                    <option value="">Choose option</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
                   </select>
+                  <p class="text-danger"
+                                      *ngIf="submitted && errorHandling('isDelivery', 'required')">
+                                      This field is required!
+                                  </p>
                 </div>
               </div>        
               <!--/span-->
               <div class="col-md-6">
                 <div class="form-group has-danger">
                   <label class="control-label">Zip</label>
-                  <input type="text" id="zip" class="form-control form-control-danger" placeholder="eg:44343">
+                  <input type="text" id="zip" class="form-control form-control-danger" formControlName="zip" placeholder="eg:44343">
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('zip', 'required')">
+                  Zip code is required!
+              </p>
+              <p class="text-danger"
+                  *ngIf=" errorHandling('zip', 'pattern')">
+                  Zip code should numeric!
+              </p>
+              <p class="text-danger"
+                  *ngIf=" errorHandling('zip', 'minlength')">
+                  Minlength of zip code should 5!
+              </p>
+              <p class="text-danger"
+                  *ngIf=" errorHandling('zip', 'maxlength')">
+                  Maxlength of zip code should 7!
+              </p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group has-danger">
                   <label class="control-label">
                     Type of restaurant</label>
-                  <input type="text" id="zip" class="form-control form-control-danger" placeholder="eg:44343">
+                  <input type="text" id="zip" class="form-control form-control-danger" formControlName="resturantType">
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('resturantType', 'required')">
+                  Type of restaurant is required!
+              </p>
                 </div>
               </div>
               <!--/span-->           
               <div class="col-md-6">
                 <div class="form-group has-danger">
                   <label class="control-label">City</label>
-                  <input type="text" id="city" class="form-control form-control-danger" placeholder="Berlin">
+                  <input type="text" id="city" formControlName="city" class="form-control form-control-danger" placeholder="Berlin">
+                  <p class="text-danger"
+                  *ngIf="submitted && errorHandling('city', 'required')">
+                  City is required!
+              </p>
                 </div>
               </div>           
               <div class="col-md-12">
                 <div class="form-group has-danger">
                   <label class="control-label">Address</label>
-                  <textarea name="" id="" cols="30" rows="5" class="form-control"
-                    placeholder="#433 New garden Complex"></textarea>
+                  <textarea name="" id="" cols="30" rows="5" class="form-control" #ref ngx-google-places-autocomplete #placesRef="ngx-places"
+                                      (onAddressChange)="AddressChange($event,ref.value)" formControlName="address"
+                                        placeholder="#433 New garden Complex"></textarea>
+                                        <p class="text-danger"
+                                        *ngIf="submitted && errorHandling('addres', 'required')">
+                                        Address is required!
+                                    </p>
                 </div>
               </div>
               <!--/span-->
             </div>
             <!--/row-->
-            <button class="btn-primary btn">Submit</button>
+            <button class="btn-primary btn" (click)="updateFranchaise()">Submit</button>
           </div>
         </div>
       </form>
@@ -164,12 +231,12 @@
                   <label class="control-label">Phone Number</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <select class="form-control form-control-lg" (change)="someMethod($event.target.value)" formControlName="dialCode">
+                      <select class="form-control form-control-lg" (change)="someMethod($event.target.value)" formControlName="dialCode" >
                         <option *ngFor="let code of countrycode" [value]="code.dial_code"> {{code.dial_code}}</option>
                           </select>
                     </div>
                     <input type="text" class="form-control form-control-lg" placeholder="Phone no."  
-                    aria-label="Username" aria-describedby="basic-addon1" formControlName="phone">
+                    aria-label="Username" aria-describedby="basic-addon1" formControlName="phone" >
                   
                 </div>
                 <p class="error"
@@ -197,7 +264,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Email</label>
-                  <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email">
+                  <input type="email"  id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email">
                   <p class="error"
                   *ngIf="submitted && errorHandlingphone('email', 'required')">
                   Email is required!
@@ -218,6 +285,20 @@
                   Date of birth is required!
               </p>
       
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group has-success">
+                  <div class="form-group">
+                    <label class="control-label">Upload Vendor Profile</label>
+                    <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file" (change)="uploadFile($event)" name="image"><label
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
+                      </div>
+                      <!-- <p class="text-danger"
+                      *ngIf="submitted && errorHandling('image', 'required')">
+                      Vendor Profile is required!
+                  </p> -->
+                      </div>
                 </div>
               </div>
               <!--/span-->

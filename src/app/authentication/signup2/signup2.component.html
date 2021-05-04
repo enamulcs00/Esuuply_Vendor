@@ -185,8 +185,8 @@
                                 </div> -->
                                 <div class="form-group">
                                     <ul class="d-flex">
-                                        <li class="pr-2 text-white"><input type="radio" class="mr-1" name="yes">Shop</li>
-                                        <li class="text-white"><input type="radio" class="mr-1" name="yes">Franchise</li>
+                                        <li class="pr-2 text-white"><input type="radio" name="role" class="mr-1" (change)="changeRole($event)" value="shop" checked>Shop</li>
+                                        <li class="text-white"><input type="radio" class="mr-1" name="role" (change)="changeRole($event)" value="franchise">Franchise</li>
                                       </ul>
                                 </div>
                                 <div class="form-group text-center ">

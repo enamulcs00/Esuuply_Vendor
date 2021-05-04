@@ -13,10 +13,10 @@
                 <div class="m-t-30 text-center">
                     <img [src]="(ProfilePic)?(ProfilePic):'assets/images/users/1.jpg'" class="rounded-circle" width="150" height="150" />               
                 </div>
-                <div class="upload-btn-wrapper">
+                <!-- <div class="upload-btn-wrapper">
                     <button class="btn-upload"><i class="mdi mdi-pencil"></i></button>
                     <input type="file" name="myfile" />
-                  </div>
+                  </div> -->
             </div>
             <div>
                 <hr> </div>
@@ -53,7 +53,7 @@
                           </div>
                           <div class="col-md-12 col-xs-6 b-r"> <strong>Mobile</strong>
                               <br>
-                              <p class="text-muted">(123) 456 7890</p>
+                              <p class="text-muted">{{profileData?.dialCode+'-'+profileData?.phoneNo}}</p>
                           </div>
                           <div class="col-md-12 col-xs-6 b-r"> <strong>Email</strong>
                               <br>
@@ -61,11 +61,11 @@
                           </div>
                           <div class="col-md-12 col-xs-6"> <strong>Location</strong>
                               <br>
-                              <p class="text-muted">London</p>
+                              <p class="text-muted">{{address}}</p>
                           </div>
                           <div class="col-md-12 col-xs-6 b-r"> <strong>Date of Birth</strong>
                             <br>
-                            <p class="text-muted">03-04-1998</p>
+                            <p class="text-muted">{{profileData?.birthDate}}</p>
                         </div>
                         <div class="col-md-3 col-xs-6 b-r"> <strong>Opening Time</strong>
                           <br>
@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-md-12 col-xs-6 b-r"> <strong>Massege</strong>
                           <br>
-                          <p class="text-muted">Write your massege</p>
+                          <p class="text-muted">{{profileData?.message||'Not avaialble'}}</p>
                       </div>
                       </div>
                             <hr>
@@ -141,7 +141,7 @@
                                       <div class="form-group">
                                         <label class="control-label">Upload Banner</label>
                                         <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01" type="file" formControlName="image"
-                                            ><label class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName}}</label>
+                                            ><label class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
                                             <p class="text-danger"
                                             *ngIf="submitted && errorHandling('image', 'required')">
                                             Vendor Profile is required!
@@ -326,18 +326,23 @@
                                     "check($event,'mon')" >{{(checked == 'mon')?'Open':'Closed'}}</mat-slide-toggle></div>
                                   </div>
                                 </div>
-                                <div class="col-md-8">
-                                  <div class="row">
-                                    <div class="col-md-5">
-                                      <input type="time" placeholder="" class="form-control">
+                                <div class="col">
+                                  <div class="row d-inline" formArrayName="items"
+                                  *ngFor="let item of profileForm.get('items').controls; let i = index;">
+                                  <div [formGroupName]="i">
+                                    <div class="form-group">
+                                      <input type="time" class="form-control" formControlName="start">
                                     </div>
-                                    <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                    <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
-                                  </div>
+                                    <div class="form-group">
+                                      <input type="time" class="form-control" formControlName="end">
+                                   </div>
+                                 </div>
+                                 <button (click)="removeUser('mon',i)"><i class="fa fa-minus" aria-hidden="true"></i></button> 
+                               </div>
                                 </div>  
+                                <div class="col-md-2"><a (click)="addItem('mon')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                 <div class="offset-md-4 col-md-8 mt-2 ">
                                   <div class=" showInputField">
-                                    
                                   </div>
                                 </div>  
                               </div>
@@ -349,15 +354,18 @@
                                       "check($event,'tue')" >{{(checked == 'tue')?'Open':'Closed'}}</mat-slide-toggle></div>
                                     </div>
                                   </div>
-                                  <div class="col-md-8">
-                                    <div class="row">
+                                  <div class="col-md-8" formArrayName="tue"
+                                  *ngFor="let item of profileForm.get('tue').controls; let i = index;">
+                                    <div class="row" [formGroupName]="i">
                                       <div class="col-md-5">
-                                        <input type="time" placeholder="" class="form-control">
+                                        <input type="time" placeholder="" class="form-control" formControlName="start">
                                       </div>
-                                      <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                      <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
+                                      <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                      <button (click)="removeUser('tue',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                      
                                     </div>
                                   </div>  
+                                  <div class="col-md-2"><a (click)="addItem('tue')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                   <div class="offset-md-4 col-md-8 mt-2 ">
                                     <div class=" showInputField">
                                       
@@ -372,15 +380,18 @@
                                         "check($event,'wed')" >{{(checked == 'wed')?'Open':'Closed'}}</mat-slide-toggle></div>
                                       </div>
                                     </div>
-                                    <div class="col-md-8">
-                                      <div class="row">
+                                    <div class="col-md-8" formArrayName="wed"
+                                    *ngFor="let item of profileForm.get('wed').controls; let i = index;">
+                                      <div class="row" [formGroupName]="i">
                                         <div class="col-md-5">
-                                          <input type="time" placeholder="" class="form-control">
+                                          <input type="time" placeholder="" class="form-control" formControlName="start">
                                         </div>
-                                        <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                        <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
+                                        <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                        <button (click)="removeUser('wed',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                        <!-- <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div> -->
                                       </div>
                                     </div>  
+                                    <div class="col-md-2"><a (click)="addItem('wed')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                     <div class="offset-md-4 col-md-8 mt-2 ">
                                       <div class=" showInputField">
                                         
@@ -395,15 +406,18 @@
                                           "check($event,'thu')" >{{(checked == 'thu')?'Open':'Closed'}}</mat-slide-toggle></div>
                                         </div>
                                       </div>
-                                      <div class="col-md-8">
-                                        <div class="row">
+                                      <div class="col-md-8" formArrayName="thu"
+                                      *ngFor="let item of profileForm.get('thu').controls; let i = index;">
+                                        <div class="row" [formGroupName]="i">
                                           <div class="col-md-5">
-                                            <input type="time" placeholder="" class="form-control">
+                                            <input type="time" placeholder="" class="form-control" formControlName="start">
                                           </div>
-                                          <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                          <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
+                                          <div class="col-md-5"><input type="time" placeholder="" class="form-control" formControlName="end"></div>
+                                          <button (click)="removeUser('thu',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                          <!-- <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div> -->
                                         </div>
                                       </div>  
+                                      <div class="col-md-2"><a (click)="addItem('thu')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                       <div class="offset-md-4 col-md-8 mt-2 ">
                                         <div class=" showInputField">
                                         </div>
@@ -417,15 +431,17 @@
                                               "check($event,'fri')" >{{(checked == 'fri')?'Open':'Closed'}}</mat-slide-toggle></div>
                                             </div>
                                           </div>
-                                          <div class="col-md-8">
-                                            <div class="row">
+                                          <div class="col-md-8" formArrayName="fri"
+                                          *ngFor="let item of profileForm.get('fri').controls; let i = index;">
+                                            <div class="row" [formGroupName]="i">
                                               <div class="col-md-5">
-                                                <input type="time" placeholder="" class="form-control">
+                                                <input type="time" placeholder="" class="form-control" formControlName="start">
                                               </div>
-                                              <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                              <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
+                                              <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                              <button (click)="removeUser('fri',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                             </div>
                                           </div>  
+                                          <div class="col-md-2"><a (click)="addItem('fri')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                           <div class="offset-md-4 col-md-8 mt-2 ">
                                             <div class=" showInputField">
                                               
@@ -440,15 +456,17 @@
                                                 "check($event,'sat')" >{{(checked == 'sat')?'Open':'Closed'}}</mat-slide-toggle></div>
                                               </div>
                                             </div>
-                                            <div class="col-md-8">
-                                              <div class="row">
+                                            <div class="col-md-8" formArrayName="sat"
+                                            *ngFor="let item of profileForm.get('sat').controls; let i = index;">
+                                              <div class="row" [formGroupName]="i">
                                                 <div class="col-md-5">
-                                                  <input type="time" placeholder="" class="form-control">
+                                                  <input type="time" placeholder="" class="form-control" formControlName="start">
                                                 </div>
-                                                <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                                <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
+                                                <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                                <button (click)="removeUser('sat',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                               </div>
                                             </div>  
+                                            <div class="col-md-2"><a (click)="addItem('sat')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                             <div class="offset-md-4 col-md-8 mt-2 ">
                                               <div class=" showInputField">
                                                 
@@ -463,15 +481,17 @@
                                                   "check($event,'sun')" >{{(checked == 'sun')?'Open':'Closed'}}</mat-slide-toggle></div>
                                                 </div>
                                               </div>
-                                              <div class="col-md-8">
-                                                <div class="row">
+                                              <div class="col-md-8" formArrayName="sun"
+                                              *ngFor="let item of profileForm.get('sun').controls; let i = index;">
+                                                <div class="row"  [formGroupName]="i">
                                                   <div class="col-md-5">
-                                                    <input type="time" placeholder="" class="form-control">
+                                                    <input type="time" placeholder="" class="form-control" formControlName="start">
                                                   </div>
-                                                  <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-                                                  <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div>
+                                                  <div class="col-md-5"><input type="time" formControlName="end" placeholder="" class="form-control"></div>
+                                                  <button (click)="removeUser('sun',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                                 </div>
                                               </div>  
+                                              <div class="col-md-2"><a (click)="addItem('sun')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                               <div class="offset-md-4 col-md-8 mt-2 ">
                                                 <div class=" showInputField">
                                                   

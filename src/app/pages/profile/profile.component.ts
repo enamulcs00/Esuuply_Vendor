@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -11,6 +11,13 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent {
 profileForm:FormGroup
+items: FormArray;
+tue: FormArray;
+thu:FormArray
+fri:FormArray
+wed:FormArray
+sat:FormArray
+sun:FormArray
   checked:string;
   submitted:boolean = false
   lat:any = 40.7127753;
@@ -40,8 +47,58 @@ profileForm:FormGroup
         address:['',Validators.required],
         city:['',Validators.required],
         isDelivery:['',Validators.required],
-        resturantType:['',Validators.required]
+        resturantType:['',Validators.required],
+        items: new FormArray([]),
+        tue: new FormArray([]),
+        thu: new FormArray([]),
+        fri: new FormArray([]),
+        wed: new FormArray([]),
+        sat: new FormArray([]),
+        sun: new FormArray([]),
       })
+    }
+    createItem(): FormGroup {
+      return this.fb.group({
+        start: new FormControl(''),
+        end:new FormControl('')
+        
+      });
+    }
+    
+    addItem(ref): void {
+      if(ref=='mon'){
+        this.items = this.profileForm.get('items') as FormArray;
+        this.items.push(this.createItem());
+      }else if(ref=='tue'){
+        this.tue = this.profileForm.get('tue') as FormArray;
+        this.tue.push(this.createItem());
+      }else if(ref=='tue'){
+        this.tue = this.profileForm.get('tue') as FormArray;
+        this.tue.push(this.createItem());
+      }else if(ref=='tue'){
+        this.tue = this.profileForm.get('tue') as FormArray;
+        this.tue.push(this.createItem());
+      }else if(ref=='tue'){
+        this.tue = this.profileForm.get('tue') as FormArray;
+        this.tue.push(this.createItem());
+      }else if(ref=='tue'){
+        this.tue = this.profileForm.get('tue') as FormArray;
+        this.tue.push(this.createItem());
+      }else if(ref=='tue'){
+        this.tue = this.profileForm.get('tue') as FormArray;
+        this.tue.push(this.createItem());
+      }
+      
+    }
+    removeUser(ref,i) {
+      if(ref=='mon'){
+        const remove = this.profileForm.get('items') as FormArray;
+        remove.removeAt(i);
+      }else if(ref=='tue'){
+        const remove = this.profileForm.get('tue') as FormArray;
+      remove.removeAt(i);
+      } 
+      
     }
     check(e,ref){
       if(ref=='mon' && e.checked){
@@ -54,22 +111,22 @@ profileForm:FormGroup
           }
         }
       }
-    add(){ 
-      let row = document.createElement('div');   
-        row.className = 'row mb-2'; 
-        row.innerHTML = ` 
-        <div class="col-md-5">
-        <input type="time" placeholder="" class="form-control">
-      </div>
-      <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
-      <div class="col-md-2"><a href="javascript:void(0)" ><i class="far fa-times-circle" onclick="remove()"></i></a></div>
-        `; 
-        document.querySelector('.showInputField').appendChild(row); 
-    } 
-    remove(){
-      let removed = document.querySelector('.row.mb-2'); 
-      console.log('Remove item called',removed);
-    }
+    // add(){ 
+    //   let row = document.createElement('div');   
+    //     row.className = 'row mb-2'; 
+    //     row.innerHTML = ` 
+    //     <div class="col-md-5">
+    //     <input type="time" placeholder="" class="form-control">
+    //   </div>
+    //   <div class="col-md-5"><input type="time" placeholder="" class="form-control"></div>
+    //   <div class="col-md-2"><a href="javascript:void(0)" ><i class="far fa-times-circle" onclick="remove()"></i></a></div>
+    //     `; 
+    //     document.querySelector('.showInputField').appendChild(row); 
+    // } 
+    // remove(){
+    //   let removed = document.querySelector('.row.mb-2'); 
+    //   console.log('Remove item called',removed);
+    // }
     getProfile(){
       
       let url =`admin/getProfile`

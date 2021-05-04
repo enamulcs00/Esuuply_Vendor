@@ -17,6 +17,12 @@ httpOptions: { headers: HttpHeaders; };
   {
     return this.subject.asObservable()
   }
+  public shareableObject = new BehaviorSubject<any>('data')
+
+  SignData():Observable<any>
+  {
+    return this.subject.asObservable()
+  }
   getAuth()
   {
     const authorization = localStorage.getItem('token');
