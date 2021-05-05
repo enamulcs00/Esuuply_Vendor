@@ -43,6 +43,10 @@ httpOptions: { headers: HttpHeaders; };
   {
     return this.http.post(`${this.baseUrl}`+url,data,this.getAuth());
   }
+  deleteApi(url)
+  {
+    return this.http.delete(`${this.baseUrl}`+url,this.getAuth());
+  }
   putApi(url,data)
   {
     return this.http.put(`${this.baseUrl}`+url,data,this.getAuth());

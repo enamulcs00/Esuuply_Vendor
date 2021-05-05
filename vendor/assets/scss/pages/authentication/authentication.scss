@@ -5,7 +5,7 @@
     position: relative;
     .auth-box{
         background: $primary;
-        padding: 20px;
+        padding: 15px;
         box-shadow: $shadow;
         max-width: 400px;
         width: 90%;
@@ -20,6 +20,10 @@
             height: 100%;
             margin: 0px;
             position: absolute;
+            
+            @media(max-height: 800px){
+                overflow-y: scroll;
+            }
         }
     }
     
