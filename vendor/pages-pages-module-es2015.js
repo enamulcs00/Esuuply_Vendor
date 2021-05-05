@@ -41291,7 +41291,6 @@ class ProfileComponent {
         this.submitted = false;
         this.lat = 40.7127753;
         this.lng = -74.0059728;
-        this.fileName = 'Choose file';
         this.days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
         this.address = 'Mohali, Punjab, India';
         this.errorHandling = (control, error) => {
@@ -41336,25 +41335,25 @@ class ProfileComponent {
             this.tue = this.profileForm.get('tue');
             this.tue.push(this.createItem());
         }
-        else if (ref == 'tue') {
-            this.tue = this.profileForm.get('tue');
-            this.tue.push(this.createItem());
+        else if (ref == 'thu') {
+            this.thu = this.profileForm.get('thu');
+            this.thu.push(this.createItem());
         }
-        else if (ref == 'tue') {
-            this.tue = this.profileForm.get('tue');
-            this.tue.push(this.createItem());
+        else if (ref == 'wed') {
+            this.wed = this.profileForm.get('wed');
+            this.wed.push(this.createItem());
         }
-        else if (ref == 'tue') {
-            this.tue = this.profileForm.get('tue');
-            this.tue.push(this.createItem());
+        else if (ref == 'fri') {
+            this.fri = this.profileForm.get('fri');
+            this.fri.push(this.createItem());
         }
-        else if (ref == 'tue') {
-            this.tue = this.profileForm.get('tue');
-            this.tue.push(this.createItem());
+        else if (ref == 'sat') {
+            this.sat = this.profileForm.get('sat');
+            this.sat.push(this.createItem());
         }
-        else if (ref == 'tue') {
-            this.tue = this.profileForm.get('tue');
-            this.tue.push(this.createItem());
+        else if (ref == 'sun') {
+            this.sun = this.profileForm.get('sun');
+            this.sun.push(this.createItem());
         }
     }
     removeUser(ref, i) {
@@ -41364,6 +41363,26 @@ class ProfileComponent {
         }
         else if (ref == 'tue') {
             const remove = this.profileForm.get('tue');
+            remove.removeAt(i);
+        }
+        else if (ref == 'thu') {
+            const remove = this.profileForm.get('thu');
+            remove.removeAt(i);
+        }
+        else if (ref == 'fri') {
+            const remove = this.profileForm.get('fri');
+            remove.removeAt(i);
+        }
+        else if (ref == 'wed') {
+            const remove = this.profileForm.get('wed');
+            remove.removeAt(i);
+        }
+        else if (ref == 'sat') {
+            const remove = this.profileForm.get('sat');
+            remove.removeAt(i);
+        }
+        else if (ref == 'sun') {
+            const remove = this.profileForm.get('sun');
             remove.removeAt(i);
         }
     }
@@ -41499,61 +41518,32 @@ class ProfileComponent {
             "shopHours": [
                 {
                     "days": "0",
-                    "hours": [
-                        {
-                            "start": "11:00",
-                            "end": "12:10"
-                        }
-                    ]
+                    "hours": this.profileForm.value.sun
                 },
                 {
                     "days": "1",
-                    "hours": [
-                        {
-                            "start": "11:00",
-                            "end": "12:10"
-                        }
-                    ]
+                    "hours": this.profileForm.value.items
                 },
                 {
                     "days": "2",
-                    "hours": [
-                        {
-                            "start": "11:00",
-                            "end": "12:10"
-                        }
-                    ]
+                    "hours": this.profileForm.value.tue,
                 },
                 {
                     "days": "3",
-                    "hours": [
-                        {
-                            "start": "11:00",
-                            "end": "12:10"
-                        }
-                    ]
+                    "hours": this.profileForm.value.wed,
                 },
                 {
                     "days": "4",
-                    "hours": [
-                        {
-                            "start": "11:00",
-                            "end": "12:10"
-                        }
-                    ]
+                    "hours": this.profileForm.value.thu,
                 },
                 {
                     "days": "5",
-                    "hours": [
-                        {
-                            "start": "11:00",
-                            "end": "12:10"
-                        }
-                    ]
+                    "hours": this.profileForm.value.fri,
                 },
                 {
                     "days": "6",
-                    "isClosed": true
+                    // "hours": this.profileForm.value.sat,
+                    "isClosed": false
                 }
             ]
         };

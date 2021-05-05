@@ -22,7 +22,7 @@ sun:FormArray
   submitted:boolean = false
   lat:any = 40.7127753;
   lng:any = -74.0059728;
-  fileName:string = 'Choose file'
+  fileName:any;
   @ViewChild("placeRef") 
   state: any;
   @ViewChild("placesRef", { static: true }) placesRef: GooglePlaceDirective;
@@ -72,21 +72,21 @@ sun:FormArray
       }else if(ref=='tue'){
         this.tue = this.profileForm.get('tue') as FormArray;
         this.tue.push(this.createItem());
-      }else if(ref=='tue'){
-        this.tue = this.profileForm.get('tue') as FormArray;
-        this.tue.push(this.createItem());
-      }else if(ref=='tue'){
-        this.tue = this.profileForm.get('tue') as FormArray;
-        this.tue.push(this.createItem());
-      }else if(ref=='tue'){
-        this.tue = this.profileForm.get('tue') as FormArray;
-        this.tue.push(this.createItem());
-      }else if(ref=='tue'){
-        this.tue = this.profileForm.get('tue') as FormArray;
-        this.tue.push(this.createItem());
-      }else if(ref=='tue'){
-        this.tue = this.profileForm.get('tue') as FormArray;
-        this.tue.push(this.createItem());
+      }else if(ref=='thu'){
+        this.thu = this.profileForm.get('thu') as FormArray;
+        this.thu.push(this.createItem());
+      }else if(ref=='wed'){
+        this.wed = this.profileForm.get('wed') as FormArray;
+        this.wed.push(this.createItem());
+      }else if(ref=='fri'){
+        this.fri = this.profileForm.get('fri') as FormArray;
+        this.fri.push(this.createItem());
+      }else if(ref=='sat'){
+        this.sat = this.profileForm.get('sat') as FormArray;
+        this.sat.push(this.createItem());
+      }else if(ref=='sun'){
+        this.sun = this.profileForm.get('sun') as FormArray;
+        this.sun.push(this.createItem());
       }
       
     }
@@ -98,7 +98,22 @@ sun:FormArray
         const remove = this.profileForm.get('tue') as FormArray;
       remove.removeAt(i);
       } 
-      
+      else if(ref=='thu'){
+        const remove = this.profileForm.get('thu') as FormArray;
+      remove.removeAt(i);
+      }else if(ref=='fri'){
+        const remove = this.profileForm.get('fri') as FormArray;
+      remove.removeAt(i);
+      }else if(ref=='wed'){
+        const remove = this.profileForm.get('wed') as FormArray;
+      remove.removeAt(i);
+      }else if(ref=='sat'){
+        const remove = this.profileForm.get('sat') as FormArray;
+      remove.removeAt(i);
+      }else if(ref=='sun'){
+        const remove = this.profileForm.get('sun') as FormArray;
+      remove.removeAt(i);
+      }
     }
     check(e,ref){
       if(ref=='mon' && e.checked){
@@ -239,61 +254,36 @@ sun:FormArray
         "shopHours": [
             {
                 "days": "0",
-                "hours": [
-                    {
-                        "start": "11:00",
-                        "end": "12:10"
-                    }
-                ]
+                "hours":this.profileForm.value.sun
             },
             {
                 "days": "1",
-                "hours": [
-                    {
-                        "start": "11:00",
-                        "end": "12:10"
-                    }
-                ]
+                "hours":this.profileForm.value.items
             },
             {
                 "days": "2",
-                "hours": [
-                    {
-                        "start": "11:00",
-                        "end": "12:10"
-                    }
-                ]
+                "hours": this.profileForm.value.tue,
+                // "isClosed": false
             },
             {
                 "days": "3",
-                "hours": [
-                    {
-                        "start": "11:00",
-                        "end": "12:10"
-                    }
-                ]
+                "hours":this.profileForm.value.wed,
+                // "isClosed": false
             },
             {
                 "days": "4",
-                "hours": [
-                    {
-                        "start": "11:00",
-                        "end": "12:10"
-                    }
-                ]
+                "hours":this.profileForm.value.thu,
+                // "isClosed": false
             },
             {
                 "days": "5",
-                "hours": [
-                    {
-                        "start": "11:00",
-                        "end": "12:10"
-                    }
-                ]
+                "hours": this.profileForm.value.fri,
+                // "isClosed": false
             },
             {
                 "days": "6",
-                "isClosed": true
+                // "hours": this.profileForm.value.sat,
+                "isClosed": false
             }
         ]
     }
