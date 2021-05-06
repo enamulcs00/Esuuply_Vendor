@@ -322,11 +322,11 @@
                               <div class="col-md-4">
                                 <div class="row">
                                   <div class="col-md-6"><label>Monday</label></div>
-                                  <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                    "check($event,'mon')" >{{(checked == 'mon')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                  <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsMon" [ngModelOptions]="{standalone: true}" color="primary"
+                                   >{{(IsMon == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                   </div>
                                 </div>
-                                <div class="col">
+                                <div class="col" *ngIf="IsMon">
                                   <div class="row d-inline" formArrayName="items"
                                   *ngFor="let item of profileForm.get('items').controls; let i = index;">
                                   <div [formGroupName]="i">
@@ -340,7 +340,7 @@
                                  <button (click)="removeUser('mon',i)"><i class="fa fa-minus" aria-hidden="true"></i></button> 
                                </div>
                                 </div>  
-                                <div class="col-md-2"><a (click)="addItem('mon')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                <div class="col-md-2" *ngIf="IsMon"><a (click)="addItem('mon')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                 <div class="offset-md-4 col-md-8 mt-2 ">
                                   <div class=" showInputField">
                                   </div>
@@ -350,10 +350,11 @@
                                 <div class="col-md-4">
                                   <div class="row">
                                     <div class="col-md-6"><label>Tuesday</label></div>
-                                    <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                      "check($event,'tue')" >{{(checked == 'tue')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                    <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsTue" [ngModelOptions]="{standalone: true}" color="primary"
+                                      >{{(IsTue == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                     </div>
                                   </div>
+                                  <div *ngIf="IsTue">
                                   <div class="col-md-8" formArrayName="tue"
                                   *ngFor="let item of profileForm.get('tue').controls; let i = index;">
                                     <div class="row" [formGroupName]="i">
@@ -366,6 +367,7 @@
                                     </div>
                                   </div>  
                                   <div class="col-md-2"><a (click)="addItem('tue')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                  </div>
                                   <div class="offset-md-4 col-md-8 mt-2 ">
                                     <div class=" showInputField">
                                       
@@ -376,22 +378,25 @@
                                   <div class="col-md-4">
                                     <div class="row">
                                       <div class="col-md-6"><label>Wednesday</label></div>
-                                      <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                        "check($event,'wed')" >{{(checked == 'wed')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                      <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsWed" [ngModelOptions]="{standalone: true}" color="primary"
+                                        >{{(IsWed == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                       </div>
                                     </div>
-                                    <div class="col-md-8" formArrayName="wed"
-                                    *ngFor="let item of profileForm.get('wed').controls; let i = index;">
-                                      <div class="row" [formGroupName]="i">
-                                        <div class="col-md-5">
-                                          <input type="time" placeholder="" class="form-control" formControlName="start">
+                                    <div *ngIf="IsWed">
+                                      <div class="col-md-8" formArrayName="wed"
+                                      *ngFor="let item of profileForm.get('wed').controls; let i = index;">
+                                        <div class="row" [formGroupName]="i">
+                                          <div class="col-md-5">
+                                            <input type="time" placeholder="" class="form-control" formControlName="start">
+                                          </div>
+                                          <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                          <button (click)="removeUser('wed',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                          <!-- <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div> -->
                                         </div>
-                                        <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
-                                        <button (click)="removeUser('wed',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                        <!-- <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div> -->
-                                      </div>
-                                    </div>  
-                                    <div class="col-md-2"><a (click)="addItem('wed')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                      </div>  
+                                    </div>
+                                    
+                                    <div class="col-md-2" *ngIf="IsWed"><a (click)="addItem('wed')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                     <div class="offset-md-4 col-md-8 mt-2 ">
                                       <div class=" showInputField">
                                         
@@ -402,10 +407,11 @@
                                     <div class="col-md-4">
                                       <div class="row">
                                         <div class="col-md-6"><label>Thusrday</label></div>
-                                        <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                          "check($event,'thu')" >{{(checked == 'thu')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                        <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsThu" [ngModelOptions]="{standalone: true}" color="primary"
+                                          >{{(IsThu == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                         </div>
                                       </div>
+                                      <div *ngIf="IsThu">
                                       <div class="col-md-8" formArrayName="thu"
                                       *ngFor="let item of profileForm.get('thu').controls; let i = index;">
                                         <div class="row" [formGroupName]="i">
@@ -416,8 +422,9 @@
                                           <button (click)="removeUser('thu',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                           <!-- <div class="col-md-2"><a href="javascript:void()" (click)="add()">Add hours</a></div> -->
                                         </div>
-                                      </div>  
-                                      <div class="col-md-2"><a (click)="addItem('thu')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                      </div> 
+                                     </div>
+                                      <div class="col-md-2" *ngIf="IsThu"><a (click)="addItem('thu')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                       <div class="offset-md-4 col-md-8 mt-2 ">
                                         <div class=" showInputField">
                                         </div>
@@ -427,46 +434,52 @@
                                         <div class="col-md-4">
                                           <div class="row">
                                             <div class="col-md-6"><label>Friday</label></div>
-                                            <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                              "check($event,'fri')" >{{(checked == 'fri')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                            <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsFri" [ngModelOptions]="{standalone: true}" color="primary"
+                                              >{{(IsFri == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                             </div>
                                           </div>
-                                          <div class="col-md-8" formArrayName="fri"
-                                          *ngFor="let item of profileForm.get('fri').controls; let i = index;">
-                                            <div class="row" [formGroupName]="i">
-                                              <div class="col-md-5">
-                                                <input type="time" placeholder="" class="form-control" formControlName="start">
+                                          <div *ngIf="IsFri">
+                                         <div class="col-md-8" formArrayName="fri"
+                                            *ngFor="let item of profileForm.get('fri').controls; let i = index;">
+                                              <div class="row" [formGroupName]="i">
+                                                <div class="col-md-5">
+                                                  <input type="time" placeholder="" class="form-control" formControlName="start">
+                                                </div>
+                                                <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                                <button (click)="removeUser('fri',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                               </div>
-                                              <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
-                                              <button (click)="removeUser('fri',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                            </div>
-                                          </div>  
-                                          <div class="col-md-2"><a (click)="addItem('fri')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                            </div> 
+                                           </div>
+                                          <div class="col-md-2" *ngIf="IsFri"><a (click)="addItem('fri')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                           <div class="offset-md-4 col-md-8 mt-2 ">
                                             <div class=" showInputField">
                                               
                                             </div>
                                           </div>  
                                         </div>
+
                                         <div class="row mb-3">
                                           <div class="col-md-4">
                                             <div class="row">
                                               <div class="col-md-6"><label>Saturday</label></div>
-                                              <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                                "check($event,'sat')" >{{(checked == 'sat')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                              <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsSat" [ngModelOptions]="{standalone: true}" color="primary"
+                                                >{{(IsSat== true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                               </div>
                                             </div>
-                                            <div class="col-md-8" formArrayName="sat"
-                                            *ngFor="let item of profileForm.get('sat').controls; let i = index;">
-                                              <div class="row" [formGroupName]="i">
-                                                <div class="col-md-5">
-                                                  <input type="time" placeholder="" class="form-control" formControlName="start">
+                                            <div *ngIf="IsSat">
+                                              <div class="col-md-8" formArrayName="sat"
+                                              *ngFor="let item of profileForm.get('sat').controls; let i = index;">
+                                                <div class="row" [formGroupName]="i">
+                                                  <div class="col-md-5">
+                                                    <input type="time" placeholder="" class="form-control" formControlName="start">
+                                                  </div>
+                                                  <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
+                                                  <button (click)="removeUser('sat',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                                 </div>
-                                                <div class="col-md-5"><input type="time" placeholder="" formControlName="end" class="form-control"></div>
-                                                <button (click)="removeUser('sat',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                              </div>
-                                            </div>  
-                                            <div class="col-md-2"><a (click)="addItem('sat')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                              </div>  
+                                            </div>
+                                            
+                                            <div class="col-md-2" *ngIf="IsSat"><a (click)="addItem('sat')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                             <div class="offset-md-4 col-md-8 mt-2 ">
                                               <div class=" showInputField">
                                                 
@@ -477,21 +490,24 @@
                                             <div class="col-md-4">
                                               <div class="row">
                                                 <div class="col-md-6"><label>Sunday</label></div>
-                                                <div class="col-md-6"><mat-slide-toggle class="" color="primary"(change)=
-                                                  "check($event,'sun')" >{{(checked == 'sun')?'Open':'Closed'}}</mat-slide-toggle></div>
+                                                <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsSun" [ngModelOptions]="{standalone: true}" color="primary"
+                                                  >{{(IsSun == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                                 </div>
                                               </div>
-                                              <div class="col-md-8" formArrayName="sun"
-                                              *ngFor="let item of profileForm.get('sun').controls; let i = index;">
-                                                <div class="row"  [formGroupName]="i">
-                                                  <div class="col-md-5">
-                                                    <input type="time" placeholder="" class="form-control" formControlName="start">
+                                              <div *ngIf="IsSun">
+                                                <div class="col-md-8" formArrayName="sun"
+                                                *ngFor="let item of profileForm.get('sun').controls; let i = index;">
+                                                  <div class="row"  [formGroupName]="i">
+                                                    <div class="col-md-5">
+                                                      <input type="time" placeholder="" class="form-control" formControlName="start">
+                                                    </div>
+                                                    <div class="col-md-5"><input type="time" formControlName="end" placeholder="" class="form-control"></div>
+                                                    <button (click)="removeUser('sun',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                                   </div>
-                                                  <div class="col-md-5"><input type="time" formControlName="end" placeholder="" class="form-control"></div>
-                                                  <button (click)="removeUser('sun',i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                                </div>
-                                              </div>  
-                                              <div class="col-md-2"><a (click)="addItem('sun')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
+                                                </div>  
+                                              </div>
+                                             
+                                              <div class="col-md-2" *ngIf="IsSun"><a (click)="addItem('sun')"><i class="fa fa-plus" title="Add hours" aria-hidden="true"></i></a></div>
                                               <div class="offset-md-4 col-md-8 mt-2 ">
                                                 <div class=" showInputField">
                                                   

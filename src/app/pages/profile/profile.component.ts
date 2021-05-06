@@ -29,6 +29,13 @@ sun:FormArray
   days:string[]=['sun','mon','tue','wed','thu','fri','sat']
   profileData: any;
   files: any;
+  IsMon = true;
+  IsTue = true;
+  IsThu = true;
+  IsWed = true;
+  IsFri = true;
+  IsSat = true;
+  IsSun = true;
   ProfilePic:any;
   address:any='Mohali, Punjab, India'
     constructor(private router:Router,private service:SharedService,private fb:FormBuilder,private spinner:NgxSpinnerService) { }
@@ -56,6 +63,9 @@ sun:FormArray
         sat: new FormArray([]),
         sun: new FormArray([]),
       })
+    for(let day of this.days){
+    this.addItem(day)
+    }
     }
     createItem(): FormGroup {
       return this.fb.group({
@@ -116,6 +126,7 @@ sun:FormArray
       }
     }
     check(e,ref){
+      console.log('Event','Ref',ref)
       if(ref=='mon' && e.checked){
          this.checked = 'mon'
         }

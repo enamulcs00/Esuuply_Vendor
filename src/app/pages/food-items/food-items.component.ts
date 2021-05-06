@@ -63,6 +63,7 @@ export class FoodItemsComponent implements OnInit {
     this.modalService.open(addUser, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
   editBoxModal(editModel,id) {
+    this.getsubCategory(id)
     this.updateId = id
     this.submitted = false
     this.SetForm(id)
