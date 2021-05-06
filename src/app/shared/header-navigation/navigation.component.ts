@@ -119,13 +119,18 @@ export class NavigationComponent implements AfterViewInit ,OnInit{
     })
   }
   getProfile(){
-      
     let url =`admin/getProfile`
     this.service.getApi(url).subscribe((res:any)=>{
       console.log('Res of get profile',res)
+      
       if(res.statusCode==200){
         this.profileData = res.data
              }
+          else if(res.statusCode==401){
+            localStorage.removeItem('token')
+            this.router.navigate(['/login'])
+            Swal.fire('Oops',res.message,'error')
+            } 
       else {
         Swal.fire('Oops',res.message,'error')
       }

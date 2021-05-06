@@ -326,7 +326,7 @@
                                    >{{(IsMon == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                   </div>
                                 </div>
-                                <div class="col" *ngIf="IsMon">
+                                <div class="col-md-8" *ngIf="IsMon">
                                   <div class="row d-inline" formArrayName="items"
                                   *ngFor="let item of profileForm.get('items').controls; let i = index;">
                                   <div [formGroupName]="i">

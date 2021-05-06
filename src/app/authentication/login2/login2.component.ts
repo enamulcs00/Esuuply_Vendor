@@ -53,6 +53,9 @@ export class Login2Component implements OnInit{
     this.loginform = !this.loginform;
     this.recoverform = !this.recoverform;
   }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+  }
   openWindowCustomClass(content3) {
     this.modalService.open(content3, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
@@ -291,7 +294,9 @@ console.log('This is otp',this.otpvalue)
       {
         sessionStorage.setItem('token',res.data.accessToken)
     Swal.fire('Success',res.message,'success')
-     // this.router.navigate(['profilesetup'])
+     this.modalService.dismissAll()
+     
+  
       }
       else{
         this.submitted = true;
