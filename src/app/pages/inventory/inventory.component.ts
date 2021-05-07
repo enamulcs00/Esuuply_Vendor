@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {FormBuilder, FormControl} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SharedService } from 'src/app/authentication/shared.service';
@@ -14,6 +14,7 @@ export class InventoryComponent implements OnInit {
   searchByName:any = '';
   catId:any = ''
   qty:any='ALL'
+  submitted:boolean = false
   Instock:any=''
   totalItems: any;
   pageNumber: number=1;
@@ -25,16 +26,22 @@ export class InventoryComponent implements OnInit {
   cusinine: string[] = ['Indian', 'Italian ', 'Chiness',];
   catagoryList: any;
   stockList: any;
+  QtyForm:FormGroup
+  Id: any;
   constructor(private spinner:NgxSpinnerService,private fb:FormBuilder,private modalService: NgbModal,public service:SharedService,private router:Router) {}
   
   ngOnInit(): void {
     this.getFoodItem()
     this.getCategory()
+    this.QtyForm = this.fb.group({
+      qty:['',Validators.required]
+    })
   }
   boxDeleteModal(boxDelete) {
     this.modalService.open(boxDelete, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
-  inventoryModal(inventory) {
+  inventoryModal(inventory,id) {
+    this.Id = id
     this.modalService.open(inventory, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
   searchFormSubmit() {
@@ -45,6 +52,36 @@ export class InventoryComponent implements OnInit {
       this.GetAll()
       //this.getFoodItem()
     }
+   }
+   AddQuantity(){
+    this.spinner.show()
+    this.submitted = true
+    let url = `admin/products/${this.Id}`
+    let obj = {
+      "type":"ADD",
+    "qty":this.QtyForm.value.qty
+  }
+  if(this.QtyForm.valid){
+    this.service.patchApi(url,obj).subscribe((res:any)=>{
+      console.log('Added item',res);
+      if(res.statusCode==200){
+        this.getFoodItem()
+        this.spinner.hide()
+        this.modalService.dismissAll()
+        Swal.fire('Success',res.message,'success')
+        this.submitted = false
+      }else {
+        Swal.fire('Oops',res.message,'error')
+        this.spinner.hide()
+      }
+    },error=>{
+      this.spinner.hide()
+      Swal.fire('oops',error.error.message)
+    })
+  }else if(this.QtyForm.invalid){
+    this.spinner.hide()
+    Swal.fire("Invalid form",'Please fill quantity value','warning')
+  }
    }
    FilterByQty(percentage){
 this.qty = percentage

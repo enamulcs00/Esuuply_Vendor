@@ -80,7 +80,7 @@
                     <td class="text-nowrap">{{item?.name}}</td>
                     <td>{{item?.oldPrice}}</td>
                     <td><i class="fas fa-euro-sign"></i>{{item?.price}}</td>
-                    <td><span class="text-success">{{item?.stockQuantity}}(In Stock)</span>  <button class="btn   btn-primary btn-sm ml-1" (click)="inventoryModal(inventory)"><i class="ti-plus"></i>
+                    <td><span class="text-success">{{item?.stockQuantity}}(In Stock)</span>  <button class="btn   btn-primary btn-sm ml-1" (click)="inventoryModal(inventory,item?._id)"><i class="ti-plus"></i>
                     </button></td>
                     <td>{{item?.categoryId?.name}}</td>
                     <td><span class="label label-success">{{item?.isActive}}</span></td>               
@@ -116,17 +116,18 @@
     <ng-template #inventory let-modal>
       <div class="modal-body">
         <div class="card">
-          <form action="#">
+          <form [formGroup]="QtyForm">
             <div class="form-body">
               <div class="card-body">  
                   <!--/span-->                  
                     <div class="form-group has-danger">
                       <label class="control-label"> Add Quantity</label>
-                      <input type="number" placeholder="" class="form-control" />                    
+                      <input type="number" min="0" placeholder="" class="form-control" formControlName="qty" required/>                    
+                 <small *ngIf="submitted && QtyForm.invalid" class="error"> *Add Quantity is required! </small>
                     </div>                            
               
               <div class="form-actions p-2">               
-                  <button type="submit" class="btn btn-primary mr-3" (click)="modal.dismiss('Cross click')">
+                  <button type="submit" class="btn btn-primary mr-3" (click)="AddQuantity()">
                     <i class="fa fa-check"></i> Add</button>
                   <button type="button" class="btn btn-dark" (click)="modal.dismiss('Cross click')">Cancel</button>
                 </div>

@@ -51,6 +51,10 @@ httpOptions: { headers: HttpHeaders; };
   {
     return this.http.put(`${this.baseUrl}`+url,data,this.getAuth());
   }
+  patchApi(url,data)
+  {
+    return this.http.patch(`${this.baseUrl}`+url,data,this.getAuth());
+  }
   signIn(data)
   {
   return this.http.post(`${this.baseUrl}admin/login`,data);
