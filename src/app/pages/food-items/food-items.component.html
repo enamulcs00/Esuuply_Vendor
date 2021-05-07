@@ -4,7 +4,7 @@
             <div class="col-md-4">
               <form>
                 <div class="mb-2">
-                  <input type="text" class="form-control" id="prenametext" (keyup)="searchFormSubmit()" [ngModelOptions]="{standalone: true}" placeholder="Search" [(ngModel)]="searchByName">
+                  <input type="text" class="form-control" id="prenametext" (keydown.enter)="searchFormSubmit()" [ngModelOptions]="{standalone: true}" placeholder="Search" [(ngModel)]="searchByName">
                 </div>
               </form>
             </div>
@@ -24,8 +24,6 @@
         </div>
       </div>
     </div>
-    
-
   <div class="col-12" *ngFor="let item of foodList">
       <div class="row">
         <div class="col-md-2">
@@ -252,16 +250,16 @@
                     </small>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group has-danger">
                     <label class="control-label">Tax value</label>
-                 <input type="text" placeholder="eg:- 6%" formControlName="tax" class="form-control">
+                 <input type="number" min="0" placeholder="eg:- 6%" formControlName="tax" class="form-control">
                  <small *ngIf="submitted && errorHandling('tax','required')" class="error">
                   *Tax value is required.
                 </small>
                 </div>
             </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
              
                 <div class="form-group has-danger">
                   <label class="control-label">Delivery charges</label>
@@ -275,7 +273,7 @@
                       *Delivery charges is required.
                     </small>
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-6">
                             <div class="form-group has-danger">
                                 <label class="control-label">Minimum Stock</label>
@@ -451,16 +449,16 @@
                     </small>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group has-danger">
                     <label class="control-label">Tax value</label>
-                 <input type="text" placeholder="eg:- 6%" formControlName="tax" class="form-control">
+                 <input type="number" placeholder="eg:- 6%" min="0" formControlName="tax" class="form-control">
                  <small *ngIf="submitted && errorHandling('tax','required')" class="error">
                   *Tax value is required.
                 </small>
                 </div>
             </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
              
                 <div class="form-group has-danger">
                   <label class="control-label">Delivery charges</label>
@@ -474,7 +472,7 @@
                       *Delivery charges is required.
                     </small>
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-6">
                             <div class="form-group has-danger">
                                 <label class="control-label">Minimum Stock</label>

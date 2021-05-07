@@ -826,6 +826,11 @@
             return this.http.post("".concat(this.baseUrl, "admin/changePassword"), data, this.getAuth());
           }
         }, {
+          key: "ResetPassword",
+          value: function ResetPassword(url, data) {
+            return this.http.post("".concat(this.baseUrl) + url, data);
+          }
+        }, {
           key: "getApi",
           value: function getApi(url) {
             return this.http.get("".concat(this.baseUrl) + url, this.getAuth());
@@ -2555,6 +2560,12 @@
 
               if (res.statusCode == 200) {
                 _this3.profileData = res.data;
+              } else if (res.statusCode == 401) {
+                localStorage.removeItem('token');
+
+                _this3.router.navigate(['/login']);
+
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire('Oops', res.message, 'error');
               } else {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire('Oops', res.message, 'error');
               }

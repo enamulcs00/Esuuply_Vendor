@@ -51,7 +51,7 @@ sun:FormArray
         lastName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
         resturant:['',[Validators.required]],
         dob:['',Validators.required],
-        zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(5),Validators.maxLength(7)]],
+        zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(4),Validators.maxLength(7)]],
         image:['',Validators.required],
         address:['',Validators.required],
         city:['',Validators.required],
@@ -76,7 +76,16 @@ sun:FormArray
         
       });
     }
-    
+    change(e,ref){
+      if(ref=='mon' && e.checked || ref=='tue' && e.checked || ref=='wed' && e.checked || ref=='thu' && e.checked || ref=='fri' && e.checked || ref=='sat' && e.checked || ref=='sun' && e.checked){
+      this.addItem(ref)       
+       }else{
+        const remove = this.profileForm.get(ref) as FormArray;
+        while (remove.length !== 0) {
+          remove.removeAt(0)
+        }
+       }  
+      }
     addItem(ref): void {
       if(ref=='mon'){
         this.mon = this.profileForm.get('mon') as FormArray;
@@ -126,18 +135,7 @@ sun:FormArray
       remove.removeAt(i);
       }
     }
-    check(e,ref){
-      console.log('Event','Ref',ref)
-      if(ref=='mon' && e.checked){
-         this.checked = 'mon'
-        }
-        else if(ref=='sun' && e.checked){
-          this.checked = 'sun'
-          if(ref=='sun' && !e.checked){
-            this.checked = 'xyx'
-          }
-        }
-      }
+    
     // add(){ 
     //   let row = document.createElement('div');   
     //     row.className = 'row mb-2'; 
@@ -270,7 +268,7 @@ sun:FormArray
         console.log(res.data)
         if (res.statusCode==200) {
           // this.service.subject.next(true)
-       Swal.fire('Success','File uploded','success')
+       Swal.fire('Success','File uploaded','success')
           console.log("upload data res=>>", res.data)
           this.files = res.data.filePath
           this.ProfilePic = res.data.filePath

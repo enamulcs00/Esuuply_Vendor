@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class InventoryComponent implements OnInit {
   searchByName:any = '';
   catId:any = ''
-  qty:any=''
+  qty:any='ALL'
   Instock:any=''
   totalItems: any;
   pageNumber: number=1;
@@ -42,11 +42,13 @@ export class InventoryComponent implements OnInit {
       this.getFoodItem()
     }
     else if(this.searchByName==''){
-      this.getFoodItem()
+      this.GetAll()
+      //this.getFoodItem()
     }
    }
    FilterByQty(percentage){
 this.qty = percentage
+this.getFoodItem()
    }
    filter(id){
 this.catId = id
@@ -54,9 +56,10 @@ this.getFoodItem()
    }
    FilterByStock(ref){
 this.Instock = ref
+this.getFoodItem()
    }
    GetAll(){
-     this.qty=''
+     this.qty='ALL'
      this.Instock=''
      this.searchByName = ''
      this.catId = ''

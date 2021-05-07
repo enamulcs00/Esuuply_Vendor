@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body text-center">
                 <div class="m-t-30 text-center">
-                    <img [src]="(ProfilePic)?(ProfilePic):'assets/images/users/1.jpg'" class="rounded-circle" width="150" height="150" />               
+                    <img [src]="(ProfilePic)?(ProfilePic):'assets/images/users/esupply.jpg'" class="rounded-circle" width="150" height="150" />               
                 </div>
                 <!-- <div class="upload-btn-wrapper">
                     <button class="btn-upload"><i class="mdi mdi-pencil"></i></button>
@@ -69,11 +69,11 @@
                         </div>
                         <div class="col-md-3 col-xs-6 b-r"> <strong>Opening Time</strong>
                           <br>
-                          <p class="text-muted">10:00 AM</p>
+                          <p class="text-muted">{{profileData?.openTime}}</p>
                       </div>
-                      <div class="col-md-3 col-xs-6 b-r"> <strong>Closeing Time</strong>
+                      <div class="col-md-3 col-xs-6 b-r"> <strong>Closing Time</strong>
                         <br>
-                        <p class="text-muted">8:00 PM</p>
+                        <p class="text-muted">{{profileData?.closeTime}}</p>
                     </div>
                           <div class="col-md-12 col-xs-6 b-r"> <strong>Address</strong>
                             <br>
@@ -140,7 +140,7 @@
                                     <div class="form-group has-success">
                                       <div class="form-group">
                                         <label class="control-label">Upload Banner</label>
-                                        <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01" type="file" formControlName="image"
+                                        <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" id="inputGroupFile01" type="file" name="image"
                                             ><label class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
                                             <p class="text-danger"
                                             *ngIf="submitted && errorHandling('image', 'required')">
@@ -236,7 +236,7 @@
                                   </p>
                                   <p class="text-danger"
                                       *ngIf=" errorHandling('zip', 'minlength')">
-                                      Minlength of zip code should 5!
+                                      Minlength of zip code should 4!
                                   </p>
                                   <p class="text-danger"
                                       *ngIf=" errorHandling('zip', 'maxlength')">
@@ -317,21 +317,20 @@
                               <div class="col-md-4">
                                 <div class="row">
                                   <div class="col-md-6"><label>Monday</label></div>
-                                  <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsMon" [ngModelOptions]="{standalone: true}" color="primary"
+                                  <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'mon')" [(ngModel)]="IsMon" [ngModelOptions]="{standalone: true}" color="primary"
                                    >{{(IsMon == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                   </div>
                                 </div>
                                 <div class="col-md-8" *ngIf="IsMon">
                                   <div class="row " formArrayName="mon"
                                   *ngFor="let item of profileForm.get('mon').controls; let i = index;">
-                                 <div class="col-md-5">
-                                   <div [formGroupName]="i">
-                                     <div class="form-group">
+                                 <div class="col-md-5" [formGroupName]="i">
+                                    <div class="form-group">
                                        <input type="time" class="form-control" formControlName="start">
                                       </div>
                                     </div>
-                                  </div>
-                                    <div class="col-md-5">
+                                  
+                                    <div class="col-md-5" [formGroupName]="i">
                                     <div class="form-group">
                                       <input type="time" class="form-control" formControlName="end">
                                    </div>
@@ -349,7 +348,7 @@
                                 <div class="col-md-4">
                                   <div class="row">
                                     <div class="col-md-6"><label>Tuesday</label></div>
-                                    <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsTue" [ngModelOptions]="{standalone: true}" color="primary"
+                                    <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'tue')" [(ngModel)]="IsTue" [ngModelOptions]="{standalone: true}" color="primary"
                                       >{{(IsTue == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                     </div>
                                   </div>
@@ -376,7 +375,7 @@
                                   <div class="col-md-4">
                                     <div class="row">
                                       <div class="col-md-6"><label>Wednesday</label></div>
-                                      <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsWed" [ngModelOptions]="{standalone: true}" color="primary"
+                                      <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'wed')" [(ngModel)]="IsWed" [ngModelOptions]="{standalone: true}" color="primary"
                                         >{{(IsWed == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                       </div>
                                     </div>
@@ -406,7 +405,7 @@
                                     <div class="col-md-4">
                                       <div class="row">
                                         <div class="col-md-6"><label>Thusrday</label></div>
-                                        <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsThu" [ngModelOptions]="{standalone: true}" color="primary"
+                                        <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'thu')" [(ngModel)]="IsThu" [ngModelOptions]="{standalone: true}" color="primary"
                                           >{{(IsThu == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                         </div>
                                       </div>
@@ -433,7 +432,7 @@
                                         <div class="col-md-4">
                                           <div class="row">
                                             <div class="col-md-6"><label>Friday</label></div>
-                                            <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsFri" [ngModelOptions]="{standalone: true}" color="primary"
+                                            <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'fri')" [(ngModel)]="IsFri" [ngModelOptions]="{standalone: true}" color="primary"
                                               >{{(IsFri == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                             </div>
                                           </div>
@@ -459,7 +458,7 @@
                                           <div class="col-md-4">
                                             <div class="row">
                                               <div class="col-md-6"><label>Saturday</label></div>
-                                              <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsSat" [ngModelOptions]="{standalone: true}" color="primary"
+                                              <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'sat')" [(ngModel)]="IsSat" [ngModelOptions]="{standalone: true}" color="primary"
                                                 >{{(IsSat== true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                               </div>
                                             </div>
@@ -487,7 +486,7 @@
                                             <div class="col-md-4">
                                               <div class="row">
                                                 <div class="col-md-6"><label>Sunday</label></div>
-                                                <div class="col-md-6"><mat-slide-toggle class="" [(ngModel)]="IsSun" [ngModelOptions]="{standalone: true}" color="primary"
+                                                <div class="col-md-6"><mat-slide-toggle class="" (change)="change($event,'sun')" [(ngModel)]="IsSun" [ngModelOptions]="{standalone: true}" color="primary"
                                                   >{{(IsSun == true)?'Open':'Closed'}}</mat-slide-toggle></div>
                                                 </div>
                                               </div>

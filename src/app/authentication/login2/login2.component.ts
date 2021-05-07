@@ -20,7 +20,6 @@ export class Login2Component implements OnInit{
     {
       this.countrycode = res.countryArray
       this.code = res.countryArray[0].dial_code
-      console.log(this.code,'code')
     })
   }
   countrycode: any;
@@ -184,7 +183,7 @@ export class Login2Component implements OnInit{
     setTimeout(() => {
       this.submitted = false
     }, 4000);
-      Swal.fire('Oops','Please Enter Required Fields','error')
+      Swal.fire('Oops','Please enter the required fields','error')
       
     }
     
@@ -231,7 +230,7 @@ export class Login2Component implements OnInit{
     setTimeout(() => {
       this.isphoneLogin = false
     }, 4000);
-      Swal.fire('Oops','Please Enter Required Fields','error')
+      Swal.fire('Oops','Please enter the required fields','error')
       
     }
 }

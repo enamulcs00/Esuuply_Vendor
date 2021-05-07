@@ -62,7 +62,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
         lastName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
         resturant:['',[Validators.required]],
         dob:['',Validators.required],
-        zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(5),Validators.maxLength(7)]],
+        zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(4),Validators.maxLength(7)]],
         image:[''],
         address:['',Validators.required],
         city:['',Validators.required],
@@ -142,7 +142,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
         console.log(res.data)
         if (res.statusCode==200) {
           // this.service.subject.next(true)
-       Swal.fire('Success','File uploded','success')
+       Swal.fire('Success','File uploaded','success')
           console.log("upload data res=>>", res.data)
           this.files = res.data.filePath
           this.ProfilePic = res.data.filePath
@@ -251,6 +251,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
       console.log('Address',address,"Ref",ref);
       this.address = ref
       this.profileForm.controls['address'].setValue(ref)
+      this.formForShop.controls['address'].setValue(ref)
       this.lat = address.geometry.location.lat()
       this.lng = address.geometry.location.lng()
      // let length = address.address_components.length

@@ -432,6 +432,9 @@ class SharedService {
     changePassword(data) {
         return this.http.post(`${this.baseUrl}admin/changePassword`, data, this.getAuth());
     }
+    ResetPassword(url, data) {
+        return this.http.post(`${this.baseUrl}` + url, data);
+    }
     getApi(url) {
         return this.http.get(`${this.baseUrl}` + url, this.getAuth());
     }
@@ -1241,6 +1244,11 @@ class NavigationComponent {
             console.log('Res of get profile', res);
             if (res.statusCode == 200) {
                 this.profileData = res.data;
+            }
+            else if (res.statusCode == 401) {
+                localStorage.removeItem('token');
+                this.router.navigate(['/login']);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire('Oops', res.message, 'error');
             }
             else {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire('Oops', res.message, 'error');

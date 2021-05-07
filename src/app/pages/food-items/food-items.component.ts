@@ -47,7 +47,7 @@ export class FoodItemsComponent implements OnInit {
       stockQuantity:['',Validators.required],
       price:['',Validators.required],
       tax:['',Validators.required],
-      deliveryCharges:['',Validators.required],
+    //  deliveryCharges:['',Validators.required],
       minimumStockQuantity:['',Validators.required],
       maximumStockQuantity:['',Validators.required],
       description:['',Validators.required]
@@ -206,7 +206,7 @@ this.getFoodItem()
       console.log(res.data)
       if (res.statusCode==200) {
         // this.service.subject.next(true)
-     Swal.fire('Success','File uploded','success')
+     Swal.fire('Success','File uploaded','success')
         console.log("upload data res=>>", res.data)
         this.files = res.data.filePath
       

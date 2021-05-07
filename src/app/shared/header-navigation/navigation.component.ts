@@ -103,6 +103,10 @@ export class NavigationComponent implements AfterViewInit ,OnInit{
     let element1 = document.getElementById("arrow-close").parentElement;
     element1.classList.remove("sidebar_slide");
   }
+  gotoChange(){
+    
+    this.router.navigate(['changepassword'])
+  }
   logout()
   {
     localStorage.removeItem('token')
