@@ -10,7 +10,7 @@
             <div class="col-md-4">
               <form>
                 <div class="mb-2">
-                  <input type="text" class="form-control" id="prenametext" placeholder="Search">
+                  <input type="text" class="form-control" id="prenametext" (keyup)="searchFormSubmit()" [ngModelOptions]="{standalone: true}" placeholder="Search" [(ngModel)]="searchByName">
                 </div>
               </form>
             </div>
@@ -20,9 +20,9 @@
                   Filter by quantity
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button class="dropdown-item">All</button>
-                  <button class="dropdown-item">Quantity < 50%</button>
-                  <button class="dropdown-item">Quantity < 25%</button>
+                  <button class="dropdown-item" (click)="GetAll()">All</button>
+                  <button class="dropdown-item" (click)="FilterByQty(50)">Quantity < 50%</button>
+                  <button class="dropdown-item" (click)="FilterByQty(25)">Quantity < 25%</button>
                 </div>
               </div>
               <div ngbDropdown class="d-inline-block mb-2 mr-2">
@@ -30,9 +30,8 @@
                   Filter by category
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button class="dropdown-item">All</button>
-                  <button class="dropdown-item">category 1</button>
-                  <button class="dropdown-item">category 2</button>
+                  <button class="dropdown-item text-success" (click)="GetAll()">Get All</button> 
+                  <button class="dropdown-item" *ngFor="let topping of catagoryList" (click)="filter(topping?._id)">{{topping?.name}}</button>
                 </div>
               </div>
               <div ngbDropdown class="d-inline-block mb-2 mr-2">
@@ -40,9 +39,9 @@
                   Filter by stock status
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button class="dropdown-item">All</button>
-                  <button class="dropdown-item">In Stock</button>
-                  <button class="dropdown-item">Out of stock</button>
+                  <button class="dropdown-item" (click)="GetAll()">All</button>
+                  <button class="dropdown-item" (click)="FilterByStock('INSTOCK')">In Stock</button>
+                  <button class="dropdown-item" (click)="FilterByStock('OUTSTOCK')">Out of stock</button>
                 </div>
               </div>
               <!-- <div ngbDropdown class="d-inline-block mb-2 mr-2">
@@ -76,15 +75,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>                    
-                    <td><img src="assets/images/food/1.jpg" width="50px" class="border-circle"></td>
-                    <td class="text-nowrap">Soya Chaap</td>
-                    <td>SKU-SOYA-CHAAP</td>
-                    <td><i class="fas fa-euro-sign"></i>20</td>
-                    <td><span class="text-success">30(In Stock)</span>  <button class="btn   btn-primary btn-sm ml-1" (click)="inventoryModal(inventory)"><i class="ti-plus"></i>
+                  <tr *ngFor="let item of stockList">                    
+                    <td><img [src]="item.image?item.image:'assets/images/food/1.jpg'" width="50px" class="border-circle"></td>
+                    <td class="text-nowrap">{{item?.name}}</td>
+                    <td>{{item?.oldPrice}}</td>
+                    <td><i class="fas fa-euro-sign"></i>{{item?.price}}</td>
+                    <td><span class="text-success">{{item?.stockQuantity}}(In Stock)</span>  <button class="btn   btn-primary btn-sm ml-1" (click)="inventoryModal(inventory)"><i class="ti-plus"></i>
                     </button></td>
-                    <td>Alcohal</td>
-                    <td><span class="label label-success">Published</span></td>               
+                    <td>{{item?.categoryId?.name}}</td>
+                    <td><span class="label label-success">{{item?.isActive}}</span></td>               
                     <!-- <td>
                       <div class="d-flex">
                         <button class="btn btn-primary mr-2" (click)="inventoryModal(inventory)"><i class="ti-pencil"></i>
@@ -95,27 +94,19 @@
                     
                     </td> -->
                   </tr> 
-                  <tr>                    
-                    <td><img src="assets/images/food/1.jpg" width="50px" class="border-circle"></td>
-                    <td class="text-nowrap">Soya Chaap</td>
-                    <td>SKU-SOYA-CHAAP</td>
-                    <td><i class="fas fa-euro-sign"></i>20</td>
-                    <td><span class="text-danger">0(Out of Stock)</span><button class="btn   btn-primary btn-sm ml-1" (click)="inventoryModal(inventory)"><i class="ti-plus"></i>
-                    </button></td>
-                    <td>Alcohal</td>
-                    <td><span class="label label-danger">Deactivated</span></td>               
-                    <!-- <td>
-                      <div class="d-flex">
-                        <button class="btn btn-primary mr-2" (click)="inventoryModal(inventory)"><i class="ti-pencil"></i>
-                        </button>
-                        <button class="btn btn-danger" (click)="boxDeleteModal(boxDelete)"><i class="ti-trash"></i>
-                        </button>
-                      </div>
-                    
-                    </td> -->
+                  <tr *ngIf="totalItems==0" class="ml-5">                    
+                    Data not found!
                   </tr>              
                 </tbody>
               </table>
+              
+  <div class="w-100 text-right mt-2" *ngIf="totalItems>0">
+    <mat-paginator
+  [length]="totalItems"
+  [pageSize]="itemPerpage"
+  (page)="onPaginateChange($event)"
+></mat-paginator>
+</div>
             </div>
           </div>
         </div>

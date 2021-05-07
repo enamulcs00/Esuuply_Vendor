@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent {
 profileForm:FormGroup
-items: FormArray;
+mon: FormArray;
 tue: FormArray;
 thu:FormArray
 fri:FormArray
@@ -29,13 +29,15 @@ sun:FormArray
   days:string[]=['sun','mon','tue','wed','thu','fri','sat']
   profileData: any;
   files: any;
-  IsMon = true;
-  IsTue = true;
-  IsThu = true;
-  IsWed = true;
-  IsFri = true;
-  IsSat = true;
-  IsSun = true;
+  shopStatus:boolean=false
+  commingSoon:boolean = false
+  IsMon:boolean = false;
+  IsTue:boolean = false;
+  IsThu:boolean = false;
+  IsWed:boolean = false;
+  IsFri:boolean = false;
+  IsSat:boolean = false;
+  IsSun:boolean = false;
   ProfilePic:any;
   address:any='Mohali, Punjab, India'
     constructor(private router:Router,private service:SharedService,private fb:FormBuilder,private spinner:NgxSpinnerService) { }
@@ -55,7 +57,7 @@ sun:FormArray
         city:['',Validators.required],
         isDelivery:['',Validators.required],
         resturantType:['',Validators.required],
-        items: new FormArray([]),
+        mon: new FormArray([]),
         tue: new FormArray([]),
         thu: new FormArray([]),
         fri: new FormArray([]),
@@ -63,9 +65,9 @@ sun:FormArray
         sat: new FormArray([]),
         sun: new FormArray([]),
       })
-    for(let day of this.days){
-    this.addItem(day)
-    }
+    // for(let day of this.days){
+    // this.addItem(day)
+    // }
     }
     createItem(): FormGroup {
       return this.fb.group({
@@ -77,8 +79,8 @@ sun:FormArray
     
     addItem(ref): void {
       if(ref=='mon'){
-        this.items = this.profileForm.get('items') as FormArray;
-        this.items.push(this.createItem());
+        this.mon = this.profileForm.get('mon') as FormArray;
+        this.mon.push(this.createItem());
       }else if(ref=='tue'){
         this.tue = this.profileForm.get('tue') as FormArray;
         this.tue.push(this.createItem());
@@ -98,11 +100,10 @@ sun:FormArray
         this.sun = this.profileForm.get('sun') as FormArray;
         this.sun.push(this.createItem());
       }
-      
     }
     removeUser(ref,i) {
       if(ref=='mon'){
-        const remove = this.profileForm.get('items') as FormArray;
+        const remove = this.profileForm.get('mon') as FormArray;
         remove.removeAt(i);
       }else if(ref=='tue'){
         const remove = this.profileForm.get('tue') as FormArray;
@@ -174,9 +175,70 @@ sun:FormArray
           this.profileForm.get('address').setValue(res.data.location.address)
           this.profileForm.get('city').setValue(res.data.city)
           this.profileForm.get('isDelivery').setValue(res.data.deliveringRightNow)
+          this.shopStatus = res.data.shopStatus
+          this.commingSoon = res.data.commingSoon
           this.lat = this.profileData.location.coordinates[1];
         this.lng = this.profileData.location.coordinates[0];
-        }
+        let sun = <FormArray>this.profileForm.controls.sun;
+          let mon = <FormArray>this.profileForm.controls.mon;
+          let tue = <FormArray>this.profileForm.controls.tue;
+          let wed = <FormArray>this.profileForm.controls.wed;
+          let thu = <FormArray>this.profileForm.controls.thu;
+          let fri = <FormArray>this.profileForm.controls.fri;   
+          let sat = <FormArray>this.profileForm.controls.sat;
+        for(var day of this.profileData.shopHours){
+          console.log('X item',day.days)
+          for(let x of this.profileData.shopHours[day.days].hours) {
+            console.log('X days',x.start);
+            
+            if(day.days==0 && x.start){
+              this.IsSun=true
+              sun.push(this.fb.group({
+                start: x.start,
+                end: x.end,
+                
+               }));}
+            else if(day.days==1 && x.start){
+              this.IsMon=true
+              mon.push(this.fb.group({
+                start: x.start,
+                end: x.end
+               }));}
+             else if(day.days==2 && x.start){
+              this.IsTue=true
+              tue.push(this.fb.group({
+                start: x.start,
+                end: x.end
+               }));
+             }
+             else if(day.days==3 && x.start){
+              this.IsWed=true
+              wed.push(this.fb.group({
+                start: x.start,
+                end: x.end
+               }));
+             }
+             else if(day.days==4 && x.start){
+              this.IsThu=true
+              thu.push(this.fb.group({
+                start: x.start,
+                end: x.end
+               }));
+             }
+             else if(day.days==5 && x.start){
+              this.IsFri=true
+              fri.push(this.fb.group({
+                start: x.start,
+                end: x.end
+               }));
+             }
+             else if(day.days==6 && x.start){
+              this.IsSat=true
+              sat.push(this.fb.group({
+                start: x.start,
+                end: x.end
+               }));
+             }}}}
         else {
           Swal.fire('Oops',res.message,'error')
         }
@@ -258,43 +320,45 @@ sun:FormArray
         "deliveringRightNow": this.profileForm.value.isDelivery,
         "typeOfRestaurant": this.profileForm.value.resturantType,
         "image": this.files,
-        "shopStatus": false,
-        "commingSoon": false,
+        "shopStatus": this.shopStatus,
+        "commingSoon": this.commingSoon,
         "latitude":this.lat.toString(),
         "longitude":this.lng.toString(),
         "shopHours": [
             {
                 "days": "0",
-                "hours":this.profileForm.value.sun
+                "hours":this.profileForm.value.sun,
+                "isClosed": this.IsSun
             },
             {
                 "days": "1",
-                "hours":this.profileForm.value.items
+                "hours":this.profileForm.value.mon,
+                "isClosed": this.IsMon
             },
             {
                 "days": "2",
                 "hours": this.profileForm.value.tue,
-                // "isClosed": false
+                 "isClosed": this.IsTue
             },
             {
                 "days": "3",
                 "hours":this.profileForm.value.wed,
-                // "isClosed": false
+                "isClosed": this.IsWed
             },
             {
                 "days": "4",
                 "hours":this.profileForm.value.thu,
-                // "isClosed": false
+                "isClosed": this.IsThu
             },
             {
                 "days": "5",
                 "hours": this.profileForm.value.fri,
-                // "isClosed": false
+                 "isClosed": this.IsFri
             },
             {
                 "days": "6",
-                // "hours": this.profileForm.value.sat,
-                "isClosed": false
+                 "hours": this.profileForm.value.sat,
+                "isClosed": this.IsSat
             }
         ]
     }

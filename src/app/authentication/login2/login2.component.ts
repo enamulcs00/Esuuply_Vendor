@@ -14,7 +14,7 @@ import { SharedService } from '../shared.service';
 })
 export class Login2Component implements OnInit{
   countryCode: any;
-  
+  formSubmitted:boolean = false
   constructor(private spinner:NgxSpinnerService, private modalService: NgbModal,private service:SharedService,private fb:FormBuilder,private router:Router){
     this.service.getJson().subscribe((res:any)=>
     {
@@ -26,6 +26,7 @@ export class Login2Component implements OnInit{
   countrycode: any;
   code: any;
   otpvalue: number;
+  history = window.history;
   CountryCode:any
   IsphoneRecover:boolean = false
   isSubmitted:boolean = false
@@ -38,6 +39,7 @@ export class Login2Component implements OnInit{
   recoverform = false;
   phonecode = false;
   otp= false;
+  form: FormGroup;
   phoneRecover:FormGroup
   loginWithPhone:FormGroup
   showRecoverForm() {
@@ -45,6 +47,7 @@ export class Login2Component implements OnInit{
     this.recoverform = !this.recoverform;
   }
   otpFrom() {
+    this.phoneRecover.reset()
     this.loginform1 = !this.loginform1;
     this.loginform = !this.loginform;
     this.otp = !this.otp;
@@ -53,8 +56,8 @@ export class Login2Component implements OnInit{
     this.loginform = !this.loginform;
     this.recoverform = !this.recoverform;
   }
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+  openModal(content) {
+    this.modalService.open(content,{backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'})
   }
   openWindowCustomClass(content3) {
     this.modalService.open(content3, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
@@ -70,6 +73,10 @@ export class Login2Component implements OnInit{
     this.phonecode = true;
   }
   ngOnInit(){
+    this.form = this.fb.group({
+      newPassword: ['', Validators.required],
+      confirmNewPassword: ['', Validators.required]
+     })
     this.phoneRecover = this.fb.group({
 
       phone:['',Validators.compose([Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
@@ -112,7 +119,16 @@ export class Login2Component implements OnInit{
           remember: formData.remember
         })
       }
+      
   }
+  CloseModal(){
+    this.history.back()
+    this.loginform1 = !this.loginform1;
+    this.loginform = !this.loginform;
+    this.otp = !this.otp;
+    this.modalService.dismissAll()
+  }
+  
   ClosePhone(){
     this.otpFrom()
   }
@@ -125,7 +141,9 @@ export class Login2Component implements OnInit{
   public errorPhoneRecoverForm = (control: string, error: string) => {
     return this.phoneRecover.controls[control].hasError(error);
   }
-
+  public errorHandling = (control: string, error: string) => {
+    return this.form.controls[control].hasError(error);
+  }
   login() {
   
     let url = `admin/login`
@@ -280,7 +298,7 @@ recoverForPhone(content3) {
 // showRecoverForm() {
 //   this.showPasswordRecoveryForm = !this.showPasswordRecoveryForm
 // }
-gotoVerify()
+gotoVerify(content)
 {
 console.log('This is otp',this.otpvalue)
  const data = {
@@ -292,11 +310,10 @@ console.log('This is otp',this.otpvalue)
     {
       if(res.statusCode == 200)
       {
+        this.modalService.dismissAll()
         sessionStorage.setItem('token',res.data.accessToken)
     Swal.fire('Success',res.message,'success')
-     this.modalService.dismissAll()
-     
-  
+     this.openModal(content)
       }
       else{
         this.submitted = true;
@@ -326,5 +343,38 @@ onOtpChange(event)
     },err=>{
       Swal.fire('Oops',err.message,'error')
     })
+  }
+
+  save() {
+    let url = `admin/resetPassword`
+    this.formSubmitted = true
+    if (this.form.valid){
+      this.spinner.show()
+    let data ={
+      "accessToken": sessionStorage.getItem('token'),
+      "newPassword":this.form.value.newPassword
+  }
+    this.formSubmitted = false
+    this.service.ResetPassword(url,data).subscribe((response:any) => {
+      this.spinner.hide()
+      if (response.statusCode==200) {
+        Swal.fire('Success',response.message,'success')
+    this.modalService.dismissAll()
+    this.loginform1 = !this.loginform1;
+    this.loginform = !this.loginform;
+    this.otp = !this.otp;
+      } else {
+        Swal.fire('Oops',response.message,'error')
+      }
+    }, error => {
+      
+      this.spinner.hide()
+      console.log(error)
+      Swal.fire('Oops',error.message,'error')
+    })
+    } else if(this.form.invalid){
+      Swal.fire('Oops','Please fill all field','error')
+    }
+    
   }
 }

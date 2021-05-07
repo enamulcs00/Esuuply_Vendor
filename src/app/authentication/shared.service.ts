@@ -67,6 +67,10 @@ httpOptions: { headers: HttpHeaders; };
   {
   return this.http.post(`${this.baseUrl}admin/changePassword`,data,this.getAuth());
   }
+  ResetPassword(url,data)
+  {
+    return this.http.post(`${this.baseUrl}`+url,data);
+  }
   getApi(url)
     {
       return this.http.get(`${this.baseUrl}`+url,this.getAuth());
