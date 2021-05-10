@@ -51,6 +51,9 @@ httpOptions: { headers: HttpHeaders; };
   {
     return this.http.put(`${this.baseUrl}`+url,data,this.getAuth());
   }
+  DeleteCategory(id) {
+    return this.http.delete<any>(`${this.baseUrl}admin/categories/${id}`);
+  }
   patchApi(url,data)
   {
     return this.http.patch(`${this.baseUrl}`+url,data,this.getAuth());

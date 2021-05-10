@@ -254,7 +254,6 @@ sun:FormArray
       this.state = address.address_components[0].long_name;
       ///this.profileForm.controls['address'].setValue(this.state)
       console.log('Lng',this.lng,'lat',this.lat);
-      
   
     }
     sendFile(fileData) {

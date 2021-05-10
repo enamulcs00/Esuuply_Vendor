@@ -111,8 +111,6 @@ export class NavigationComponent implements AfterViewInit ,OnInit{
   {
     localStorage.removeItem('token')
     this.router.navigate(['login'])
-   //  this.router.navigate([''])
-    //  this.openDialog(1)
   }
   ngOnInit(){
     this.getProfile()

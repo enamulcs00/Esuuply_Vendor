@@ -39,4 +39,9 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.sidebarnavItems = ROUTES.filter(sidebarnavItem => sidebarnavItem);
   }
+  logout()
+  {
+    localStorage.removeItem('token')
+    this.router.navigate(['login'])
+  }
 }
