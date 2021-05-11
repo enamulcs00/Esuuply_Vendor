@@ -31,9 +31,9 @@
             cdkDrag
             *ngFor="let item of categories; let i=index" 
           >
-          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true"   class="">
+          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" (panelChange)="beforeChange($event)" class="">
             <ngb-panel id="ngb-panel-{{i}}" class="mb-2">
-              <ng-template  ngbPanelHeader let-opened="i==0?'opened':''"> 
+              <ng-template  ngbPanelHeader let-opened="i===0?'opened':'collapsed'"> 
                 <div class="row box-tab">
                   <div class="col-md-2">
                     <h3 class="mb-0"> <img width="100px" class="mr-2" [src]="item.image?item.image:'assets/images/food/1.jpg'" alt=""> <span class="d-block mt-2">{{item?.name}}</span> </h3>

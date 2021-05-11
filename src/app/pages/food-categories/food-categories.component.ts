@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal, NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { CdkDragDrop,
   moveItemInArray,
@@ -385,6 +385,16 @@ export class FoodCategoriesComponent implements OnInit {
       this.text = "Choose File";
       this.fileAttached = false;
       this.imageSizeError = true;
+    }
+  }
+  public beforeChange($event: NgbPanelChangeEvent) {
+console.log('Acc Evnt',$event)
+    if ($event.panelId === 'preventchange-2') {
+      $event.preventDefault();
+    }
+
+    if ($event.panelId === 'preventchange-3' && $event.nextState === false) {
+      $event.preventDefault();
     }
   }
 }
