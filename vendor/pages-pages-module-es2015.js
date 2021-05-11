@@ -27740,7 +27740,7 @@ function FoodCategoriesComponent_ng_template_23_mat_error_13_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FoodCategoriesComponent_ng_template_23_mat_error_25_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-error");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-error", 98);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " *Please upload food image. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -27816,7 +27816,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "p", 73);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, " (.jpg,.png) Size limit- 1.00 MB ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, FoodCategoriesComponent_ng_template_23_mat_error_25_Template, 2, 0, "mat-error", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, FoodCategoriesComponent_ng_template_23_mat_error_25_Template, 2, 0, "mat-error", 87);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, FoodCategoriesComponent_ng_template_23_mat_error_26_Template, 2, 0, "mat-error", 74);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27826,7 +27826,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Opening Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "input", 88);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_23_Template_input_change_31_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const ctx_r99 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r99.IsSelectedTime($event, "start"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, FoodCategoriesComponent_ng_template_23_mat_error_32_Template, 2, 0, "mat-error", 68);
@@ -27837,7 +27837,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Closing Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_23_Template_input_change_37_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r100.IsSelectedTime($event, "end"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, FoodCategoriesComponent_ng_template_23_mat_error_38_Template, 2, 0, "mat-error", 68);
@@ -27845,29 +27845,29 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, FoodCategoriesComponent_ng_template_23_mat_error_40_Template, 2, 0, "mat-error", 74);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "div", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "Tax Percentage");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 90);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 91);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "span", 92);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "i", 93);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 91);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 92);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "span", 93);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "i", 94);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "input", 94);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "input", 95);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](50, FoodCategoriesComponent_ng_template_23_mat_error_50_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "div", 69);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "label", 65);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "textarea", 95, 96);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "textarea", 96, 97);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_23_Template_textarea_keydown_space_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const _r94 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](57); const ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r101.doSomething($event, _r94.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](58, FoodCategoriesComponent_ng_template_23_mat_error_58_Template, 2, 0, "mat-error", 68);
@@ -28006,7 +28006,7 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Opening Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "input", 88);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_25_Template_input_change_31_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const ctx_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r118.IsSelectedTime($event, "start"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, FoodCategoriesComponent_ng_template_25_mat_error_32_Template, 2, 0, "mat-error", 68);
@@ -28017,7 +28017,7 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Closing Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_25_Template_input_change_37_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r119.IsSelectedTime($event, "end"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, FoodCategoriesComponent_ng_template_25_mat_error_38_Template, 2, 0, "mat-error", 68);
@@ -28025,29 +28025,29 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, FoodCategoriesComponent_ng_template_25_mat_error_40_Template, 2, 0, "mat-error", 74);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "div", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "Tax Percentage");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 90);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 91);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "span", 92);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "i", 93);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 91);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 92);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "span", 93);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "i", 94);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "input", 97);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "input", 99);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](50, FoodCategoriesComponent_ng_template_25_mat_error_50_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "div", 69);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "label", 65);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "textarea", 95, 96);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "textarea", 96, 97);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_25_Template_textarea_keydown_space_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const _r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](57); const ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r120.doSomething($event, _r113.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](58, FoodCategoriesComponent_ng_template_25_mat_error_58_Template, 2, 0, "mat-error", 68);
@@ -28078,7 +28078,7 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r16.text);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.submitted && ctx_r16.addCategoryForm.controls["image"].invalid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.submitted && ctx_r16.imageFile == ( false || undefined));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.imageSizeError);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
@@ -28098,14 +28098,14 @@ function FoodCategoriesComponent_ng_template_27_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "form", 98);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "form", 100);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 63);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Name");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "input", 99);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "input", 101);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 63);
@@ -28124,15 +28124,15 @@ function FoodCategoriesComponent_ng_template_27_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "textarea", 100);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "textarea", 102);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "button", 76);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_27_Template_button_click_26_listener() { const modal_r122 = ctx.$implicit; return modal_r122.dismiss("Cross click"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "i", 77);
@@ -28212,6 +28212,8 @@ class FoodCategoriesComponent {
     addUserModal(addUser) {
         this.addCategoryForm.reset();
         this.text = 'Choose File';
+        this.startTime = undefined;
+        this.endTime = undefined;
         this.submitted = false;
         this.modalService.open(addUser, { backdropClass: 'light-blue-backdrop', centered: true, size: 'lg' });
     }
@@ -28223,13 +28225,13 @@ class FoodCategoriesComponent {
         this.text = obj.image.split('/').pop();
         console.log('This is user obj', obj);
         this.addCategoryForm.get('name').setValue(obj.name);
-        this.addCategoryForm.get('image').setValue(obj.image);
+        // this.addCategoryForm.controls['image'].setValue(obj.image)
         this.addCategoryForm.get('description').setValue(obj.description);
         this.addCategoryForm.get('taxPercentage').setValue(obj.taxPercentage);
         this.addCategoryForm.get('openTime').setValue(obj.openTime);
         this.addCategoryForm.get('closeTime').setValue(obj.closeTime);
-        this.startTime = obj.openTime.split(':')[0] * 60 + obj.openTime.split(':')[1];
-        this.endTime = obj.closeTime.split(':')[0] * 60 + obj.closeTime.split(':')[1];
+        this.startTime = parseInt(obj.openTime.split(':')[0] * 60 + obj.openTime.split(':')[1]);
+        this.endTime = parseInt(obj.closeTime.split(':')[0] * 60 + obj.closeTime.split(':')[1]);
         console.log('Update Time Zone', this.startTime, this.endTime);
         this.modalService.open(EditCategory, { backdropClass: 'light-blue-backdrop', centered: true, size: 'lg' });
     }
@@ -28267,7 +28269,7 @@ class FoodCategoriesComponent {
         this.imageFile = obj.image;
         this.text = obj.image.split('/').pop();
         this.SubCategoryForm.get('name').setValue(obj.name);
-        this.SubCategoryForm.get('image').setValue(this.text);
+        //  this.SubCategoryForm.get('image').setValue(this.text)
         this.modalService.open(editModel, { backdropClass: 'light-blue-backdrop', centered: true, size: 'lg' });
     }
     addsubCategoryModel(addsubCategory, id) {
@@ -28280,6 +28282,8 @@ class FoodCategoriesComponent {
     addCategoryModel(addCategory) {
         this.addCategoryForm.reset();
         this.text = 'Choose File';
+        this.startTime = undefined;
+        this.endTime = undefined;
         this.submitted = false;
         this.modalService.open(addCategory, { backdropClass: 'light-blue-backdrop', centered: true, size: 'lg' });
     }
@@ -28316,9 +28320,13 @@ class FoodCategoriesComponent {
         }
     }
     Update() {
+        if (this.imageFile.length > 0) {
+            this.addCategoryForm.get('image').clearValidators();
+            this.addCategoryForm.get('image').updateValueAndValidity();
+        }
         this.submitted = true;
         let url = `admin/categories/${this.deleteId}`;
-        if (this.addCategoryForm.valid && (this.startTime < this.endTime && this.startTime != this.endTime)) {
+        if (this.addCategoryForm.valid && (this.startTime < this.endTime)) {
             const body = {
                 name: this.addCategoryForm.controls["name"].value,
                 description: this.addCategoryForm.controls["description"].value,
@@ -28342,7 +28350,7 @@ class FoodCategoriesComponent {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Failed', error.error.message, 'error');
             });
         }
-        else if (this.addCategoryForm.invalid || (this.startTime >= this.endTime)) {
+        else if (this.addCategoryForm.invalid || (this.startTime > this.endTime || this.startTime == this.endTime)) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Invalid Form', 'Please fill all field correctly', 'error');
         }
     }
@@ -28358,7 +28366,7 @@ class FoodCategoriesComponent {
         console.log("Add Called");
         this.submitted = true;
         let url = `admin/categories`;
-        if ((this.addCategoryForm.valid) && (this.startTime < this.endTime && this.startTime != this.endTime)) {
+        if ((this.addCategoryForm.valid) && (this.startTime < this.endTime)) {
             const body = {
                 name: this.addCategoryForm.controls["name"].value,
                 description: this.addCategoryForm.controls["description"].value,
@@ -28509,7 +28517,7 @@ class FoodCategoriesComponent {
     }
 }
 FoodCategoriesComponent.ɵfac = function FoodCategoriesComponent_Factory(t) { return new (t || FoodCategoriesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbModal"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_authentication_shared_service__WEBPACK_IMPORTED_MODULE_4__["SharedService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"])); };
-FoodCategoriesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FoodCategoriesComponent, selectors: [["app-food-categories"]], decls: 29, vars: 4, consts: [[1, "card"], [1, "card-body"], ["ngbNav", "", 1, "nav-tabs", 3, "activeId", "activeIdChange"], ["nav", "ngbNav"], [3, "ngbNavItem"], ["ngbNavLink", ""], ["ngbNavContent", ""], [1, "mt-2", 3, "ngbNavOutlet"], ["addsubCategory", ""], ["deleteBox", ""], ["deleteSub", ""], ["editModel", ""], ["addsudsbCategory", ""], ["addCategory", ""], ["EditCategory", ""], ["cusinine", ""], [1, "row"], [1, "col-md-12", "text-right"], [1, "btn", "btn-primary", "mb-2", 3, "click"], ["class", "list-group list-group-horizontal-lg pl-0 mt-4", "cdkDropList", "", "cdkDropListOrientation", "vertical", 3, "cdkDropListDropped", 4, "ngIf"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "list-group", "list-group-horizontal-lg", "pl-0", "mt-4", 3, "cdkDropListDropped"], ["class", "list-group-item cursor-pointer ", "cdkDrag", "", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "list-group-item", "cursor-pointer"], ["activeIds", "config-panel-one", 1, "", 3, "closeOthers"], ["acc", "ngbAccordion"], [1, "mb-2", 3, "id"], ["ngbPanelHeader", ""], ["ngbPanelContent", ""], [1, "row", "box-tab"], [1, "col-md-2"], [1, "mb-0"], ["width", "100px", "alt", "", 1, "mr-2", 3, "src"], [1, "d-block", "mt-2"], [1, "col-md-5", "text-left"], [1, "col-md-1"], [1, "col-md-3"], [1, "delete-categories"], [1, "btn", "btn-primary", "mr-2", 3, "click"], [1, "ti-marker-alt"], [1, "btn", "btn-danger", 3, "click"], [1, "ti-trash"], [1, "col-md-1", "p-4"], ["ngbPanelToggle", "", 1, "btn", "btn-link", "p-0"], [1, "sl-icon-arrow-down"], [1, "table", "v-middle", "product-overview"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "table", 3, "cdkDropListDropped"], ["class", "bg-white", "cdkDrag", "", 4, "ngFor", "ngForOf"], [1, ""], [1, "sl-icon-plus"], ["cdkDrag", "", 1, "bg-white"], [1, "img-small"], ["width", "60", 1, "rounded", 3, "src"], ["href", "javascript:void()", 1, "mr-2", 3, "click"], ["href", "javascript:void()", 3, "click"], [1, "table-reponsive"], [1, "table"], ["src", "assets/images/food/1.jpg", "alt", "", "width", "60px"], [1, "mdi", "mdi-lead-pencil"], ["href", "javascript:void();", 3, "click"], [1, "modal-body"], [3, "formGroup"], [1, "form-body"], [1, "row", "p-t-20"], [1, "col-md-6"], [1, "form-group"], [1, "control-label"], ["type", "text", "formControlName", "name", 1, "form-control", 3, "keydown.space"], ["ref", ""], ["class", "text-danger d-inline-block pt-1", 4, "ngIf"], [1, "form-group", "has-success"], [1, "custom-file"], ["name", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["for", "inputGroupFile01", 1, "custom-file-label"], [1, "constraints-info", "afu-constraints-info"], [4, "ngIf"], [1, "form-actions"], ["type", "submit", 1, "btn", "btn-success", "mr-3", 3, "click"], [1, "fa", "fa-check"], [1, "text-danger", "d-inline-block", "pt-1"], [1, "btn-group"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-primary", "mr-2", 3, "click"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-seconadary", 3, "click"], ["action", "#"], ["type", "text", "id", "firstName", "placeholder", "John doe", 1, "form-control"], ["id", "inputGroupFile01", "type", "file", 1, "custom-file-input"], ["type", "button", 1, "btn", "btn-dark", 3, "click"], ["formControlName", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["formControlName", "openTime", "type", "time", 1, "form-control", 3, "change"], ["formControlName", "closeTime", "type", "time", 1, "form-control", 3, "change"], [1, "col-md-12"], [1, "input-group"], [1, "input-group-prepend", "w-100"], ["id", "basic-addon1", 1, "input-group-text"], [1, "fas", "fa-percent"], ["formControlName", "taxPercentage", "min", "0", "onKeyPress", "if(this.value.length==2) return false;", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["formControlName", "description", "name", "", "id", "", "cols", "30", "rows", "5", 1, "form-control", 3, "keydown.space"], ["ref1", ""], ["formControlName", "taxPercentage", "onKeyPress", "if(this.value.length==2) return false;", "min", "0", "maxlength", "2", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["action", ""], ["type", "text", "placeholder", "Add Name", 1, "form-control"], ["type", "text", "placeholder", "Description", 1, "form-control"]], template: function FoodCategoriesComponent_Template(rf, ctx) { if (rf & 1) {
+FoodCategoriesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FoodCategoriesComponent, selectors: [["app-food-categories"]], decls: 29, vars: 4, consts: [[1, "card"], [1, "card-body"], ["ngbNav", "", 1, "nav-tabs", 3, "activeId", "activeIdChange"], ["nav", "ngbNav"], [3, "ngbNavItem"], ["ngbNavLink", ""], ["ngbNavContent", ""], [1, "mt-2", 3, "ngbNavOutlet"], ["addsubCategory", ""], ["deleteBox", ""], ["deleteSub", ""], ["editModel", ""], ["addsudsbCategory", ""], ["addCategory", ""], ["EditCategory", ""], ["cusinine", ""], [1, "row"], [1, "col-md-12", "text-right"], [1, "btn", "btn-primary", "mb-2", 3, "click"], ["class", "list-group list-group-horizontal-lg pl-0 mt-4", "cdkDropList", "", "cdkDropListOrientation", "vertical", 3, "cdkDropListDropped", 4, "ngIf"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "list-group", "list-group-horizontal-lg", "pl-0", "mt-4", 3, "cdkDropListDropped"], ["class", "list-group-item cursor-pointer ", "cdkDrag", "", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "list-group-item", "cursor-pointer"], ["activeIds", "config-panel-one", 1, "", 3, "closeOthers"], ["acc", "ngbAccordion"], [1, "mb-2", 3, "id"], ["ngbPanelHeader", ""], ["ngbPanelContent", ""], [1, "row", "box-tab"], [1, "col-md-2"], [1, "mb-0"], ["width", "100px", "alt", "", 1, "mr-2", 3, "src"], [1, "d-block", "mt-2"], [1, "col-md-5", "text-left"], [1, "col-md-1"], [1, "col-md-3"], [1, "delete-categories"], [1, "btn", "btn-primary", "mr-2", 3, "click"], [1, "ti-marker-alt"], [1, "btn", "btn-danger", 3, "click"], [1, "ti-trash"], [1, "col-md-1", "p-4"], ["ngbPanelToggle", "", 1, "btn", "btn-link", "p-0"], [1, "sl-icon-arrow-down"], [1, "table", "v-middle", "product-overview"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "table", 3, "cdkDropListDropped"], ["class", "bg-white", "cdkDrag", "", 4, "ngFor", "ngForOf"], [1, ""], [1, "sl-icon-plus"], ["cdkDrag", "", 1, "bg-white"], [1, "img-small"], ["width", "60", 1, "rounded", 3, "src"], ["href", "javascript:void()", 1, "mr-2", 3, "click"], ["href", "javascript:void()", 3, "click"], [1, "table-reponsive"], [1, "table"], ["src", "assets/images/food/1.jpg", "alt", "", "width", "60px"], [1, "mdi", "mdi-lead-pencil"], ["href", "javascript:void();", 3, "click"], [1, "modal-body"], [3, "formGroup"], [1, "form-body"], [1, "row", "p-t-20"], [1, "col-md-6"], [1, "form-group"], [1, "control-label"], ["type", "text", "formControlName", "name", 1, "form-control", 3, "keydown.space"], ["ref", ""], ["class", "text-danger d-inline-block pt-1", 4, "ngIf"], [1, "form-group", "has-success"], [1, "custom-file"], ["name", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["for", "inputGroupFile01", 1, "custom-file-label"], [1, "constraints-info", "afu-constraints-info"], [4, "ngIf"], [1, "form-actions"], ["type", "submit", 1, "btn", "btn-success", "mr-3", 3, "click"], [1, "fa", "fa-check"], [1, "text-danger", "d-inline-block", "pt-1"], [1, "btn-group"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-primary", "mr-2", 3, "click"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-seconadary", 3, "click"], ["action", "#"], ["type", "text", "id", "firstName", "placeholder", "John doe", 1, "form-control"], ["id", "inputGroupFile01", "type", "file", 1, "custom-file-input"], ["type", "button", 1, "btn", "btn-dark", 3, "click"], ["formControlName", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["class", "text-danger", 4, "ngIf"], ["formControlName", "openTime", "type", "time", 1, "form-control", 3, "change"], ["formControlName", "closeTime", "type", "time", 1, "form-control", 3, "change"], [1, "col-md-12"], [1, "input-group"], [1, "input-group-prepend", "w-100"], ["id", "basic-addon1", 1, "input-group-text"], [1, "fas", "fa-percent"], ["formControlName", "taxPercentage", "min", "0", "max", "100", "onKeyPress", "if(this.value.length==2) return false;", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["formControlName", "description", "name", "", "id", "", "cols", "30", "rows", "5", 1, "form-control", 3, "keydown.space"], ["ref1", ""], [1, "text-danger"], ["formControlName", "taxPercentage", "onKeyPress", "if(this.value.length==2) return false;", "min", "0", "max", "100", "maxlength", "2", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["action", ""], ["type", "text", "placeholder", "Add Name", 1, "form-control"], ["type", "text", "placeholder", "Description", 1, "form-control"]], template: function FoodCategoriesComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 2, 3);
@@ -41370,7 +41378,7 @@ function ProfileComponent_ng_template_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "strong");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Massege");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Messege");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "p", 8);
@@ -41800,7 +41808,7 @@ function ProfileComponent_ng_template_32_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "label", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Upload Banner");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Upload Vendor Profile");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "input", 34);

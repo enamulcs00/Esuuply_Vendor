@@ -99,6 +99,8 @@ export class FoodCategoriesComponent implements OnInit {
   addUserModal(addUser) {
     this.addCategoryForm.reset()
     this.text= 'Choose File';
+    this.startTime = undefined
+    this.endTime = undefined
     this.submitted = false
     this.modalService.open(addUser, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
@@ -110,13 +112,13 @@ export class FoodCategoriesComponent implements OnInit {
     this.text = obj.image.split('/').pop()
     console.log('This is user obj',obj);
     this.addCategoryForm.get('name').setValue(obj.name)
-    this.addCategoryForm.get('image').setValue(obj.image)
+   // this.addCategoryForm.controls['image'].setValue(obj.image)
     this.addCategoryForm.get('description').setValue(obj.description)
     this.addCategoryForm.get('taxPercentage').setValue(obj.taxPercentage)
     this.addCategoryForm.get('openTime').setValue(obj.openTime)
     this.addCategoryForm.get('closeTime').setValue(obj.closeTime)
-    this.startTime = obj.openTime.split(':')[0]*60 +  obj.openTime.split(':')[1]
-    this.endTime = obj.closeTime.split(':')[0]*60 +  obj.closeTime.split(':')[1]
+    this.startTime = parseInt(obj.openTime.split(':')[0]*60 +  obj.openTime.split(':')[1])
+    this.endTime = parseInt(obj.closeTime.split(':')[0]*60 +  obj.closeTime.split(':')[1])
     console.log('Update Time Zone',this.startTime, this.endTime)
     this.modalService.open(EditCategory, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
@@ -156,7 +158,7 @@ export class FoodCategoriesComponent implements OnInit {
     this.text = obj.image.split('/').pop()
     this.SubCategoryForm.get('name').setValue(obj.name)
    
-    this.SubCategoryForm.get('image').setValue(this.text)
+  //  this.SubCategoryForm.get('image').setValue(this.text)
     this.modalService.open(editModel, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
   addsubCategoryModel(addsubCategory,id) {
@@ -170,6 +172,8 @@ export class FoodCategoriesComponent implements OnInit {
   addCategoryModel(addCategory) {
     this.addCategoryForm.reset()
     this.text= 'Choose File';
+    this.startTime = undefined
+    this.endTime = undefined
     this.submitted = false
     this.modalService.open(addCategory, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
@@ -218,9 +222,14 @@ this.service.putApi(url,body).subscribe((data: any) => {
     }
   }
   Update(){
+    if(this.imageFile.length>0){
+this.addCategoryForm.get('image').clearValidators();
+this.addCategoryForm.get('image').updateValueAndValidity()
+    }
     this.submitted = true
     let url = `admin/categories/${this.deleteId}`
-     if(this.addCategoryForm.valid && (this.startTime < this.endTime && this.startTime != this.endTime)) {
+
+     if(this.addCategoryForm.valid && (this.startTime < this.endTime) ) {
       const body = {
         name: this.addCategoryForm.controls["name"].value,
         description: this.addCategoryForm.controls["description"].value,
@@ -243,7 +252,7 @@ this.service.putApi(url,body).subscribe((data: any) => {
       },error=>{
         Swal.fire('Failed',error.error.message,'error')
       });
-    }else if(this.addCategoryForm.invalid || (this.startTime >= this.endTime)){
+    }else if(this.addCategoryForm.invalid || (this.startTime > this.endTime || this.startTime == this.endTime)){
       Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
@@ -260,7 +269,7 @@ this.service.putApi(url,body).subscribe((data: any) => {
     
     this.submitted = true
     let url = `admin/categories`
-     if( (this.addCategoryForm.valid) && (this.startTime < this.endTime && this.startTime != this.endTime)) {
+     if( (this.addCategoryForm.valid) && (this.startTime < this.endTime )) {
       const body = {
         name: this.addCategoryForm.controls["name"].value,
         description: this.addCategoryForm.controls["description"].value,

@@ -528,7 +528,7 @@
                     <p class="constraints-info afu-constraints-info">
                       (.jpg,.png) Size limit- 1.00 MB
                     </p>
-                    <mat-error *ngIf="submitted && addCategoryForm.controls['image'].invalid">
+                    <mat-error *ngIf="submitted && addCategoryForm.controls['image'].invalid" class="text-danger">
                      *Please upload food image.
                     </mat-error>
                     <mat-error *ngIf="imageSizeError">
@@ -570,7 +570,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend w-100">
                       <span class="input-group-text" id="basic-addon1"><i class="fas fa-percent"></i></span>
-                      <input formControlName="taxPercentage" min="0" onKeyPress="if(this.value.length==2) return false;" type="number"
+                      <input formControlName="taxPercentage" min="0" max="100" onKeyPress="if(this.value.length==2) return false;" type="number"
                         placeholder="add tax " class="form-control" />
                     </div>
                     <mat-error
@@ -659,7 +659,7 @@
                     <p class="constraints-info afu-constraints-info">
                       (.jpg,.png) Size limit- 1.00 MB
                     </p>
-                    <mat-error *ngIf="submitted && addCategoryForm.controls['image'].invalid">
+                    <mat-error *ngIf="submitted && ( imageFile == (null || undefined))">
                      *Please upload food image.
                     </mat-error>
                     <mat-error *ngIf="imageSizeError">
@@ -701,7 +701,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend w-100">
                       <span class="input-group-text" id="basic-addon1"><i class="fas fa-percent"></i></span>
-                      <input formControlName="taxPercentage" onKeyPress="if(this.value.length==2) return false;"  min="0" maxlength="2" type="number"
+                      <input formControlName="taxPercentage" onKeyPress="if(this.value.length==2) return false;"  min="0" max="100" maxlength="2" type="number"
                         placeholder="add tax " class="form-control" />
                     </div>
                     <mat-error
