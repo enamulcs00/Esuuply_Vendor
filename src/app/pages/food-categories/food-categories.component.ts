@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons, NgbActiveModal, NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { CdkDragDrop,
   moveItemInArray,
@@ -42,6 +42,8 @@ export class FoodCategoriesComponent implements OnInit {
   cusinine: string[] = ['Indian', 'Italian ', 'Chiness',];
   active = 1;
   categories: any;
+  startTime:number;
+  endTime:number;
   subCategory: any;
   image: any;
   addSubCategoryForm:FormGroup
@@ -54,6 +56,7 @@ export class FoodCategoriesComponent implements OnInit {
   fileAttached: boolean;
   imageSizeError: boolean;
   imageFile: any;
+  count: number;
   constructor(private toaster:ToastrService,private formBuilder:FormBuilder,private modalService: NgbModal,public service:SharedService,private router:Router) {}
   ngOnInit(): void {
     this.addCategoryForm = this.formBuilder.group({
@@ -112,6 +115,9 @@ export class FoodCategoriesComponent implements OnInit {
     this.addCategoryForm.get('taxPercentage').setValue(obj.taxPercentage)
     this.addCategoryForm.get('openTime').setValue(obj.openTime)
     this.addCategoryForm.get('closeTime').setValue(obj.closeTime)
+    this.startTime = obj.openTime.split(':')[0]*60 +  obj.openTime.split(':')[1]
+    this.endTime = obj.closeTime.split(':')[0]*60 +  obj.closeTime.split(':')[1]
+    console.log('Update Time Zone',this.startTime, this.endTime)
     this.modalService.open(EditCategory, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
   UpdateSub()
@@ -172,11 +178,27 @@ export class FoodCategoriesComponent implements OnInit {
   }
 
   orientationDrop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(
-      this.horizontalOrientation,
-      event.previousIndex,
-      event.currentIndex
-    );
+    let url = `admin/categoriesIndexing`
+    console.log('Drag',event);
+    
+    const selectedCategory = this.categories[event?.previousIndex];
+    const categoryId = selectedCategory?._id;
+
+    moveItemInArray(this.categories, event.previousIndex, event.currentIndex);
+   
+    const body = {
+      id: categoryId,
+      index: event.currentIndex + 1,
+    };
+this.service.putApi(url,body).subscribe((data: any) => {
+  console.log('Dragged',data)
+      if (data.statusCode == 200) {
+        this.toaster.success("Category position updated");
+        this.getCategories();
+      } else {
+        this.toaster.error("Failed to update Position");
+      }
+    });
   }
 
   onDrop(event: CdkDragDrop<string[]>) {
@@ -198,7 +220,7 @@ export class FoodCategoriesComponent implements OnInit {
   Update(){
     this.submitted = true
     let url = `admin/categories/${this.deleteId}`
-     if(this.addCategoryForm.valid) {
+     if(this.addCategoryForm.valid && (this.startTime < this.endTime && this.startTime != this.endTime)) {
       const body = {
         name: this.addCategoryForm.controls["name"].value,
         description: this.addCategoryForm.controls["description"].value,
@@ -221,14 +243,24 @@ export class FoodCategoriesComponent implements OnInit {
       },error=>{
         Swal.fire('Failed',error.error.message,'error')
       });
-    }else if(this.addCategoryForm.invalid){
+    }else if(this.addCategoryForm.invalid || (this.startTime >= this.endTime)){
       Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
+  IsSelectedTime(e,ref){
+    if(ref=='start'){
+      this.startTime = e.target.value.split(":")[0]*60 + e.target.value.split(":")[1]
+    }else if(ref=='end'){
+      this.endTime = e.target.value.split(":")[0]*60 + e.target.value.split(":")[1]
+    }
+    
+  }
   Add(){
+    console.log("Add Called");
+    
     this.submitted = true
     let url = `admin/categories`
-     if(this.addCategoryForm.valid) {
+     if( (this.addCategoryForm.valid) && (this.startTime < this.endTime && this.startTime != this.endTime)) {
       const body = {
         name: this.addCategoryForm.controls["name"].value,
         description: this.addCategoryForm.controls["description"].value,
@@ -251,7 +283,7 @@ export class FoodCategoriesComponent implements OnInit {
       },error=>{
         Swal.fire('Failed',error.error.message,'error')
       });
-    }else if(this.addCategoryForm.invalid){
+    }else if(this.addCategoryForm.invalid || (this.startTime >= this.endTime)){
       Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
@@ -321,7 +353,7 @@ export class FoodCategoriesComponent implements OnInit {
         this.categories = res.data.results;
         this.subCategory = res.data.results.subCategories;
         this.image = res.data.results.image;
-        //this.count = res.data.itemCount;
+        this.count = res.data.itemCount;
       }else {
         Swal.fire('Error',res.message,'error')
       }
@@ -385,16 +417,6 @@ export class FoodCategoriesComponent implements OnInit {
       this.text = "Choose File";
       this.fileAttached = false;
       this.imageSizeError = true;
-    }
-  }
-  public beforeChange($event: NgbPanelChangeEvent) {
-console.log('Acc Evnt',$event)
-    if ($event.panelId === 'preventchange-2') {
-      $event.preventDefault();
-    }
-
-    if ($event.panelId === 'preventchange-3' && $event.nextState === false) {
-      $event.preventDefault();
     }
   }
 }

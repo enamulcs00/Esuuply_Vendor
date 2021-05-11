@@ -22,18 +22,14 @@
           <ul
           class="list-group list-group-horizontal-lg pl-0 mt-4"
           cdkDropList
-          cdkDropListOrientation="vertical"
-          (cdkDropListDropped)="orientationDrop($event)"
-           *ngIf="horizontalOrientation.length>0" 
-        >
+          cdkDropListOrientation="vertical" (cdkDropListDropped)="orientationDrop($event)" *ngIf="count">
           <li
             class="list-group-item cursor-pointer "    
             cdkDrag
-            *ngFor="let item of categories; let i=index" 
-          >
-          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" (panelChange)="beforeChange($event)" class="">
+            *ngFor="let item of categories; let i=index">
+          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" class="" activeIds="config-panel-one">
             <ngb-panel id="ngb-panel-{{i}}" class="mb-2">
-              <ng-template  ngbPanelHeader let-opened="i===0?'opened':'collapsed'"> 
+              <ng-template  ngbPanelHeader let-opened="i==0?'opened':''"> 
                 <div class="row box-tab">
                   <div class="col-md-2">
                     <h3 class="mb-0"> <img width="100px" class="mr-2" [src]="item.image?item.image:'assets/images/food/1.jpg'" alt=""> <span class="d-block mt-2">{{item?.name}}</span> </h3>
@@ -545,7 +541,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Opening Time</label>
-                  <input formControlName="openTime" type="time" class="form-control" />
+                  <input formControlName="openTime" type="time" class="form-control" (change)="IsSelectedTime($event,'start')"/>
                   <mat-error *ngIf="submitted && addCategoryForm.controls['openTime'].invalid"
                     class="text-danger d-inline-block pt-1">
                     *Please choose opening time.
@@ -555,15 +551,15 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Closing Time</label>
-                  <input formControlName="closeTime" type="time" class="form-control" />
+                  <input formControlName="closeTime" type="time" class="form-control" (change)="IsSelectedTime($event,'end')"/>
                   <mat-error *ngIf="submitted && addCategoryForm.controls['closeTime'].invalid"
                     class="text-danger d-inline-block pt-1">
                     *Please choose closing time.
                   </mat-error>
-                  <mat-error *ngIf="(addCategoryForm.get('openTime').value.toString().length>0) && addCategoryForm.get('openTime').value ==  addCategoryForm.get('closeTime').value">
+                  <mat-error *ngIf="(startTime>0) && addCategoryForm.get('openTime').value ==  addCategoryForm.get('closeTime').value">
                     *Opening time & closing time can't be same.
                   </mat-error>
-                  <mat-error *ngIf="addCategoryForm.get('openTime').value >  addCategoryForm.get('closeTime').value  && (addCategoryForm.get('closeTime').value.toString().length>0)">
+                  <mat-error *ngIf="addCategoryForm.get('openTime').value >  addCategoryForm.get('closeTime').value  && (endTime>0)">
                     *Closing time should be greater than opening time.
                   </mat-error>
                 </div>
@@ -676,7 +672,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Opening Time</label>
-                  <input formControlName="openTime" type="time" class="form-control" />
+                  <input formControlName="openTime" type="time" class="form-control" (change)="IsSelectedTime($event,'start')" />
                   <mat-error *ngIf="submitted && addCategoryForm.controls['openTime'].invalid"
                     class="text-danger d-inline-block pt-1">
                     *Please choose opening time.
@@ -686,15 +682,15 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Closing Time</label>
-                  <input formControlName="closeTime" type="time" class="form-control" />
+                  <input formControlName="closeTime" type="time" class="form-control" (change)="IsSelectedTime($event,'end')"/>
                   <mat-error *ngIf="submitted && addCategoryForm.controls['closeTime'].invalid"
                     class="text-danger d-inline-block pt-1">
                     *Please choose closing time.
                   </mat-error>
-                  <mat-error *ngIf="(addCategoryForm.get('openTime').value.toString().length>0) && addCategoryForm.get('openTime').value ==  addCategoryForm.get('closeTime').value">
+                  <mat-error *ngIf="(startTime>0) && addCategoryForm.get('openTime').value ==  addCategoryForm.get('closeTime').value">
                     *Opening time & closing time can't be same.
                   </mat-error>
-                  <mat-error *ngIf="addCategoryForm.get('openTime').value >  addCategoryForm.get('closeTime').value  && (addCategoryForm.get('closeTime').value.toString().length>0)">
+                  <mat-error *ngIf="addCategoryForm.get('openTime').value >  addCategoryForm.get('closeTime').value  && (endTime>0)">
                     *Closing time should be greater than opening time.
                   </mat-error>
                 </div>

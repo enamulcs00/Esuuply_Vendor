@@ -27339,10 +27339,8 @@ function FoodCategoriesComponent_ng_template_7_ul_4_li_1_ng_template_5_Template(
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", item_r21 == null ? null : item_r21.subCategories);
 } }
 function FoodCategoriesComponent_ng_template_7_ul_4_li_1_Template(rf, ctx) { if (rf & 1) {
-    const _r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "ngb-accordion", 23, 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("panelChange", function FoodCategoriesComponent_ng_template_7_ul_4_li_1_Template_ngb_accordion_panelChange_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r44); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3); return ctx_r43.beforeChange($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "ngb-panel", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, FoodCategoriesComponent_ng_template_7_ul_4_li_1_ng_template_4_Template, 22, 8, "ng-template", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, FoodCategoriesComponent_ng_template_7_ul_4_li_1_ng_template_5_Template, 16, 1, "ng-template", 27);
@@ -27357,9 +27355,9 @@ function FoodCategoriesComponent_ng_template_7_ul_4_li_1_Template(rf, ctx) { if 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("id", "ngb-panel-", i_r22, "");
 } }
 function FoodCategoriesComponent_ng_template_7_ul_4_Template(rf, ctx) { if (rf & 1) {
-    const _r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ul", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("cdkDropListDropped", function FoodCategoriesComponent_ng_template_7_ul_4_Template_ul_cdkDropListDropped_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r46); const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r45.orientationDrop($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("cdkDropListDropped", function FoodCategoriesComponent_ng_template_7_ul_4_Template_ul_cdkDropListDropped_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r44); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r43.orientationDrop($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, FoodCategoriesComponent_ng_template_7_ul_4_li_1_Template, 6, 2, "li", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -27368,11 +27366,11 @@ function FoodCategoriesComponent_ng_template_7_ul_4_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r19.categories);
 } }
 function FoodCategoriesComponent_ng_template_7_Template(rf, ctx) { if (rf & 1) {
-    const _r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_7_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](24); return ctx_r47.addCategoryModel(_r13); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_7_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r46); const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](24); return ctx_r45.addCategoryModel(_r13); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Add Category");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27381,14 +27379,14 @@ function FoodCategoriesComponent_ng_template_7_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.horizontalOrientation.length > 0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.count);
 } }
 function FoodCategoriesComponent_ng_template_11_Template(rf, ctx) { if (rf & 1) {
-    const _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r49.addCategoryModel(_r17); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r47.addCategoryModel(_r17); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Add Cusinine");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27422,11 +27420,11 @@ function FoodCategoriesComponent_ng_template_11_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "a", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_24_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r51.addCategoryModel(_r17); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_24_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r49.addCategoryModel(_r17); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "i", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "a", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_26_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](16); return ctx_r52.deleteBoxModal(_r5); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_26_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](16); return ctx_r50.deleteBoxModal(_r5); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "i", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27443,11 +27441,11 @@ function FoodCategoriesComponent_ng_template_11_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "a", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_36_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r53.addCategoryModel(_r17); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_36_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r51.addCategoryModel(_r17); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "i", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "a", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_38_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](16); return ctx_r54.deleteBoxModal(_r5); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_38_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](16); return ctx_r52.deleteBoxModal(_r5); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "i", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27464,11 +27462,11 @@ function FoodCategoriesComponent_ng_template_11_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "a", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_48_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r55.addCategoryModel(_r17); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_48_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](28); return ctx_r53.addCategoryModel(_r17); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "i", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "a", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_50_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](16); return ctx_r56.deleteBoxModal(_r5); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_11_Template_a_click_50_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r48); const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](16); return ctx_r54.deleteBoxModal(_r5); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](51, "i", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27493,7 +27491,7 @@ function FoodCategoriesComponent_ng_template_13_mat_error_26_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FoodCategoriesComponent_ng_template_13_Template(rf, ctx) { if (rf & 1) {
-    const _r63 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r61 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 60);
@@ -27507,7 +27505,7 @@ function FoodCategoriesComponent_ng_template_13_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Name");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 66, 67);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_13_Template_input_keydown_space_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63); const _r58 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r62.doSomething($event, _r58.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_13_Template_input_keydown_space_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r61); const _r56 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r60 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r60.doSomething($event, _r56.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, FoodCategoriesComponent_ng_template_13_mat_error_13_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27520,7 +27518,7 @@ function FoodCategoriesComponent_ng_template_13_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "input", 71);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_13_Template_input_change_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63); const ctx_r64 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r64.onImageSelect($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_13_Template_input_change_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r61); const ctx_r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r62.onImageSelect($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "label", 72);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
@@ -27539,7 +27537,7 @@ function FoodCategoriesComponent_ng_template_13_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 75);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_13_Template_button_click_29_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63); const ctx_r65 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r65.AddSub(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_13_Template_button_click_29_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r61); const ctx_r63 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r63.AddSub(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "i", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Add ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27563,36 +27561,36 @@ function FoodCategoriesComponent_ng_template_13_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r4.imageSizeError);
 } }
 function FoodCategoriesComponent_ng_template_15_Template(rf, ctx) { if (rf & 1) {
-    const _r68 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r66 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Are you sure you want to delete this category?");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 79);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_15_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r68); const ctx_r67 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r67.deleteCategory(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_15_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r66); const ctx_r65 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r65.deleteCategory(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_15_Template_button_click_6_listener() { const modal_r66 = ctx.$implicit; return modal_r66.dismiss("Cross click"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_15_Template_button_click_6_listener() { const modal_r64 = ctx.$implicit; return modal_r64.dismiss("Cross click"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FoodCategoriesComponent_ng_template_17_Template(rf, ctx) { if (rf & 1) {
-    const _r72 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r70 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Are you sure you want to delete?");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 79);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_17_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r72); const ctx_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r71.deleteSubCategory(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_17_Template_button_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r70); const ctx_r69 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r69.deleteSubCategory(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_17_Template_button_click_6_listener() { const modal_r70 = ctx.$implicit; return modal_r70.dismiss("Cross click"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_17_Template_button_click_6_listener() { const modal_r68 = ctx.$implicit; return modal_r68.dismiss("Cross click"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27614,7 +27612,7 @@ function FoodCategoriesComponent_ng_template_19_mat_error_26_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FoodCategoriesComponent_ng_template_19_Template(rf, ctx) { if (rf & 1) {
-    const _r80 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r78 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 60);
@@ -27628,7 +27626,7 @@ function FoodCategoriesComponent_ng_template_19_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Name");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 66, 67);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_19_Template_input_keydown_space_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r80); const _r75 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r79 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r79.doSomething($event, _r75.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_19_Template_input_keydown_space_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r78); const _r73 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r77 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r77.doSomething($event, _r73.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, FoodCategoriesComponent_ng_template_19_mat_error_13_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27641,7 +27639,7 @@ function FoodCategoriesComponent_ng_template_19_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "input", 71);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_19_Template_input_change_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r80); const ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r81.onImageSelect($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_19_Template_input_change_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r78); const ctx_r79 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r79.onImageSelect($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "label", 72);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
@@ -27660,7 +27658,7 @@ function FoodCategoriesComponent_ng_template_19_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 75);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_19_Template_button_click_29_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r80); const ctx_r82 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r82.UpdateSub(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_19_Template_button_click_29_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r78); const ctx_r80 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r80.UpdateSub(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "i", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Update ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27721,12 +27719,12 @@ function FoodCategoriesComponent_ng_template_21_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 75);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_21_Template_button_click_24_listener() { const modal_r83 = ctx.$implicit; return modal_r83.dismiss("Cross click"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_21_Template_button_click_24_listener() { const modal_r81 = ctx.$implicit; return modal_r81.dismiss("Cross click"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "i", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, " Update");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 85);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_21_Template_button_click_27_listener() { const modal_r83 = ctx.$implicit; return modal_r83.dismiss("Cross click"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_21_Template_button_click_27_listener() { const modal_r81 = ctx.$implicit; return modal_r81.dismiss("Cross click"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Cancel");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27782,7 +27780,7 @@ function FoodCategoriesComponent_ng_template_23_mat_error_58_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) {
-    const _r99 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r97 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 60);
@@ -27796,7 +27794,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Categories");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 66, 67);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_23_Template_input_keydown_space_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r99); const _r87 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r98 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r98.doSomething($event, _r87.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_23_Template_input_keydown_space_11_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const _r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r96.doSomething($event, _r85.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, FoodCategoriesComponent_ng_template_23_mat_error_13_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27809,7 +27807,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "input", 86);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_23_Template_input_change_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r99); const ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r100.onImageSelect($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_23_Template_input_change_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const ctx_r98 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r98.onImageSelect($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "label", 72);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
@@ -27828,7 +27826,9 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Opening Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_23_Template_input_change_31_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const ctx_r99 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r99.IsSelectedTime($event, "start"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, FoodCategoriesComponent_ng_template_23_mat_error_32_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27837,7 +27837,9 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Closing Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_23_Template_input_change_37_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r100.IsSelectedTime($event, "end"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, FoodCategoriesComponent_ng_template_23_mat_error_38_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, FoodCategoriesComponent_ng_template_23_mat_error_39_Template, 2, 0, "mat-error", 74);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, FoodCategoriesComponent_ng_template_23_mat_error_40_Template, 2, 0, "mat-error", 74);
@@ -27866,7 +27868,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "textarea", 95, 96);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_23_Template_textarea_keydown_space_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r99); const _r96 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](57); const ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r101.doSomething($event, _r96.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_23_Template_textarea_keydown_space_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const _r94 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](57); const ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r101.doSomething($event, _r94.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](58, FoodCategoriesComponent_ng_template_23_mat_error_58_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27877,7 +27879,7 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 75);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "button", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_23_Template_button_click_61_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r99); const ctx_r102 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r102.Add(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_23_Template_button_click_61_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r97); const ctx_r102 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r102.Add(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](62, "i", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](63, " Save ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27904,9 +27906,9 @@ function FoodCategoriesComponent_ng_template_23_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.submitted && ctx_r14.addCategoryForm.controls["closeTime"].invalid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.addCategoryForm.get("openTime").value.toString().length > 0 && ctx_r14.addCategoryForm.get("openTime").value == ctx_r14.addCategoryForm.get("closeTime").value);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.startTime > 0 && ctx_r14.addCategoryForm.get("openTime").value == ctx_r14.addCategoryForm.get("closeTime").value);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.addCategoryForm.get("openTime").value > ctx_r14.addCategoryForm.get("closeTime").value && ctx_r14.addCategoryForm.get("closeTime").value.toString().length > 0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.addCategoryForm.get("openTime").value > ctx_r14.addCategoryForm.get("closeTime").value && ctx_r14.endTime > 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r14.submitted && ctx_r14.addCategoryForm.controls["taxPercentage"].invalid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
@@ -28004,7 +28006,9 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Opening Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_25_Template_input_change_31_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const ctx_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r118.IsSelectedTime($event, "start"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, FoodCategoriesComponent_ng_template_25_mat_error_32_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -28013,7 +28017,9 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Closing Time");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FoodCategoriesComponent_ng_template_25_Template_input_change_37_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r119.IsSelectedTime($event, "end"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, FoodCategoriesComponent_ng_template_25_mat_error_38_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, FoodCategoriesComponent_ng_template_25_mat_error_39_Template, 2, 0, "mat-error", 74);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, FoodCategoriesComponent_ng_template_25_mat_error_40_Template, 2, 0, "mat-error", 74);
@@ -28042,7 +28048,7 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "textarea", 95, 96);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_25_Template_textarea_keydown_space_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const _r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](57); const ctx_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r118.doSomething($event, _r113.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown.space", function FoodCategoriesComponent_ng_template_25_Template_textarea_keydown_space_56_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const _r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](57); const ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r120.doSomething($event, _r113.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](58, FoodCategoriesComponent_ng_template_25_mat_error_58_Template, 2, 0, "mat-error", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -28053,7 +28059,7 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 75);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "button", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_25_Template_button_click_61_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r119.Update(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_25_Template_button_click_61_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r116); const ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r121.Update(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](62, "i", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](63, " Update ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -28080,9 +28086,9 @@ function FoodCategoriesComponent_ng_template_25_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.submitted && ctx_r16.addCategoryForm.controls["closeTime"].invalid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.addCategoryForm.get("openTime").value.toString().length > 0 && ctx_r16.addCategoryForm.get("openTime").value == ctx_r16.addCategoryForm.get("closeTime").value);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.startTime > 0 && ctx_r16.addCategoryForm.get("openTime").value == ctx_r16.addCategoryForm.get("closeTime").value);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.addCategoryForm.get("openTime").value > ctx_r16.addCategoryForm.get("closeTime").value && ctx_r16.addCategoryForm.get("closeTime").value.toString().length > 0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.addCategoryForm.get("openTime").value > ctx_r16.addCategoryForm.get("closeTime").value && ctx_r16.endTime > 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r16.submitted && ctx_r16.addCategoryForm.controls["taxPercentage"].invalid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
@@ -28128,7 +28134,7 @@ function FoodCategoriesComponent_ng_template_27_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "button", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_27_Template_button_click_26_listener() { const modal_r120 = ctx.$implicit; return modal_r120.dismiss("Cross click"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FoodCategoriesComponent_ng_template_27_Template_button_click_26_listener() { const modal_r122 = ctx.$implicit; return modal_r122.dismiss("Cross click"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "i", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, " Add");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -28222,6 +28228,9 @@ class FoodCategoriesComponent {
         this.addCategoryForm.get('taxPercentage').setValue(obj.taxPercentage);
         this.addCategoryForm.get('openTime').setValue(obj.openTime);
         this.addCategoryForm.get('closeTime').setValue(obj.closeTime);
+        this.startTime = obj.openTime.split(':')[0] * 60 + obj.openTime.split(':')[1];
+        this.endTime = obj.closeTime.split(':')[0] * 60 + obj.closeTime.split(':')[1];
+        console.log('Update Time Zone', this.startTime, this.endTime);
         this.modalService.open(EditCategory, { backdropClass: 'light-blue-backdrop', centered: true, size: 'lg' });
     }
     UpdateSub() {
@@ -28278,7 +28287,25 @@ class FoodCategoriesComponent {
         Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__["moveItemInArray"])(this.movies, event.previousIndex, event.currentIndex);
     }
     orientationDrop(event) {
-        Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__["moveItemInArray"])(this.horizontalOrientation, event.previousIndex, event.currentIndex);
+        let url = `admin/categoriesIndexing`;
+        console.log('Drag', event);
+        const selectedCategory = this.categories[event === null || event === void 0 ? void 0 : event.previousIndex];
+        const categoryId = selectedCategory === null || selectedCategory === void 0 ? void 0 : selectedCategory._id;
+        Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__["moveItemInArray"])(this.categories, event.previousIndex, event.currentIndex);
+        const body = {
+            id: categoryId,
+            index: event.currentIndex + 1,
+        };
+        this.service.putApi(url, body).subscribe((data) => {
+            console.log('Dragged', data);
+            if (data.statusCode == 200) {
+                this.toaster.success("Category position updated");
+                this.getCategories();
+            }
+            else {
+                this.toaster.error("Failed to update Position");
+            }
+        });
     }
     onDrop(event) {
         if (event.previousContainer === event.container) {
@@ -28291,7 +28318,7 @@ class FoodCategoriesComponent {
     Update() {
         this.submitted = true;
         let url = `admin/categories/${this.deleteId}`;
-        if (this.addCategoryForm.valid) {
+        if (this.addCategoryForm.valid && (this.startTime < this.endTime && this.startTime != this.endTime)) {
             const body = {
                 name: this.addCategoryForm.controls["name"].value,
                 description: this.addCategoryForm.controls["description"].value,
@@ -28315,14 +28342,23 @@ class FoodCategoriesComponent {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Failed', error.error.message, 'error');
             });
         }
-        else if (this.addCategoryForm.invalid) {
+        else if (this.addCategoryForm.invalid || (this.startTime >= this.endTime)) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Invalid Form', 'Please fill all field correctly', 'error');
         }
     }
+    IsSelectedTime(e, ref) {
+        if (ref == 'start') {
+            this.startTime = e.target.value.split(":")[0] * 60 + e.target.value.split(":")[1];
+        }
+        else if (ref == 'end') {
+            this.endTime = e.target.value.split(":")[0] * 60 + e.target.value.split(":")[1];
+        }
+    }
     Add() {
+        console.log("Add Called");
         this.submitted = true;
         let url = `admin/categories`;
-        if (this.addCategoryForm.valid) {
+        if ((this.addCategoryForm.valid) && (this.startTime < this.endTime && this.startTime != this.endTime)) {
             const body = {
                 name: this.addCategoryForm.controls["name"].value,
                 description: this.addCategoryForm.controls["description"].value,
@@ -28346,7 +28382,7 @@ class FoodCategoriesComponent {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Failed', error.error.message, 'error');
             });
         }
-        else if (this.addCategoryForm.invalid) {
+        else if (this.addCategoryForm.invalid || (this.startTime >= this.endTime)) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Invalid Form', 'Please fill all field correctly', 'error');
         }
     }
@@ -28404,7 +28440,7 @@ class FoodCategoriesComponent {
                 this.categories = res.data.results;
                 this.subCategory = res.data.results.subCategories;
                 this.image = res.data.results.image;
-                //this.count = res.data.itemCount;
+                this.count = res.data.itemCount;
             }
             else {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Error', res.message, 'error');
@@ -28471,18 +28507,9 @@ class FoodCategoriesComponent {
             this.imageSizeError = true;
         }
     }
-    beforeChange($event) {
-        console.log('Acc Evnt', $event);
-        if ($event.panelId === 'preventchange-2') {
-            $event.preventDefault();
-        }
-        if ($event.panelId === 'preventchange-3' && $event.nextState === false) {
-            $event.preventDefault();
-        }
-    }
 }
 FoodCategoriesComponent.ɵfac = function FoodCategoriesComponent_Factory(t) { return new (t || FoodCategoriesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbModal"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_authentication_shared_service__WEBPACK_IMPORTED_MODULE_4__["SharedService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"])); };
-FoodCategoriesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FoodCategoriesComponent, selectors: [["app-food-categories"]], decls: 29, vars: 4, consts: [[1, "card"], [1, "card-body"], ["ngbNav", "", 1, "nav-tabs", 3, "activeId", "activeIdChange"], ["nav", "ngbNav"], [3, "ngbNavItem"], ["ngbNavLink", ""], ["ngbNavContent", ""], [1, "mt-2", 3, "ngbNavOutlet"], ["addsubCategory", ""], ["deleteBox", ""], ["deleteSub", ""], ["editModel", ""], ["addsudsbCategory", ""], ["addCategory", ""], ["EditCategory", ""], ["cusinine", ""], [1, "row"], [1, "col-md-12", "text-right"], [1, "btn", "btn-primary", "mb-2", 3, "click"], ["class", "list-group list-group-horizontal-lg pl-0 mt-4", "cdkDropList", "", "cdkDropListOrientation", "vertical", 3, "cdkDropListDropped", 4, "ngIf"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "list-group", "list-group-horizontal-lg", "pl-0", "mt-4", 3, "cdkDropListDropped"], ["class", "list-group-item cursor-pointer ", "cdkDrag", "", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "list-group-item", "cursor-pointer"], [1, "", 3, "closeOthers", "panelChange"], ["acc", "ngbAccordion"], [1, "mb-2", 3, "id"], ["ngbPanelHeader", ""], ["ngbPanelContent", ""], [1, "row", "box-tab"], [1, "col-md-2"], [1, "mb-0"], ["width", "100px", "alt", "", 1, "mr-2", 3, "src"], [1, "d-block", "mt-2"], [1, "col-md-5", "text-left"], [1, "col-md-1"], [1, "col-md-3"], [1, "delete-categories"], [1, "btn", "btn-primary", "mr-2", 3, "click"], [1, "ti-marker-alt"], [1, "btn", "btn-danger", 3, "click"], [1, "ti-trash"], [1, "col-md-1", "p-4"], ["ngbPanelToggle", "", 1, "btn", "btn-link", "p-0"], [1, "sl-icon-arrow-down"], [1, "table", "v-middle", "product-overview"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "table", 3, "cdkDropListDropped"], ["class", "bg-white", "cdkDrag", "", 4, "ngFor", "ngForOf"], [1, ""], [1, "sl-icon-plus"], ["cdkDrag", "", 1, "bg-white"], [1, "img-small"], ["width", "60", 1, "rounded", 3, "src"], ["href", "javascript:void()", 1, "mr-2", 3, "click"], ["href", "javascript:void()", 3, "click"], [1, "table-reponsive"], [1, "table"], ["src", "assets/images/food/1.jpg", "alt", "", "width", "60px"], [1, "mdi", "mdi-lead-pencil"], ["href", "javascript:void();", 3, "click"], [1, "modal-body"], [3, "formGroup"], [1, "form-body"], [1, "row", "p-t-20"], [1, "col-md-6"], [1, "form-group"], [1, "control-label"], ["type", "text", "formControlName", "name", 1, "form-control", 3, "keydown.space"], ["ref", ""], ["class", "text-danger d-inline-block pt-1", 4, "ngIf"], [1, "form-group", "has-success"], [1, "custom-file"], ["name", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["for", "inputGroupFile01", 1, "custom-file-label"], [1, "constraints-info", "afu-constraints-info"], [4, "ngIf"], [1, "form-actions"], ["type", "submit", 1, "btn", "btn-success", "mr-3", 3, "click"], [1, "fa", "fa-check"], [1, "text-danger", "d-inline-block", "pt-1"], [1, "btn-group"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-primary", "mr-2", 3, "click"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-seconadary", 3, "click"], ["action", "#"], ["type", "text", "id", "firstName", "placeholder", "John doe", 1, "form-control"], ["id", "inputGroupFile01", "type", "file", 1, "custom-file-input"], ["type", "button", 1, "btn", "btn-dark", 3, "click"], ["formControlName", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["formControlName", "openTime", "type", "time", 1, "form-control"], ["formControlName", "closeTime", "type", "time", 1, "form-control"], [1, "col-md-12"], [1, "input-group"], [1, "input-group-prepend", "w-100"], ["id", "basic-addon1", 1, "input-group-text"], [1, "fas", "fa-percent"], ["formControlName", "taxPercentage", "min", "0", "onKeyPress", "if(this.value.length==2) return false;", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["formControlName", "description", "name", "", "id", "", "cols", "30", "rows", "5", 1, "form-control", 3, "keydown.space"], ["ref1", ""], ["formControlName", "taxPercentage", "onKeyPress", "if(this.value.length==2) return false;", "min", "0", "maxlength", "2", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["action", ""], ["type", "text", "placeholder", "Add Name", 1, "form-control"], ["type", "text", "placeholder", "Description", 1, "form-control"]], template: function FoodCategoriesComponent_Template(rf, ctx) { if (rf & 1) {
+FoodCategoriesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FoodCategoriesComponent, selectors: [["app-food-categories"]], decls: 29, vars: 4, consts: [[1, "card"], [1, "card-body"], ["ngbNav", "", 1, "nav-tabs", 3, "activeId", "activeIdChange"], ["nav", "ngbNav"], [3, "ngbNavItem"], ["ngbNavLink", ""], ["ngbNavContent", ""], [1, "mt-2", 3, "ngbNavOutlet"], ["addsubCategory", ""], ["deleteBox", ""], ["deleteSub", ""], ["editModel", ""], ["addsudsbCategory", ""], ["addCategory", ""], ["EditCategory", ""], ["cusinine", ""], [1, "row"], [1, "col-md-12", "text-right"], [1, "btn", "btn-primary", "mb-2", 3, "click"], ["class", "list-group list-group-horizontal-lg pl-0 mt-4", "cdkDropList", "", "cdkDropListOrientation", "vertical", 3, "cdkDropListDropped", 4, "ngIf"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "list-group", "list-group-horizontal-lg", "pl-0", "mt-4", 3, "cdkDropListDropped"], ["class", "list-group-item cursor-pointer ", "cdkDrag", "", 4, "ngFor", "ngForOf"], ["cdkDrag", "", 1, "list-group-item", "cursor-pointer"], ["activeIds", "config-panel-one", 1, "", 3, "closeOthers"], ["acc", "ngbAccordion"], [1, "mb-2", 3, "id"], ["ngbPanelHeader", ""], ["ngbPanelContent", ""], [1, "row", "box-tab"], [1, "col-md-2"], [1, "mb-0"], ["width", "100px", "alt", "", 1, "mr-2", 3, "src"], [1, "d-block", "mt-2"], [1, "col-md-5", "text-left"], [1, "col-md-1"], [1, "col-md-3"], [1, "delete-categories"], [1, "btn", "btn-primary", "mr-2", 3, "click"], [1, "ti-marker-alt"], [1, "btn", "btn-danger", 3, "click"], [1, "ti-trash"], [1, "col-md-1", "p-4"], ["ngbPanelToggle", "", 1, "btn", "btn-link", "p-0"], [1, "sl-icon-arrow-down"], [1, "table", "v-middle", "product-overview"], ["cdkDropList", "", "cdkDropListOrientation", "vertical", 1, "table", 3, "cdkDropListDropped"], ["class", "bg-white", "cdkDrag", "", 4, "ngFor", "ngForOf"], [1, ""], [1, "sl-icon-plus"], ["cdkDrag", "", 1, "bg-white"], [1, "img-small"], ["width", "60", 1, "rounded", 3, "src"], ["href", "javascript:void()", 1, "mr-2", 3, "click"], ["href", "javascript:void()", 3, "click"], [1, "table-reponsive"], [1, "table"], ["src", "assets/images/food/1.jpg", "alt", "", "width", "60px"], [1, "mdi", "mdi-lead-pencil"], ["href", "javascript:void();", 3, "click"], [1, "modal-body"], [3, "formGroup"], [1, "form-body"], [1, "row", "p-t-20"], [1, "col-md-6"], [1, "form-group"], [1, "control-label"], ["type", "text", "formControlName", "name", 1, "form-control", 3, "keydown.space"], ["ref", ""], ["class", "text-danger d-inline-block pt-1", 4, "ngIf"], [1, "form-group", "has-success"], [1, "custom-file"], ["name", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["for", "inputGroupFile01", 1, "custom-file-label"], [1, "constraints-info", "afu-constraints-info"], [4, "ngIf"], [1, "form-actions"], ["type", "submit", 1, "btn", "btn-success", "mr-3", 3, "click"], [1, "fa", "fa-check"], [1, "text-danger", "d-inline-block", "pt-1"], [1, "btn-group"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-primary", "mr-2", 3, "click"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-seconadary", 3, "click"], ["action", "#"], ["type", "text", "id", "firstName", "placeholder", "John doe", 1, "form-control"], ["id", "inputGroupFile01", "type", "file", 1, "custom-file-input"], ["type", "button", 1, "btn", "btn-dark", 3, "click"], ["formControlName", "image", "id", "inputGroupFile01", "type", "file", 1, "custom-file-input", 3, "change"], ["formControlName", "openTime", "type", "time", 1, "form-control", 3, "change"], ["formControlName", "closeTime", "type", "time", 1, "form-control", 3, "change"], [1, "col-md-12"], [1, "input-group"], [1, "input-group-prepend", "w-100"], ["id", "basic-addon1", 1, "input-group-text"], [1, "fas", "fa-percent"], ["formControlName", "taxPercentage", "min", "0", "onKeyPress", "if(this.value.length==2) return false;", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["formControlName", "description", "name", "", "id", "", "cols", "30", "rows", "5", 1, "form-control", 3, "keydown.space"], ["ref1", ""], ["formControlName", "taxPercentage", "onKeyPress", "if(this.value.length==2) return false;", "min", "0", "maxlength", "2", "type", "number", "placeholder", "add tax ", 1, "form-control"], ["action", ""], ["type", "text", "placeholder", "Add Name", 1, "form-control"], ["type", "text", "placeholder", "Description", 1, "form-control"]], template: function FoodCategoriesComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 2, 3);
