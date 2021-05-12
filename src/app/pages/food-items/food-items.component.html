@@ -45,7 +45,7 @@
         </div>
         <div class="col-md-2 text-right">
           <div class="delete-categories">
-            <span class="btn btn-primary mr-2" (click)="editBoxModal(editModel,item?._id)"><i class="ti-marker-alt"></i> </span>
+            <span class="btn btn-primary mr-2" (click)="editBoxModal(editModel,item)"><i class="ti-marker-alt"></i> </span>
             <span class="btn btn-danger" (click)="deleteBoxModal(deleteBox,item?._id)"><i class="ti-trash"></i> </span>
           </div>
         </div>
@@ -189,9 +189,10 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Sub Category</label>
-                  <mat-form-field class="w-100" [disabled]="Iscategory" [title]="(Iscategory==false)?'Choose category name first':''">
+                  <mat-form-field class="w-100" >
                     <mat-label>Sub Category</mat-label>
                     <mat-select formControlName="subCategories" multiple (selectionChange)="subCatChange($event.value)">
+                      <mat-option *ngIf="Isempty" disabled value='' selected>Sub category not found</mat-option>
                       <mat-option *ngFor="let topping of subCategoryList" [value]="topping?._id">{{topping?.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -391,6 +392,7 @@
                   <mat-form-field class="w-100" [disabled]="Iscategory" [title]="(Iscategory==false)?'Choose category name first':''">
                     <mat-label>Sub Category</mat-label>
                     <mat-select formControlName="subCategories" multiple (selectionChange)="subCatChange($event.value)">
+                      <mat-option *ngIf="Isempty" disabled value='' selected>Sub category not found</mat-option>
                       <mat-option *ngFor="let topping of subCategoryList" [value]="topping?._id">{{topping?.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>

@@ -29,6 +29,7 @@ export class FoodItemsComponent implements OnInit {
   Iscategory:boolean = false
   files: any;
   totalItems: any;
+  Isempty:boolean = false
   pageNumber: number=1;
   itemPerpage: number=10;
   deleteId: any;
@@ -62,11 +63,13 @@ export class FoodItemsComponent implements OnInit {
   addUserModal(addUser) {
     this.modalService.open(addUser, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
-  editBoxModal(editModel,id) {
-    this.getsubCategory(id)
-    this.updateId = id
+  editBoxModal(editModel,obj) {
+    console.log(obj);
+    this.Isempty = false
+    this.getsubCategory(obj.categoryId._id)
+    this.updateId = obj._id
     this.submitted = false
-    this.SetForm(id)
+    this.SetForm(obj._id)
     this.spinner.show()
     setTimeout(() => {
       this.spinner.show()
@@ -168,11 +171,18 @@ this.getFoodItem()
     }) 
   }
   getsubCategory(id){
+    console.log('Get sub Called for this id',id);
+    
     this.spinner.show()
     let url= `admin/allSubCategories/${id}`
     this.service.getApi(url).subscribe((res:any)=>{
       if(res.statusCode==200){
         this.subCategoryList = res.data.results
+        if(res.data.results.length==0){
+          this.Isempty = true
+        }else{
+          this.Isempty = false
+        }
         this.spinner.hide()
       }else{
         this.spinner.hide()
@@ -248,7 +258,7 @@ this.getFoodItem()
       "stockQuantity": this.addForm.value.stockQuantity,
       "price": this.addForm.value.price,
       "taxValue": this.addForm.value.tax,
-      "deliveryCharges": this.addForm.value.deliveryCharges,
+     // "deliveryCharges": this.addForm.value.deliveryCharges,
       "minimumStockQuantity": this.addForm.value.minimumStockQuantity,
       "maximumStockQuantity": this.addForm.value.maximumStockQuantity,
       "description":this.addForm.value.description
@@ -282,7 +292,6 @@ this.getFoodItem()
       if(res.statusCode==200){
         this.files = res.data.image
         this.fileName = res.data.image.split('/').pop()
-         
          let geoFenceArray=[]
        for(var id of res.data.subCategories){
          geoFenceArray.push(id._id)
@@ -294,7 +303,7 @@ this.getFoodItem()
          this.addForm.get('stockQuantity').setValue(res.data.stockQuantity)
          this.addForm.get('price').setValue(res.data.price)
          this.addForm.get('tax').setValue(res.data.taxValue)
-         this.addForm.get('deliveryCharges').setValue(res.data.deliveryCharges)
+        // this.addForm.get('deliveryCharges').setValue(res.data.deliveryCharges)
          this.addForm.get('minimumStockQuantity').setValue(res.data.minimumStockQuantity)
          this.addForm.get('maximumStockQuantity').setValue(res.data.maximumStockQuantity)
          this.addForm.get('description').setValue(res.data.description)
@@ -321,7 +330,7 @@ this.getFoodItem()
         "stockQuantity": this.addForm.value.stockQuantity,
         "price": this.addForm.value.price,
         "taxValue": this.addForm.value.tax,
-        "deliveryCharges": this.addForm.value.deliveryCharges,
+     //   "deliveryCharges": this.addForm.value.deliveryCharges,
         "minimumStockQuantity": this.addForm.value.minimumStockQuantity,
         "maximumStockQuantity": this.addForm.value.maximumStockQuantity,
         "description":this.addForm.value.description
