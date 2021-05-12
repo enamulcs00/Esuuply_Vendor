@@ -19,6 +19,8 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
   role: any;
   countrycode: any;
   phonecode: any;
+  startTime:number;
+  endTime:number;
   countryCode: any;
   submitted:boolean = false
   lat:any = 40.7127753;
@@ -33,7 +35,11 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
   files: any;
   ProfilePic:any;
   address:any='Mohali, Punjab, India'
+  minAge: any = 18;
     constructor(private router:Router,private spinner:NgxSpinnerService,private act:ActivatedRoute,public service:SharedService,private fb:FormBuilder) { 
+      var today = new Date();
+      this.minAge = new Date(today.getFullYear() - this.minAge, today.getMonth(), today.getDate());
+     
       this.service.getJson().subscribe((res:any)=>
       {
         this.countrycode = res.countryArray
@@ -63,12 +69,15 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
         resturant:['',[Validators.required]],
         dob:['',Validators.required],
         zip:['',[Validators.required,Validators.pattern(/^([0-9])*$/),Validators.minLength(4),Validators.maxLength(7)]],
-        image:[''],
+        image:['',Validators.required],
         address:['',Validators.required],
         city:['',Validators.required],
         isDelivery:['',Validators.required],
+        // openTime:['',Validators.required],
+        // closeTime:['',Validators.required],
         resturantType:['',Validators.required]
       })
+      var regx = /^(\w+)( \w+)*$/;
       this.formForShop = this.fb.group({
         email:['',[Validators.required,Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/)]],
         firstName:['',[Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]],
@@ -77,14 +86,25 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
         dob:['',Validators.required],
         phone:['',Validators.compose([Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$')
         ,Validators.maxLength(15),Validators.minLength(7)])],
-        location:['',Validators.required],
-        address:['',Validators.required],
+        location:['',[Validators.required,Validators.pattern(regx)]],
+        address:['',[Validators.required]],
+        // openTime:['',Validators.required],
+        // closeTime:['',Validators.required],
+        image:['',Validators.required],
       
       })
       
     }
     public errorHandling = (control: string, error: string) => {
       return this.profileForm.controls[control].hasError(error);
+    }
+    IsSelectedTime(e,ref){
+      if(ref=='start'){
+        this.startTime = e.target.value.split(":")[0]*60 + e.target.value.split(":")[1]
+      }else if(ref=='end'){
+        this.endTime = e.target.value.split(":")[0]*60 + e.target.value.split(":")[1]
+      }
+      
     }
     updateFranchaise(){
       this.submitted = true
@@ -93,7 +113,8 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
    let obj =   {
     "city": this.profileForm.value.city,
     "email":this.profileForm.value.email,
-  
+  // "openTime":this.profileForm.value.openTime,
+  // "closeTime":this.profileForm.value.closeTime,
     "firstName": this.profileForm.value.firstName,
     "lastName": this.profileForm.value.lastName,
     "birthDate": this.profileForm.value.dob,
@@ -127,7 +148,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
       })
     }else if(this.profileForm.invalid){
       this.spinner.hide()
-      Swal.fire('Oops','Please fill all field correctly','error')
+     // Swal.fire('Oops','Please fill all field correctly','error')
     }
     }
 
@@ -167,6 +188,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
           this.sendFile(fileData)
            var reader = new FileReader()
            this.profileForm.get('image').setValue(fileData)
+           this.formForShop.get('image').setValue(fileData)
         } else {
           
         }
@@ -268,7 +290,8 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
    let obj =   {
         
         "email":this.formForShop.value.email,
-        
+  //       "openTime":this.formForShop.value.openTime,
+  // "closeTime":this.formForShop.value.closeTime,
         "firstName": this.formForShop.value.firstName,
         "lastName": this.formForShop.value.lastName,
         "birthDate": this.formForShop.value.dob,
@@ -303,7 +326,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
       })
     }else if(this.formForShop.invalid){
       this.spinner.hide()
-      Swal.fire('Oops','Please fill all field correctly','error')
+     // Swal.fire('Oops','Please fill all field correctly','error')
     }
     
     }

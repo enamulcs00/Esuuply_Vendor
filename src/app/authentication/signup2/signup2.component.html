@@ -16,7 +16,7 @@
                                 <div class=" row cstm_fld">
                                     <div class="col-12 ">
                                         <div class="form-group">
-                                        <input class="form-control form-control-lg" (keydown.space)="$event.preventDefault()"type="text" placeholder="First Name" formControlName="firstName">
+                                        <input class="form-control form-control-lg" maxlength="15" (keydown.space)="$event.preventDefault()"type="text" placeholder="First Name" formControlName="firstName">
                                         <p class="erroe_msg"
                 *ngIf="submitted && errorHandlingSignup('firstName', 'required')">First name is required!</p>
                 <p class="erroe_msg"
@@ -25,7 +25,7 @@
                                 </div>
                                     <div class="col-12 ">
                                         <div class="form-group">
-                                            <input class="form-control form-control-lg" type="text" placeholder="Last Name"(keydown.space)="$event.preventDefault()" formControlName="lastName">
+                                            <input class="form-control form-control-lg" maxlength="15" type="text" placeholder="Last Name"(keydown.space)="$event.preventDefault()" formControlName="lastName">
                                             <p class="erroe_msg"
                                             *ngIf="submitted && errorHandlingSignup('lastName', 'required')">Last name is required!</p>
                                             <p class="erroe_msg"
@@ -97,7 +97,7 @@
                             <form class="form-horizontal m-t-20" [formGroup]="signUpWithPhone">
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" type="text" placeholder="First Name" (keydown.space)="$event.preventDefault()"formControlName="firstName">
+                                        <input class="form-control form-control-lg" maxlength="15" type="text" placeholder="First Name" (keydown.space)="$event.preventDefault()"formControlName="firstName">
                                         <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('firstName', 'required')">First name is required!</p>
                                         <p class="erroe_msg"
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12 ">
-                                        <input class="form-control form-control-lg" formControlName="lastName"type="text" (keydown.space)="$event.preventDefault()" placeholder="Last Name">
+                                        <input class="form-control form-control-lg" maxlength="15" formControlName="lastName"type="text" (keydown.space)="$event.preventDefault()" placeholder="Last Name">
                                         <p class="erroe_msg"
                                         *ngIf="submitted && errorHandlingphone('lastName', 'required')">Last name is required!</p>
                                         <p class="erroe_msg"

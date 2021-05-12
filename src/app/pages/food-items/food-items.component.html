@@ -85,7 +85,7 @@
                   <div class="form-group">
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file"><label
-                        class="custom-file-label" for="inputGroupFile01">Choose file</label></div>
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">Choose file</label></div>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@
                   <div class="form-group">
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file"><label
-                        class="custom-file-label" for="inputGroupFile01">Choose file</label></div>
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">Choose file</label></div>
                   </div>
                 </div>
               </div>
@@ -209,6 +209,9 @@
                   <small *ngIf="submitted && errorHandling('name','required')" class="error">
                     *Food item name is required.
                   </small>
+                  <small *ngIf="errorHandling('name','pattern')" class="error">
+                    White space not allowed.
+                  </small>
                 </div>
               </div>
               <div class="col-md-6">
@@ -216,7 +219,7 @@
                   <div class="form-group">
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" name="image" id="inputGroupFile01" type="file"><label
-                        class="custom-file-label" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
                         <small *ngIf="submitted && !fileName" class="error">
                           *Food image is required.
                         </small>
@@ -300,6 +303,9 @@
                   <small *ngIf="submitted && errorHandling('description','required')" class="error">
                     *Description is required.
                   </small>
+                  <small *ngIf="errorHandling('description','pattern')" class="error">
+                    White space not allowed.
+                  </small>
                 </div>
               </div>
            
@@ -341,7 +347,7 @@
                   <div class="form-group">
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file"><label
-                        class="custom-file-label" for="inputGroupFile01">Choose file</label></div>
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">Choose file</label></div>
                   </div>
                 </div>
               </div>
@@ -409,6 +415,9 @@
                   <small *ngIf="submitted && errorHandling('name','required')" class="error">
                     *Food item name is required.
                   </small>
+                  <small *ngIf=" errorHandling('name','pattern')" class="error">
+                    White space not allowed.
+                  </small>
                 </div>
               </div>
               <div class="col-md-6">
@@ -416,7 +425,7 @@
                   <div class="form-group">
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file"><input class="custom-file-input" (change)="uploadFile($event)" formControlName="image" id="inputGroupFile01" type="file"><label
-                        class="custom-file-label" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
                         <small *ngIf="submitted && errorHandling('image','required')" class="error">
                           *Food image is required.
                         </small>
@@ -499,6 +508,9 @@
                   <textarea name="" id="" cols="30" rows="3" formControlName="description" class="form-control"></textarea>
                   <small *ngIf="submitted && errorHandling('description','required')" class="error">
                     *Description is required.
+                  </small>
+                  <small *ngIf="errorHandling('description','pattern')" class="error">
+                    White space not allowed.
                   </small>
                 </div>
               </div>

@@ -120,4 +120,12 @@ export class OrderlistComponent implements OnInit {
   mapModal(map) {
     this.modalService.open(map, {backdropClass: 'light-blue-backdrop',centered: true,size: 'md'});
   }
+  endPicker(e){
+    if(e.value){
+      console.log("END CALLED",e.value)
+    }else{
+      console.log("Null",e.value)
+    }
+  }
+  
 }

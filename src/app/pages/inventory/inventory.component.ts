@@ -40,8 +40,9 @@ export class InventoryComponent implements OnInit {
   boxDeleteModal(boxDelete) {
     this.modalService.open(boxDelete, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
-  inventoryModal(inventory,id) {
+  inventoryModal(inventory,id,obj) {
     this.Id = id
+    this.QtyForm.get('qty').setValue(obj.stockQuantity)
     this.modalService.open(inventory, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
   searchFormSubmit() {

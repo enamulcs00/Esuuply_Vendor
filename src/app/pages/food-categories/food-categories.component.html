@@ -101,6 +101,14 @@
      
           </li>      
         </ul>
+        <p *ngIf="count==0" class="ml-5">No data found</p>
+  <div class="w-100 text-right mt-2" *ngIf="count>0">
+    <mat-paginator
+  [length]="count"
+  [pageSize]="itemPerpage"
+  (page)="onPaginateChange($event)"
+></mat-paginator>
+</div>
         </ng-template>
       </li>
       <!-- <li [ngbNavItem]="2">
@@ -167,7 +175,7 @@
           </div>
         </ng-template>
       </li> -->
-      <li [ngbNavItem]="3">
+      <!-- <li [ngbNavItem]="3">
         <a ngbNavLink>Cusinine</a>
         <ng-template ngbNavContent>
           <div class="row">
@@ -229,7 +237,7 @@
             </table>
           </div>
         </ng-template>
-      </li>
+      </li> -->
     
     </ul>
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
@@ -265,7 +273,7 @@
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file">
                       <input (change)="onImageSelect($event)" name="image" class="custom-file-input"
-                        id="inputGroupFile01" type="file" /><label class="custom-file-label"
+                        id="inputGroupFile01" type="file" /><label class="custom-file-label text-nowrap text-truncate"
                         for="inputGroupFile01">{{ text }}</label>
                     </div>
                     <p class="constraints-info afu-constraints-info">
@@ -378,7 +386,7 @@
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file">
                       <input (change)="onImageSelect($event)" name="image" class="custom-file-input"
-                        id="inputGroupFile01" type="file" /><label class="custom-file-label"
+                        id="inputGroupFile01" type="file" /><label class="custom-file-label text-nowrap text-truncate"
                         for="inputGroupFile01">{{ text }}</label>
                     </div>
                     <p class="constraints-info afu-constraints-info">
@@ -460,7 +468,7 @@
                   <div class="form-group">
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file"><label
-                        class="custom-file-label" for="inputGroupFile01">Choose file</label></div>
+                        class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">Choose file</label></div>
                         <p  class="constraints-info afu-constraints-info">(.jpg,.png) Size limit- 1.00 MB</p>
                   </div>
                 </div>
@@ -522,7 +530,7 @@
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file">
                       <input (change)="onImageSelect($event)" formControlName="image" class="custom-file-input"
-                        id="inputGroupFile01" type="file" /><label class="custom-file-label"
+                        id="inputGroupFile01" type="file" /><label class="custom-file-label text-nowrap text-truncate"
                         for="inputGroupFile01">{{ text }}</label>
                     </div>
                     <p class="constraints-info afu-constraints-info">
@@ -538,7 +546,7 @@
                 </div>
               </div>
               <!--/span-->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group">
                   <label>Opening Time</label>
                   <input formControlName="openTime" type="time" class="form-control" (change)="IsSelectedTime($event,'start')"/>
@@ -563,7 +571,7 @@
                     *Closing time should be greater than opening time.
                   </mat-error>
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Tax Percentage</label>
@@ -653,7 +661,7 @@
                     <label class="control-label">Upload Food Image</label>
                     <div class="custom-file">
                       <input (change)="onImageSelect($event)" name="image" class="custom-file-input"
-                        id="inputGroupFile01" type="file" /><label class="custom-file-label"
+                        id="inputGroupFile01" type="file" /><label class="custom-file-label text-nowrap text-truncate"
                         for="inputGroupFile01">{{ text }}</label>
                     </div>
                     <p class="constraints-info afu-constraints-info">
@@ -669,7 +677,7 @@
                 </div>
               </div>
               <!--/span-->
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group">
                   <label>Opening Time</label>
                   <input formControlName="openTime" type="time" class="form-control" (change)="IsSelectedTime($event,'start')" />
@@ -694,7 +702,7 @@
                     *Closing time should be greater than opening time.
                   </mat-error>
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Tax Percentage</label>
@@ -761,7 +769,7 @@
 
                 <label class="control-label">Upload Image</label>
                 <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file"><label
-                    class="custom-file-label" for="inputGroupFile01">Choose File</label>
+                    class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">Choose File</label>
                   <!-- <div class="invalid-feedback" *ngIf=" editVendorForm.get('image').touched
                        &&editVendorForm.get('image').hasError('required')">
                    Please enter Profile Pic

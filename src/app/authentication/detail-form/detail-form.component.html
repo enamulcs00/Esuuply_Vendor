@@ -22,11 +22,11 @@
                 <div class="form-group">
                   <label class="control-label">First Name</label>
                   <input type="text" id="firstName" class="form-control" placeholder="John" formControlName="firstName">
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('firstName', 'required')">
                   First name is required!
               </p>
-              <p class="text-danger"
+              <p class="error"
                   *ngIf=" errorHandling('firstName', 'pattern')">
                   First name should alphabetic!
               </p>
@@ -37,11 +37,11 @@
                 <div class="form-group">
                   <label class="control-label">Last Name</label>
                   <input type="text" id="firstName" class="form-control" placeholder="doe" formControlName="lastName">
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('lastName', 'required')">
                   Last name is required!
               </p>
-              <p class="text-danger"
+              <p class="error"
                   *ngIf=" errorHandling('lastName', 'pattern')">
                   Last name should alphabetic!
               </p>
@@ -55,10 +55,10 @@
                     <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file" (change)="uploadFile($event)" name="image"><label
                         class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
                       </div>
-                      <!-- <p class="text-danger"
+                      <p class="error"
                       *ngIf="submitted && errorHandling('image', 'required')">
                       Vendor Profile is required!
-                  </p> -->
+                  </p>
                       </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@
                 <div class="form-group">
                   <label class="control-label">Restaurant Name</label>
                   <input type="text" id="firstName" class="form-control" placeholder="Restaurant name" formControlName="resturant">
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('resturant', 'required')">
                   Restaurant Name is required!
               </p>
@@ -80,28 +80,56 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Date of birth</label>
-                  <input type="date" id="firstName" class="form-control" placeholder="" [max]="service.getToday()" formControlName="dob">
-                  <p class="text-danger"
-                  *ngIf="submitted && errorHandling('dob', 'required')">
+                  <input type="date" id="firstName" class="form-control"  placeholder="" max="{{minAge | date:'yyyy-MM-dd'}}" formControlName="dob">
+                  <p class="error"
+                  *ngIf="submitted && (profileForm.controls['dob'].value==0)">
                   Date of birth is required!
               </p>
+            
                 </div>
               </div>
+              
               <!--/span-->
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Email</label>
                   <input type="email" id="firstName" class="form-control" placeholder="example@gmail.com" formControlName="email" >
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('email', 'required')">
                   Email is required!
               </p>
-              <p class="text-danger"
+              <p class="error"
                   *ngIf=" errorHandling('email', 'pattern')">
                   Email is not valid!
               </p>
                 </div>
               </div>
+              <!-- <div class="col-md-6">
+                <div class="form-group">
+                  <label>Opening Time</label>
+                  <input formControlName="openTime" type="time" class="form-control" (change)="IsSelectedTime($event,'start')"/>
+                  <mat-error *ngIf="submitted && profileForm.controls['openTime'].invalid"
+                    class="error d-inline-block pt-1">
+                    *Please choose opening time.
+                  </mat-error>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Closing Time</label>
+                  <input formControlName="closeTime" type="time" class="form-control" (change)="IsSelectedTime($event,'end')"/>
+                  <mat-error *ngIf="submitted && profileForm.controls['closeTime'].invalid"
+                    class="error d-inline-block pt-1">
+                    *Please choose closing time.
+                  </mat-error>
+                  <mat-error class="error" *ngIf="(startTime>0) && profileForm.get('openTime').value ==  profileForm.get('closeTime').value">
+                    *Opening time & closing time can't be same.
+                  </mat-error>
+                  <mat-error class="error" *ngIf="profileForm.get('openTime').value >  profileForm.get('closeTime').value  && (endTime>0)">
+                    *Closing time should be greater than opening time.
+                  </mat-error>
+                </div>
+              </div> -->
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Are you currently delivering right now?*</label>
@@ -110,7 +138,7 @@
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                   </select>
-                  <p class="text-danger"
+                  <p class="error"
                                       *ngIf="submitted && errorHandling('isDelivery', 'required')">
                                       This field is required!
                                   </p>
@@ -121,19 +149,19 @@
                 <div class="form-group has-danger">
                   <label class="control-label">Zip</label>
                   <input type="text" id="zip" class="form-control form-control-danger" formControlName="zip" placeholder="eg:44343">
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('zip', 'required')">
                   Zip code is required!
               </p>
-              <p class="text-danger"
+              <p class="error"
                   *ngIf=" errorHandling('zip', 'pattern')">
                   Zip code should numeric!
               </p>
-              <p class="text-danger"
+              <p class="error"
                   *ngIf=" errorHandling('zip', 'minlength')">
                   Minlength of zip code should 4!
               </p>
-              <p class="text-danger"
+              <p class="error"
                   *ngIf=" errorHandling('zip', 'maxlength')">
                   Maxlength of zip code should 7!
               </p>
@@ -144,7 +172,7 @@
                   <label class="control-label">
                     Type of restaurant</label>
                   <input type="text" id="zip" class="form-control form-control-danger" formControlName="resturantType">
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('resturantType', 'required')">
                   Type of restaurant is required!
               </p>
@@ -155,7 +183,7 @@
                 <div class="form-group has-danger">
                   <label class="control-label">City</label>
                   <input type="text" id="city" formControlName="city" class="form-control form-control-danger" placeholder="Berlin">
-                  <p class="text-danger"
+                  <p class="error"
                   *ngIf="submitted && errorHandling('city', 'required')">
                   City is required!
               </p>
@@ -167,8 +195,8 @@
                   <textarea name="" id="" cols="30" rows="5" class="form-control" #ref ngx-google-places-autocomplete #placesRef="ngx-places"
                                       (onAddressChange)="AddressChange($event,ref.value)" formControlName="address"
                                         placeholder="#433 New garden Complex"></textarea>
-                                        <p class="text-danger"
-                                        *ngIf="submitted && errorHandling('addres', 'required')">
+                                        <p class="error"
+                                        *ngIf="submitted && errorHandling('address', 'required')">
                                         Address is required!
                                     </p>
                 </div>
@@ -279,14 +307,40 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Date of birth</label>
-                  <input type="date" id="firstName" class="form-control" [max]='service.getToday()' placeholder="" formControlName="dob">
+                  <input type="date" id="firstName" class="form-control" max="{{minAge | date:'yyyy-MM-dd'}}" placeholder="" formControlName="dob">
                   <p class="error"
-                  *ngIf="submitted && errorHandlingphone('dob', 'required')">
+                  *ngIf="submitted && (formForShop.controls['dob'].value==0)">
                   Date of birth is required!
               </p>
       
                 </div>
               </div>
+              <!-- <div class="col-md-6">
+                <div class="form-group">
+                  <label>Opening Time</label>
+                  <input formControlName="openTime" type="time" class="form-control" (change)="IsSelectedTime($event,'start')"/>
+                  <p class="error"
+                  *ngIf="submitted && errorHandlingphone('openTime', 'required')">
+                  Opening time is required!
+              </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Closing Time</label>
+                  <input formControlName="closeTime" type="time" class="form-control" (change)="IsSelectedTime($event,'end')"/>
+                  <p class="error"
+                  *ngIf="submitted && errorHandlingphone('closeTime', 'required')">
+                  Closing time is required!
+              </p>
+                  <mat-error class="error" *ngIf="(startTime>0) && formForShop.get('openTime').value ==  formForShop.get('closeTime').value">
+                    *Opening time & closing time can't be same.
+                  </mat-error>
+                  <mat-error class="error" *ngIf="formForShop.get('openTime').value >  formForShop.get('closeTime').value  && (endTime>0)">
+                    *Closing time should be greater than opening time.
+                  </mat-error>
+                </div>
+              </div> -->
               <div class="col-md-12">
                 <div class="form-group has-success">
                   <div class="form-group">
@@ -294,10 +348,10 @@
                     <div class="custom-file"><input class="custom-file-input" id="inputGroupFile01" type="file" (change)="uploadFile($event)" name="image"><label
                         class="custom-file-label text-nowrap text-truncate" for="inputGroupFile01">{{fileName?fileName:'Choose file'}}</label>
                       </div>
-                      <!-- <p class="text-danger"
+                      <p class="error"
                       *ngIf="submitted && errorHandling('image', 'required')">
                       Vendor Profile is required!
-                  </p> -->
+                  </p>
                       </div>
                 </div>
               </div>
@@ -310,6 +364,10 @@
                 <p class="error"
                 *ngIf="submitted && errorHandlingphone('location', 'required')">
                 This filed is required!
+            </p>
+            <p class="error"
+                *ngIf="errorHandlingphone('location', 'pattern')">
+                White space not allowed!
             </p>
               </div>        
               <!--/span-->
@@ -324,7 +382,7 @@
                     *ngIf="submitted && errorHandlingphone('address', 'required')">
                     Address is required!
                 </p>
-        
+                
                   </div>
               </div>
               <!--/span-->

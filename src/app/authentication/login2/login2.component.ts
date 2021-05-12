@@ -372,7 +372,7 @@ onOtpChange(event)
       Swal.fire('Oops',error.message,'error')
     })
     } else if(this.form.invalid){
-      Swal.fire('Oops','Please fill all field','error')
+     // Swal.fire('Oops','Please fill all field','error')
     }
     
   }

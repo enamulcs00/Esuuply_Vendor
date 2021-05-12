@@ -50,6 +50,10 @@ export class FoodCategoriesComponent implements OnInit {
   addCategoryForm:FormGroup
   deleteId: any;
   file: any;
+  totalItems: any;
+  
+  pageNumber: number=1;
+  itemPerpage: number=10;
   SubCategoryForm:FormGroup
   UserObject:object;
   text: any = 'Choose File';
@@ -72,8 +76,8 @@ export class FoodCategoriesComponent implements OnInit {
       taxPercentage: [
         "",
         Validators.required],
-      openTime: ["", Validators.required],
-      closeTime: ["", Validators.required],
+      // openTime: ["", Validators.required],
+      // closeTime: ["", Validators.required],
     });
   
     this.SubCategoryForm = this.formBuilder.group({
@@ -115,11 +119,11 @@ export class FoodCategoriesComponent implements OnInit {
    // this.addCategoryForm.controls['image'].setValue(obj.image)
     this.addCategoryForm.get('description').setValue(obj.description)
     this.addCategoryForm.get('taxPercentage').setValue(obj.taxPercentage)
-    this.addCategoryForm.get('openTime').setValue(obj.openTime)
-    this.addCategoryForm.get('closeTime').setValue(obj.closeTime)
-    this.startTime = parseInt(obj.openTime.split(':')[0]*60 +  obj.openTime.split(':')[1])
-    this.endTime = parseInt(obj.closeTime.split(':')[0]*60 +  obj.closeTime.split(':')[1])
-    console.log('Update Time Zone',this.startTime, this.endTime)
+    // this.addCategoryForm.get('openTime').setValue(obj.openTime)
+    // this.addCategoryForm.get('closeTime').setValue(obj.closeTime)
+    // this.startTime = parseInt(obj.openTime.split(':')[0]*60 +  obj.openTime.split(':')[1])
+    // this.endTime = parseInt(obj.closeTime.split(':')[0]*60 +  obj.closeTime.split(':')[1])
+    
     this.modalService.open(EditCategory, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
   UpdateSub()
@@ -147,7 +151,7 @@ export class FoodCategoriesComponent implements OnInit {
         Swal.fire('Failed',error.error.message,'error')
       });
     }else if(this.addCategoryForm.invalid){
-      Swal.fire('Invalid Form','Please fill all field correctly','error')
+     // Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
   editBoxModal(editModel,obj) {
@@ -234,8 +238,8 @@ this.addCategoryForm.get('image').updateValueAndValidity()
         name: this.addCategoryForm.controls["name"].value,
         description: this.addCategoryForm.controls["description"].value,
         taxPercentage: this.addCategoryForm.controls["taxPercentage"].value.toString(),
-        openTime: this.addCategoryForm.controls["openTime"].value,
-        closeTime: this.addCategoryForm.controls["closeTime"].value,
+        // openTime: this.addCategoryForm.controls["openTime"].value,
+        // closeTime: this.addCategoryForm.controls["closeTime"].value,
         image: this.imageFile,
       };
       this.service.putApi(url,body).subscribe((data: any) =>{
@@ -253,7 +257,7 @@ this.addCategoryForm.get('image').updateValueAndValidity()
         Swal.fire('Failed',error.error.message,'error')
       });
     }else if(this.addCategoryForm.invalid || (this.startTime > this.endTime || this.startTime == this.endTime)){
-      Swal.fire('Invalid Form','Please fill all field correctly','error')
+   //   Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
   IsSelectedTime(e,ref){
@@ -274,8 +278,8 @@ this.addCategoryForm.get('image').updateValueAndValidity()
         name: this.addCategoryForm.controls["name"].value,
         description: this.addCategoryForm.controls["description"].value,
         taxPercentage: this.addCategoryForm.controls["taxPercentage"].value.toString(),
-        openTime: this.addCategoryForm.controls["openTime"].value,
-        closeTime: this.addCategoryForm.controls["closeTime"].value,
+        // openTime: this.addCategoryForm.controls["openTime"].value,
+        // closeTime: this.addCategoryForm.controls["closeTime"].value,
         image: this.imageFile,
       };
       this.service.postApi(url,body).subscribe((data: any) => {
@@ -293,7 +297,7 @@ this.addCategoryForm.get('image').updateValueAndValidity()
         Swal.fire('Failed',error.error.message,'error')
       });
     }else if(this.addCategoryForm.invalid || (this.startTime >= this.endTime)){
-      Swal.fire('Invalid Form','Please fill all field correctly','error')
+   //   Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
   AddSub(){
@@ -322,7 +326,7 @@ this.addCategoryForm.get('image').updateValueAndValidity()
         Swal.fire('Failed',error.error.message,'error')
       });
     }else if(this.addCategoryForm.invalid){
-      Swal.fire('Invalid Form','Please fill all field correctly','error')
+     // Swal.fire('Invalid Form','Please fill all field correctly','error')
     }
   }
   doSomething(e, ref) {
@@ -355,16 +359,18 @@ this.addCategoryForm.get('image').updateValueAndValidity()
     }
   }
   getCategories() {
-    let url = `admin/categories`
+let url = `admin/categories?limit=${this.itemPerpage}&page=${this.pageNumber}`
     this.service.getApi(url).subscribe((res: any) => {
       console.log('This is cat items',res);
       if (res.statusCode == 200) {
+        
         this.categories = res.data.results;
         this.subCategory = res.data.results.subCategories;
         this.image = res.data.results.image;
-        this.count = res.data.itemCount;
+        this.count = res.data.count;
       }else {
         Swal.fire('Error',res.message,'error')
+        this.count=0
       }
     },error=>{
       Swal.fire('Error',error.error.message,'error')
@@ -427,6 +433,15 @@ this.addCategoryForm.get('image').updateValueAndValidity()
       this.fileAttached = false;
       this.imageSizeError = true;
     }
+  }
+  onPaginateChange(event) {
+    console.log('this is ind',event.pageIndex)
+    if (event.pageIndex === 0) {
+      this.pageNumber = 1;
+    } else {
+      this.pageNumber = event.pageIndex + 1;
+    }
+    this.getCategories();
   }
 }
 

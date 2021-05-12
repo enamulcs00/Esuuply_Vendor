@@ -72,21 +72,19 @@ this.url = `admin/register/shop`
  }else if(this.role == 'franchise'){
    this.url = `admin/register/franchise`
  }
-    this.spinner.show()
-    
     this.submitted = true;
     const data =
     {
       "firstName":this.signUpWithEmail.controls['firstName'].value,
       "lastName":this.signUpWithEmail.controls['lastName'].value,
       "email":this.signUpWithEmail.controls['email'].value,
-    
-      "password":this.signUpWithEmail.controls['password'].value,
+     "password":this.signUpWithEmail.controls['password'].value,
       "confirmPassword":this.signUpWithEmail.controls['password'].value,
      // "dialCode":this.countryCode == null ? this.phonecode : this.countryCode
     }
-    if(!this.signUpWithEmail.invalid)
+    if(!this.signUpWithEmail.invalid && this.signUpWithEmail.controls['password'].value==this.signUpWithEmail.controls['confirmPassword'].value)
     {
+      this.spinner.show()
       this.service.signUp(this.url,data).subscribe((res:any)=>
       {
         console.log('Res of signup',res);
@@ -96,7 +94,7 @@ this.url = `admin/register/shop`
           localStorage.setItem('token',res.data.accessToken)
           localStorage.setItem('signupData',JSON.stringify(data))
         
-          Swal.fire('Success',res.message,'success')
+          Swal.fire('Success','Registered successfully','success')
           sessionStorage.setItem('token',res.data.accessToken)
           this.router.navigate([`vendor_detail/${this.role}`])
           this.submitted = false
@@ -110,7 +108,7 @@ this.url = `admin/register/shop`
       })
     }else if(this.signUpWithEmail.invalid){
       this.spinner.hide()
-Swal.fire('Oops','Please fill all field correctly','error')
+//Swal.fire('Oops','Please fill all field correctly','error')
 
     }
   }
@@ -120,7 +118,7 @@ Swal.fire('Oops','Please fill all field correctly','error')
        }else if(this.role == 'franchise'){
          this.url = `admin/register/franchise`
        }
-this.spinner.show()
+
     //let url = `admin/register/shop`
     this.submitted = true;
     const data =
@@ -133,8 +131,9 @@ this.spinner.show()
       "confirmPassword":this.signUpWithPhone.controls['password'].value,
      "dialCode":this.countryCode == null ? this.phonecode : this.countryCode
     }
-    if(!this.signUpWithPhone.invalid)
+    if(!this.signUpWithPhone.invalid && this.signUpWithPhone.controls['password'].value==this.signUpWithPhone.controls['confirmPassword'].value)
     {
+      this.spinner.show()
       this.service.signUp(this.url,data).subscribe((res:any)=>
       {
         console.log('Res of signup with phone',res);
@@ -143,7 +142,7 @@ this.spinner.show()
         {
           localStorage.setItem('signupData',JSON.stringify(data))
           localStorage.setItem('token',res.data.accessToken)
-          Swal.fire('Success',res.message,'success')
+          Swal.fire('Success','Registered successfully','success')
           sessionStorage.setItem('token',res.data.accessToken)
           this.router.navigate([`vendor_detail/${this.role}`])
           this.spinner.hide()
@@ -156,8 +155,7 @@ this.spinner.show()
       })
     }else if(this.signUpWithPhone.invalid){
       this.spinner.hide()
-Swal.fire('Oops','Please fill all field correctly','error')
+//Swal.fire('Oops','Please fill all field correctly','error')
     }
-
-  }
+}
 }

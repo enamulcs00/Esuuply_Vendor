@@ -67,14 +67,14 @@
                             <br>
                             <p class="text-muted">{{profileData?.birthDate}}</p>
                         </div>
-                        <div class="col-md-3 col-xs-6 b-r"> <strong>Opening Time</strong>
+                        <!-- <div class="col-md-3 col-xs-6 b-r"> <strong>Opening Time</strong>
                           <br>
                           <p class="text-muted">{{profileData?.openTime}}</p>
                       </div>
                       <div class="col-md-3 col-xs-6 b-r"> <strong>Closing Time</strong>
                         <br>
                         <p class="text-muted">{{profileData?.closeTime}}</p>
-                    </div>
+                    </div> -->
                           <div class="col-md-12 col-xs-6 b-r"> <strong>Address</strong>
                             <br>
                             <p class="text-muted">{{address}}</p>
@@ -109,7 +109,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">First Name</label>
-                                      <input type="text" id="firstName" class="form-control" placeholder="John doe" formControlName="firstName">
+                                      <input type="text" id="firstName" maxlength="15" (keydown.space)="$event.preventDefault()" class="form-control" placeholder="John doe" formControlName="firstName">
                                       <p class="text-danger"
                                       *ngIf="submitted && errorHandling('firstName', 'required')">
                                       First name is required!
@@ -124,7 +124,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Last Name</label>
-                                      <input type="text" id="firstName" class="form-control" placeholder="John doe" formControlName="lastName">
+                                      <input type="text" id="firstName" maxlength="15" (keydown.space)="$event.preventDefault()" class="form-control" placeholder="John doe" formControlName="lastName">
                                       <p class="text-danger"
                                       *ngIf="submitted && errorHandling('lastName', 'required')">
                                       Last name is required!
@@ -178,7 +178,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                       <label class="control-label">Date of birth</label>
-                                      <input type="date" id="firstName" class="form-control" [max]="service.getToday()" placeholder="" formControlName="dob">
+                                      <input type="date" id="firstName" class="form-control" max="{{minAge | date:'yyyy-MM-dd'}}" placeholder="" formControlName="dob">
                                       <p class="text-danger"
                                       *ngIf="submitted && errorHandling('dob', 'required')">
                                       Date of birth is required!

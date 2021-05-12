@@ -5,7 +5,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SharedService } from 'src/app/authentication/shared.service';
 import Swal from 'sweetalert2';
-
+declare var $:any
 @Component({
   templateUrl: 'profile.component.html'
 })
@@ -29,6 +29,7 @@ sun:FormArray
   days:string[]=['sun','mon','tue','wed','thu','fri','sat']
   profileData: any;
   files: any;
+  
   shopStatus:boolean=false
   commingSoon:boolean = false
   IsMon:boolean = false;
@@ -40,7 +41,11 @@ sun:FormArray
   IsSun:boolean = false;
   ProfilePic:any;
   address:any='Mohali, Punjab, India'
-    constructor(private router:Router,private service:SharedService,private fb:FormBuilder,private spinner:NgxSpinnerService) { }
+  minAge: any = 18;
+    constructor(private router:Router,private service:SharedService,private fb:FormBuilder,private spinner:NgxSpinnerService) { 
+      var today = new Date();
+      this.minAge = new Date(today.getFullYear() - this.minAge, today.getMonth(), today.getDate());
+    }
   
     ngOnInit(): void {
       
@@ -378,8 +383,9 @@ sun:FormArray
       })
     }else if(this.profileForm.invalid){
       this.spinner.hide()
-      Swal.fire('Oops','Please fill all field correctly','error')
+    //  Swal.fire('Oops','Please fill all field correctly','error')
+    }
     }
     
-    }
+    
 }

@@ -39,11 +39,11 @@ export class FoodItemsComponent implements OnInit {
   ngOnInit(): void {
     this.getFoodItem()
     this.getCategory()
-   
+    var regx = /^(\w+)( \w+)*$/;
     this.addForm = this.fb.group({
       categoryId:['',Validators.required],
       subCategories:['',Validators.required],
-      name:['',Validators.required],
+      name:['',[Validators.required,Validators.pattern(regx)]],
       image:['',Validators.required],
       stockQuantity:['',Validators.required],
       price:['',Validators.required],
@@ -51,7 +51,7 @@ export class FoodItemsComponent implements OnInit {
     //  deliveryCharges:['',Validators.required],
       minimumStockQuantity:['',Validators.required],
       maximumStockQuantity:['',Validators.required],
-      description:['',Validators.required]
+      description:['',[Validators.required,Validators.pattern(regx)]]
 
     })
   }
@@ -282,7 +282,7 @@ this.getFoodItem()
     })
   }else if(this.addForm.invalid){
     this.spinner.hide()
-    Swal.fire("Invalid form",'Fill all field correctly','warning')
+   // Swal.fire("Invalid form",'Fill all field correctly','warning')
   }}
   SetForm(id){
     this.spinner.show()
@@ -354,7 +354,7 @@ this.getFoodItem()
       })
     }else if(this.addForm.invalid){
       this.spinner.hide()
-      Swal.fire("Invalid form",'Fill all field correctly','warning')
+    //  Swal.fire("Invalid form",'Fill all field correctly','warning')
     }}
   
 }
