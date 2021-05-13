@@ -11,7 +11,7 @@
                   <label>Order ID</label>
                 </div>
                 <div class="col-md-8">
-                  <span>20</span>
+                  <span>{{particularObject?.orderNo ||'null'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -19,7 +19,7 @@
                   <label>Client</label>
                 </div>
                 <div class="col-md-8">
-                  <span>Andy</span>
+                  <span>{{particularObject?.user?.firstName +" "+particularObject?.user?.lastName ||'null'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -27,7 +27,7 @@
                   <label>Phone No.</label>
                 </div>
                 <div class="col-md-8">
-                  <span>+91-45444544</span>
+                  <span>{{particularObject?.user?.dialCode +"-"+particularObject?.user?.phoneNo ||'null'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -35,7 +35,7 @@
                   <label>Delivery Address</label>
                 </div>
                 <div class="col-md-8">
-                  <span>#455 Sector-15 Noida</span>
+                  <span>{{particularObject?.address||'null'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -43,7 +43,7 @@
                   <label>Date Of Order</label>
                 </div>
                 <div class="col-md-8">
-                  <span>27-02-2021/12:20:45</span>
+                  <span> {{particularObject?.orderedAt | date :'medium'}}</span>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
                   <label>Status</label>
                 </div>
                 <div class="col-md-8">
-                  <span >Completed</span>
+                  <span >{{particularObject?.status}}</span>
                 </div>
               </div>
               <div class="row">
@@ -70,7 +70,7 @@
                   <label>Method</label>
                 </div>
                 <div class="col-md-8">
-                  <span>Paypal</span>
+                  <span>{{particularObject?.payment?.mode || 'null'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -78,7 +78,7 @@
                   <label>Payment Status</label>
                 </div>
                 <div class="col-md-8">
-                  <span>Waitning for Client</span>
+                  <span>{{particularObject?.payment?.status || 'null'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -86,7 +86,7 @@
                   <label>Update At</label>
                 </div>
                 <div class="col-md-8">
-                  <span>27-02-2021/12:20:45</span>
+                  <span>{{particularObject?.acceptedAt|date:'medium'}}</span>
                 </div>
               </div>
             </div>
@@ -97,10 +97,10 @@
                     <label>Restaurant</label>
                   </div>
                   <div class="col-md-8">
-                    <span >KFC</span>
+                    <span >{{particularObject?.shop?.shopName||'null'}}</span>
                   </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-md-4">
                     <label>Address</label>
                   </div>
@@ -115,13 +115,13 @@
                   <div class="col-md-8">
                     <span>+91-4343434343</span>
                   </div>
-                </div>
+                </div> -->
                 <div class="row">
                   <div class="col-md-4">
                     <label>Driver</label>
                   </div>
                   <div class="col-md-8">
-                    <span>John</span>
+                    <span>{{particularObject?.driver||'null'}}</span>
                   </div>
                 </div>
                 <div class="row">
@@ -129,7 +129,7 @@
                     <label>Comment</label>
                   </div>
                   <div class="col-md-8">
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel mollitia, id dolorum suscipit quibusdam maiores rem exercitationem non nostrum facere.</span>
+                    <span>{{particularObject?.comments | slice:0:100}}</span>
                   </div>
                 </div>
               </div>
@@ -140,18 +140,15 @@
               <tr>
                 <th>Image </th>
                 <th>Item </th>
-                <!-- <th>Extra Item</th> -->
                 <th>Price</th>                
                 <th>Quantity</th>              
               </tr>
-              <tr>
-                <td><a href="javascript:void(0)" (click)="itemShowModal(itemshow)"><img src="assets/images/food/1.jpg" width="60px" height="60px"></a></td>
-                <td>Soya Chap</td>
-                <td>27 <i class="fas fa-euro-sign"></i></td>
-                <td>2</td>                
-              
-             
-              </tr> 
+              <tr *ngFor="let item of particularObject?.items">
+                <td><a href="javascript:void(0)" (click)="itemShowModal(itemshow)"><img [src]="item.image?item.image:'assets/images/food/1.jpg'" width="60px" height="60px"></a></td>
+                <td>{{item?.name||'null'}}</td>
+                <td>{{item?.price}}<i class="fas fa-euro-sign"></i></td>
+                <td>{{item?.quantity}}</td>                
+          </tr> 
               <tr>
                 <td class="text-nowrap" colspan="3" ></td> 
                 <td >
@@ -159,19 +156,19 @@
                     <table class="table">
                       <tr>
                         <td><label>Subtotal</label></td>
-                        <td class="text-right"><label>54:00 <i class="fas fa-euro-sign"></i></label></td>                     
+                        <td class="text-right"><label>{{particularObject?.subTotal || 'null'}} <i class="fas fa-euro-sign"></i></label></td>                     
                       </tr>
                       <tr>
                         <td><label>Delivery Fee</label></td>
-                        <td class="text-right"><label>0.00 <i class="fas fa-euro-sign"></i></label></td>
+                        <td class="text-right"><label>{{particularObject?.deliveryFee||'null'}}<i class="fas fa-euro-sign"></i></label></td>
                         </tr>
                         <tr>
-                        <td><label>Tax(5%)</label></td>
-                        <td class="text-right"><label>2.70 <i class="fas fa-euro-sign"></i></label></td>
+                        <td><label>Tax(%)</label></td>
+                        <td class="text-right"><label>{{particularObject?.taxes||'null'}} <i class="fas fa-euro-sign"></i></label></td>
                       </tr>
                       <tr>
                         <td><label>Total</label></td>
-                        <td class="text-right"><label>57.00 <i class="fas fa-euro-sign"></i></label></td>
+                        <td class="text-right"><label>{{total}}<i class="fas fa-euro-sign"></i></label></td>
                       </tr>
                     </table>
                   </div>

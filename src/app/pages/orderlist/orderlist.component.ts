@@ -4,21 +4,21 @@ import {FormControl,FormGroup} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource, } from '@angular/material/table';
+import { SharedService } from 'src/app/authentication/shared.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 export interface UserData {
   serial_no:string,
-  // hotelName:string,
   name: string,    
-  // driver:string,
   id: string,    
   contact:string,
   comment:string;
- // status:string,
   action:string,
   address:string,
   orderdate:string,
   deliverydate:string,
-  // foodStatus:string,
   orderStatus:string,
 }
 @Component({
@@ -31,7 +31,7 @@ export class OrderlistComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
-  title = 'My first AGM project';
+  
   lat = 51.678418;
   lng = 7.809007;
   closeResult: string;
@@ -39,70 +39,24 @@ export class OrderlistComponent implements OnInit {
   dataSource: MatTableDataSource<UserData>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(private modalService: NgbModal) {
-    this.dataSource = new MatTableDataSource(this.table);
+  totalItems: number;
+  pageNumber: number=1;
+  itemPerpage: number=10;
+  searchByName:any = '';
+  startDate: any='';
+  endDate: any='';
+  status:string = ''
+  constructor(private router:Router,private spinner:NgxSpinnerService,private modalService: NgbModal,public service:SharedService) {
+   
   }
-  toppings = new FormControl();
-  toppingList: string[] = ['Jamas Thomas', 'Rony Roy', 'Vicky Andy', 'john Vick', 'Alex Harry', 'Harry Roy'];
   ngOnInit(): void {
+    this.getOrder()
   }
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  //  this.dataSource.paginator = this.paginator;
+  //  this.dataSource.sort = this.sort;
   }
 
-  table = [
-    {   
-      serial_no:"1",
-      hotelName:"Mcdonalds",
-      name: 'Sandy roy',   
-      id: "#334553",    
-      contact:"+91-33434343",
-      comment:"lorem ipsum dummy text",
-      address:"#454 1st Block, Rammurthy, Bangalore-560016",
-      driver:"Andrew Tye",
-      orderdate:"12-05-2021/13:45",
-      deliverydate:"12-05-2021/15:45",
-      // foodStatus:"Pending and not processed for Pick-Up",
-      orderStatus:"Pending",
-      totalSales:"500",
-      action:"0",      
-    },
-    {    
-      serial_no:"2",
-      hotelName:"Mcdonalds",
-      name: 'Rohan Smith',   
-      id: "#334553",  
-      contact:"+91-33434343",
-      comment:"lorem ipsum dummy text",
-      address:"#454 1st Block, Rammurthy, Bangalore-560016",
-      driver:"Andrew Tye",
-      orderdate:"12-05-2021/13:45",
-      deliverydate:"12-05-2021/15:45",
-      // foodStatus:"On The Way",
-      orderStatus:"Accepted",   
-      totalSales:"500",
-      action:"1",      
-    },
-    {    
-      serial_no:"3",
-      hotelName:"Mcdonalds",
-      name: 'john Doe',   
-      id: "#34553",
-      contact:"+91-33434343",
-      comment:"lorem ipsum dummy text",
-      // email:"Burger", 
-      address:"#454 1st Block, Rammurthy, Bangalore-560016",   
-      driver:"Andrew Tye",
-      orderdate:"12-05-2021/13:45",
-      deliverydate:"12-05-2021/15:45",
-      // foodStatus:"On The Way",
-      orderStatus:"Accepted",
-      totalSales:"400",
-      action:"1",      
-    },
-   
-  ]
   userDeleteModal(userDelete) {
     this.modalService.open(userDelete, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
@@ -120,12 +74,77 @@ export class OrderlistComponent implements OnInit {
   mapModal(map) {
     this.modalService.open(map, {backdropClass: 'light-blue-backdrop',centered: true,size: 'md'});
   }
-  endPicker(e){
+  FilterByStatus(ref){
+    this.searchByName = ''
+    this.startDate = ''
+    this.endDate = ''
+    this.range.reset()
+this.status = ref
+this.getOrder()
+  }
+  startPicker(e){
     if(e.value){
-      console.log("END CALLED",e.value)
-    }else{
-      console.log("Null",e.value)
+      this.startDate = e.value
     }
   }
-  
+  endPicker(e){
+    if(e.value){
+     this.endDate = e.value 
+     this.searchByName= ''
+     this.getOrder()
+    }
+  }
+  searchFormSubmit() {
+    if (this.searchByName) {
+      this.startDate = ''
+      this.endDate = ''
+      this.range.reset()
+      setTimeout(() => {
+        this.getOrder()
+      }, 700);
+     }
+    else if(this.searchByName==''){
+      this.startDate = ''
+      this.endDate = ''
+      this.range.reset()
+      setTimeout(() => {
+        this.getOrder()
+      }, 700);
+    }
+   }
+  getOrder(){
+    this.spinner.show()
+    //${this.pageNumber}&pageCount=${this.itemPerpage}
+    let url= `admin/orders?limit=${this.itemPerpage}&page=${this.pageNumber}&search=${this.searchByName}&startDateCreation=${this.startDate}&endDateCreation=${this.endDate}&status=${this.status}`
+    this.service.getApi(url).subscribe((res:any)=>{
+  console.log('Order item',res.data.results);
+  if(res.statusCode==401){
+    this.router.navigate(['/login'])
+    localStorage.removeItem('token')
+  }
+      if(res.statusCode==200){
+        this.totalItems =  res.data.count
+        this.dataSource = new MatTableDataSource(res.data.results);
+        this.spinner.hide()
+      }else{
+        Swal.fire('Oops',res.message,'error')
+        this.totalItems = 0
+        this.spinner.hide()
+      }
+    },error=>{
+      this.spinner.hide()
+      Swal.fire('Oops',error.error.message)
+    })
+  }
+  onPaginateChange(event) {
+    console.log('this is ind',event.pageIndex,  'Event',event)
+    if (event.pageIndex === 0) {
+      this.pageNumber = 1;
+      this.itemPerpage =  event.pageSize
+    } else {
+      this.pageNumber = event.pageIndex + 1;
+      this.itemPerpage =  event.pageSize
+    }
+    this.getOrder();
+  }
 }

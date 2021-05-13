@@ -430,7 +430,7 @@ export const PagesRoutes: Routes = [
         }
       },
       {
-        path: 'orderdetail',
+        path: 'orderdetail/:id',
         component: OrderdetailComponent,
         data: {
           title: 'Order Detail',
