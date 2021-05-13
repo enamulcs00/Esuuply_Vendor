@@ -1,3 +1,10 @@
+<style>
+  .sebm-google-map-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+  }
+</style>
 <div class="row">
   <!-- Column -->
   <!-- delete modal -->
@@ -149,12 +156,12 @@
               <!-- Progress Column -->
               <ng-container matColumnDef="comment">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-nowrap">Comment </th>
-                <td mat-cell *matCellDef="let row" class="text-nowrap"> {{row.comments ||'null' | slice:0:30}} <a href="javascript:void()" (click)="commentModal(comment)" class="ml-1"><i class="sl-icon-info"></i></a> </td>
+                <td mat-cell *matCellDef="let row" class="text-nowrap"> {{row.comments ||'null' | slice:0:30}} <a href="javascript:void()" (click)="commentModal(comment,row.comments)" class="ml-1"><i class="sl-icon-info"></i></a> </td>
               </ng-container>
               <!-- Address -->
               <ng-container matColumnDef="address">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Address </th>
-                <td mat-cell *matCellDef="let row" class="d-inline-block" style="width:200px;"> {{row.address||'null'}} <a href="javascript:void()" (click)="mapModal(map)"><i class="sl-icon-info"></i></a> </td>
+                <td mat-cell *matCellDef="let row" class="d-inline-block" style="width:200px;"> {{row.shop.location.address||'null'}} <a href="javascript:void()" (click)="mapModal(map,row.shop.location.coordinates[0],row.shop.location.coordinates[1])"><i class="sl-icon-info"></i></a> </td>
               </ng-container>
               <!-- pendingOrder -->
               <!-- <ng-container matColumnDef="driver">
@@ -217,20 +224,20 @@
                     </button>
 
                     <div  ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <a href="javascript:void()" class="dropdown-item" (click)="vendorConfirmModal(vendorConfirm)">
+                      <a href="javascript:void()" class="dropdown-item" (click)="AcceptModal(accept,'ACCEPTED',row._id)">
                         Accept
                       </a>
                       <!-- <button class="dropdown-item" (click)="userDetailModal(userDetail)"><i _ngcontent-axh-c146=""
                             class="ti-marker-alt"></i> Edit</button> -->
 
                       <a href="javascript:void()" class="dropdown-item btn-sm mr-2"
-                        (click)="orderConfirmModal(orderConfirm)">
+                        (click)="AcceptModal(accept,'REJECTED',row._id)">
                         Reject</a>
-                        <button class="dropdown-item">On way to delivery</button>
-                        <button class="dropdown-item"> In process of Pick-up</button>
-                        <button class="dropdown-item"> Pending and not processed for Pick-Up</button>
-                        <button class="dropdown-item"> Completed and payment confirmed.</button>
-                        <button class="dropdown-item">Food Being Prepared </button>
+                        <button class="dropdown-item" (click)="AcceptModal(accept,'ONGOING',row._id)">On way to delivery</button>
+                        <button class="dropdown-item" (click)="AcceptModal(accept,'PICKEDUP',row._id)"> In process of Pick-up</button>
+                        <button class="dropdown-item"(click)="AcceptModal(accept,'PENDING',row._id)"> Pending and not processed for Pick-Up</button>
+                        <button class="dropdown-item"(click)="AcceptModal(accept,'COMPLETED',row._id)"> Completed and payment confirmed.</button>
+                        <button class="dropdown-item"(click)="AcceptModal(accept,'PREPARING',row._id)">Food Being Prepared </button>
                     </div>
 
                     <div  ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -240,7 +247,7 @@
                     </div>
                   </div>
 
-                  <a  class="btn btn-primary btn-sm ml-2" routerLink="/pages/orderdetail"><i class="ti-eye"></i>
+                  <a  class="btn btn-primary btn-sm ml-2" routerLink="/pages/orderdetail/{{row?._id}}"><i class="ti-eye"></i>
                     View
                   </a>  
                 </div>
@@ -278,12 +285,24 @@
     </div>
   </ng-template>
   
+  <ng-template #accept let-modal>
+    <div class="modal-body">
+      <p>Are you sure ? </p>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary mr-2" aria-label="Close"
+          (click)="UpdateStatus()">Yes</button>
+        <button type="button" class="btn btn-seconadary" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">No</button>
+      </div>
+    </div>
+  </ng-template>
+
   <ng-template #comment let-modal>
     <div class="modal-body">
      <button class="btn close-icon" (click)="modal.close()"><i class="mdi mdi-close"></i></button> 
       <label>Comment</label>
       <div class=" mb-3">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit neque reprehenderit quidem beatae repudiandae quisquam voluptas, ipsa molestias autem fuga.</p>
+          <p>{{comments||'null'}}</p>
       </div>
 
     </div>
@@ -293,8 +312,11 @@
     <div class="modal-body">
      <button class="btn close-icon" (click)="modal.close()"><i class="mdi mdi-close"></i></button>     
       <div class=" mb-3">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508"
-        width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div >
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="14">
+            <agm-marker [latitude]="lat" [agmFitBounds]="true" [longitude]="lng"></agm-marker>
+       </agm-map>
+        </div>
       </div>
 
     </div>

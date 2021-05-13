@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/authentication/shared.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 export interface UserData {
   serial_no:string,
@@ -46,6 +47,10 @@ export class OrderlistComponent implements OnInit {
   startDate: any='';
   endDate: any='';
   status:string = ''
+  comments: string = '';
+  statusId:any;
+  changeTo:string = '';
+  @ViewChild("placesRef", { static: true }) placesRef: GooglePlaceDirective;
   constructor(private router:Router,private spinner:NgxSpinnerService,private modalService: NgbModal,public service:SharedService) {
    
   }
@@ -56,22 +61,35 @@ export class OrderlistComponent implements OnInit {
   //  this.dataSource.paginator = this.paginator;
   //  this.dataSource.sort = this.sort;
   }
-
+  AcceptModal(accept,status,id){
+    this.changeTo = status
+    this.statusId = id
+    console.log('This is Id for accespt',id);
+    
+    this.modalService.open(accept, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
+  }
   userDeleteModal(userDelete) {
     this.modalService.open(userDelete, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
   reviewModal(review) {
     this.modalService.open(review, {backdropClass: 'light-blue-backdrop',centered: true,size: 'lg'});
   }
-  orderConfirmModal(orderConfirm) {
+  orderConfirmModal(orderConfirm,status,id) {
+    this.changeTo = status
+    this.statusId = id
     this.modalService.open(orderConfirm, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
   changedriverModal(changedriver) {
     this.modalService.open(changedriver, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
-  } commentModal(comment) {
+  } commentModal(comment,comments) {
+    this.comments = comments
     this.modalService.open(comment, {backdropClass: 'light-blue-backdrop',centered: true,size: 'sm'});
   }
-  mapModal(map) {
+  mapModal(map,lat,long) {
+    this.lat = lat
+this.lng = long
+console.log("This is lat and lng",lat,long);
+
     this.modalService.open(map, {backdropClass: 'light-blue-backdrop',centered: true,size: 'md'});
   }
   FilterByStatus(ref){
@@ -146,5 +164,26 @@ this.getOrder()
       this.itemPerpage =  event.pageSize
     }
     this.getOrder();
+  }
+  UpdateStatus(){
+    let obj = {
+      "status":this.changeTo  
+    }
+    let url = `admin/orders/${this.statusId}`
+    this.spinner.show()
+    this.service.putApi(url,obj).subscribe((res:any)=>{
+      console.log('Status Res',res);
+      if(res.statusCode==200){
+        this.spinner.hide()
+        this.getOrder()
+        Swal.fire('Success',res.message,'success')
+        this.modalService.dismissAll()
+      }else{
+        this.spinner.hide()
+        Swal.fire('Error',res.message,'error')
+      }
+    },error=>{
+      Swal.fire('Error',error.message,'error')
+    })
   }
 }
