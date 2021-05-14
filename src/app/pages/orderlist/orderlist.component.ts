@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild} from '@angular/core';
 import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {FormControl,FormGroup} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource, } from '@angular/material/table';
 import { SharedService } from 'src/app/authentication/shared.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -50,7 +50,17 @@ export class OrderlistComponent implements OnInit {
   comments: string = '';
   statusId:any;
   changeTo:string = '';
+  firstName:any=''
+  orderNo:any=''
+  comment:any=''
+  phoneNo:any=''
+  orderedAt:any=''
+  statusSort:any=''
+  subTotal:any=''
+  checkReset:any
   @ViewChild("placesRef", { static: true }) placesRef: GooglePlaceDirective;
+  deliveredAt: any=''
+  address: any=''
   constructor(private router:Router,private spinner:NgxSpinnerService,private modalService: NgbModal,public service:SharedService) {
    
   }
@@ -131,20 +141,29 @@ this.getOrder()
     }
    }
   getOrder(){
+    
+let url = `admin/orders?limit=${(this.itemPerpage) + ('&page=' + this.pageNumber)
++ (this.searchByName ? ('&search=' + this.searchByName) : '') + (this.firstName ? ('&firstName=' + this.firstName) : '')
++ (this.startDate ? ('&startDateCreation=' + this.startDate) : '') + (this.endDate ? ('&endDateCreation=' + this.endDate) : '') + (this.phoneNo ? ('&phoneNo=' + this.phoneNo) : '')+ (this.status ? ('&status=' + this.status) : '')+ (this.orderNo ? ('&orderNo=' + this.orderNo) : '')+ (this.orderedAt ? ('&orderedAt=' + this.orderedAt) : '')+ (this.statusSort ? ('&statusSort=' + this.statusSort) : '')+ (this.subTotal ? ('&subTotal=' + this.subTotal) : '')+ (this.comment ? ('&comments=' + this.comment) : '')}`
     this.spinner.show()
-    //${this.pageNumber}&pageCount=${this.itemPerpage}
-    let url= `admin/orders?limit=${this.itemPerpage}&page=${this.pageNumber}&search=${this.searchByName}&startDateCreation=${this.startDate}&endDateCreation=${this.endDate}&status=${this.status}`
+    
+   // let url= `admin/orders?limit=${this.itemPerpage}&page=${this.pageNumber}&search=${this.searchByName}&startDateCreation=${this.startDate}&endDateCreation=${this.endDate}&status=${this.status}&phoneNo=${this.phoneNo}&firstName=${this.firstName}&orderNo=${this.orderNo}&orderedAt=${this.orderedAt}&statusSort=${this.statusSort}&subTotal=${this.subTotal}&comments=${this.comment}`
     this.service.getApi(url).subscribe((res:any)=>{
   console.log('Order item',res.data.results);
-  if(res.statusCode==401){
-    this.router.navigate(['/login'])
-    localStorage.removeItem('token')
-  }
+  
       if(res.statusCode==200){
+        this.checkReset = res.statusCode
         this.totalItems =  res.data.count
         this.dataSource = new MatTableDataSource(res.data.results);
         this.spinner.hide()
-      }else{
+      }
+      else if(res.statusCode==401){
+        localStorage.removeItem('token')
+        this.router.navigate(['/login'])
+        Swal.fire('Oops',res.message,'error')
+        this.spinner.hide()
+      }
+      else{
         Swal.fire('Oops',res.message,'error')
         this.totalItems = 0
         this.spinner.hide()
@@ -186,4 +205,76 @@ this.getOrder()
       Swal.fire('Error',error.message,'error')
     })
   }
+  sortData(e){
+
+console.log('Act',e.active);
+
+    if(e.active=='name'){
+      this.firstName = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.firstName= ''
+      }
+    }else if(e.active=='id'){
+      this.orderNo = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.orderNo= ''
+      }
+    }
+    else if(e.active=='contact'){
+      this.phoneNo = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.phoneNo= ''
+        console.log('Phone',this.phoneNo?'Hai':'Nhi hai');
+        
+      }
+    }
+    else if(e.active=='address'){
+      this.address = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.address= ''
+      }
+    }
+    else if(e.active=='orderdate'){
+      this.orderedAt = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.orderedAt= ''
+      }
+    }
+    else if(e.active=='deliverydate'){
+      this.deliveredAt = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.deliveredAt= ''
+      }
+    }
+    else if(e.active=='orderStatus'){
+      this.statusSort = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.statusSort= ''
+      }
+    }
+    else if(e.active=='comment'){
+      this.subTotal = (e.direction=='asc')?1:-1
+      this.getOrder()
+      if(this.checkReset==200){
+        this.subTotal= ''
+      }
+    }
+    else if(e.active=='comment'){
+      
+      this.comment = (e.direction=='asc')?1:-1
+      this.getOrder()
+      console.log('this comment',this.comment,e.active,e.direction);
+      if(this.checkReset==200){
+        this.comment= ''
+        
+      }
+    }
+    }
 }

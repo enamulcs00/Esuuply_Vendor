@@ -39428,7 +39428,7 @@ function OrderlistComponent_td_71_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const row_r66 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 1, row_r66.orderedAt), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](2, 1, row_r66.orderedAt, "medium"), " ");
 } }
 function OrderlistComponent_th_73_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "th", 72);
@@ -39511,7 +39511,7 @@ function OrderlistComponent_td_83_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const row_r70 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", row_r70.finalAmount, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", row_r70.subTotal, " ");
 } }
 function OrderlistComponent_th_85_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "th", 72);
@@ -39680,6 +39680,15 @@ class OrderlistComponent {
         this.status = '';
         this.comments = '';
         this.changeTo = '';
+        this.firstName = '';
+        this.orderNo = '';
+        this.comment = '';
+        this.phoneNo = '';
+        this.orderedAt = '';
+        this.statusSort = '';
+        this.subTotal = '';
+        this.deliveredAt = '';
+        this.address = '';
     }
     ngOnInit() {
         this.getOrder();
@@ -39757,18 +39766,23 @@ class OrderlistComponent {
         }
     }
     getOrder() {
+        let url = `admin/orders?limit=${(this.itemPerpage) + ('&page=' + this.pageNumber)
+            + (this.searchByName ? ('&search=' + this.searchByName) : '') + (this.firstName ? ('&firstName=' + this.firstName) : '')
+            + (this.startDate ? ('&startDateCreation=' + this.startDate) : '') + (this.endDate ? ('&endDateCreation=' + this.endDate) : '') + (this.phoneNo ? ('&phoneNo=' + this.phoneNo) : '') + (this.status ? ('&status=' + this.status) : '') + (this.orderNo ? ('&orderNo=' + this.orderNo) : '') + (this.orderedAt ? ('&orderedAt=' + this.orderedAt) : '') + (this.statusSort ? ('&statusSort=' + this.statusSort) : '') + (this.subTotal ? ('&subTotal=' + this.subTotal) : '') + (this.comment ? ('&comments=' + this.comment) : '')}`;
         this.spinner.show();
-        //${this.pageNumber}&pageCount=${this.itemPerpage}
-        let url = `admin/orders?limit=${this.itemPerpage}&page=${this.pageNumber}&search=${this.searchByName}&startDateCreation=${this.startDate}&endDateCreation=${this.endDate}&status=${this.status}`;
+        // let url= `admin/orders?limit=${this.itemPerpage}&page=${this.pageNumber}&search=${this.searchByName}&startDateCreation=${this.startDate}&endDateCreation=${this.endDate}&status=${this.status}&phoneNo=${this.phoneNo}&firstName=${this.firstName}&orderNo=${this.orderNo}&orderedAt=${this.orderedAt}&statusSort=${this.statusSort}&subTotal=${this.subTotal}&comments=${this.comment}`
         this.service.getApi(url).subscribe((res) => {
             console.log('Order item', res.data.results);
-            if (res.statusCode == 401) {
-                this.router.navigate(['/login']);
-                localStorage.removeItem('token');
-            }
             if (res.statusCode == 200) {
+                this.checkReset = res.statusCode;
                 this.totalItems = res.data.count;
                 this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_5__["MatTableDataSource"](res.data.results);
+                this.spinner.hide();
+            }
+            else if (res.statusCode == 401) {
+                localStorage.removeItem('token');
+                this.router.navigate(['/login']);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire('Oops', res.message, 'error');
                 this.spinner.hide();
             }
             else {
@@ -39815,6 +39829,74 @@ class OrderlistComponent {
             sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.fire('Error', error.message, 'error');
         });
     }
+    sortData(e) {
+        console.log('Act', e.active);
+        if (e.active == 'name') {
+            this.firstName = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.firstName = '';
+            }
+        }
+        else if (e.active == 'id') {
+            this.orderNo = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.orderNo = '';
+            }
+        }
+        else if (e.active == 'contact') {
+            this.phoneNo = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.phoneNo = '';
+                console.log('Phone', this.phoneNo ? 'Hai' : 'Nhi hai');
+            }
+        }
+        else if (e.active == 'address') {
+            this.address = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.address = '';
+            }
+        }
+        else if (e.active == 'orderdate') {
+            this.orderedAt = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.orderedAt = '';
+            }
+        }
+        else if (e.active == 'deliverydate') {
+            this.deliveredAt = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.deliveredAt = '';
+            }
+        }
+        else if (e.active == 'orderStatus') {
+            this.statusSort = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.statusSort = '';
+            }
+        }
+        else if (e.active == 'comment') {
+            this.subTotal = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            if (this.checkReset == 200) {
+                this.subTotal = '';
+            }
+        }
+        else if (e.active == 'comment') {
+            this.comment = (e.direction == 'asc') ? 1 : -1;
+            this.getOrder();
+            console.log('this comment', this.comment, e.active, e.direction);
+            if (this.checkReset == 200) {
+                this.comment = '';
+            }
+        }
+    }
 }
 OrderlistComponent.ɵfac = function OrderlistComponent_Factory(t) { return new (t || OrderlistComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_spinner__WEBPACK_IMPORTED_MODULE_7__["NgxSpinnerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbModal"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_authentication_shared_service__WEBPACK_IMPORTED_MODULE_6__["SharedService"])); };
 OrderlistComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: OrderlistComponent, selectors: [["app-orderlist"]], viewQuery: function OrderlistComponent_Query(rf, ctx) { if (rf & 1) {
@@ -39826,7 +39908,7 @@ OrderlistComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.paginator = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.sort = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.placesRef = _t.first);
-    } }, decls: 100, vars: 13, consts: [[1, "row"], ["userDelete", ""], ["review", ""], ["orderConfirm", ""], ["changedriver", ""], [1, "col-lg-12"], [1, "card"], [1, "card-body"], [1, "col-md-4"], [1, "mb-2"], ["type", "text", "id", "prenametext", "placeholder", "Search", 1, "form-control", 3, "ngModelOptions", "ngModel", "keyup", "ngModelChange"], [1, "col-md-8", "text-right"], [1, "d-block"], ["appearance", "fill", 3, "formGroup"], [3, "rangePicker"], ["matStartDate", "", "placeholder", "Start date", "formControlName", "start", 3, "keydown", "dateChange"], ["matEndDate", "", "placeholder", "End date", "formControlName", "end", 3, "keydown", "dateChange"], ["matSuffix", "", 3, "for"], ["picker", ""], [1, "mr-2", "d-inline-block"], [1, "btn", "btn-primary"], ["ngbDropdown", "", 1, "d-inline-block", "mb-2", "mr-2"], ["id", "dropdownBasic1", "ngbDropdownToggle", "", 1, "btn", "btn-outline-primary"], ["ngbDropdownMenu", "", "aria-labelledby", "dropdownBasic1"], [1, "dropdown-item", 3, "click"], [1, "table-responsive"], ["mat-table", "", "matSort", "", 1, "w-100", 3, "dataSource"], ["matColumnDef", "serial_no"], ["mat-header-cell", "", "mat-sort-header", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "name"], ["mat-header-cell", "", "mat-sort-header", "", "class", "text-nowrap", 4, "matHeaderCellDef"], ["mat-cell", "", "class", "text-nowrap", 4, "matCellDef"], ["matColumnDef", "id"], ["matColumnDef", "contact"], ["matColumnDef", "comment"], ["matColumnDef", "address"], ["mat-cell", "", "class", "d-inline-block", "style", "width:200px;", 4, "matCellDef"], ["matColumnDef", "orderdate"], ["matColumnDef", "deliverydate"], ["matColumnDef", "foodStatus"], ["matColumnDef", "orderStatus"], ["matColumnDef", "totalSales"], ["matColumnDef", "action"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], ["class", "mat-row", 4, "matNoDataRow"], [1, "col-md-12", "text-right"], [3, "length", "pageSizeOptions", "page"], ["accept", ""], ["comment", ""], ["map", ""], [1, "modal-body"], [1, "btn-group"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-primary", "mr-2", 3, "click"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-seconadary", 3, "click"], ["type", "button", "aria-label", "Close", 1, "close-icon", 3, "click"], [1, "mdi", "mdi-close"], [1, "col-lg-12", "col-xlg-12", "col-md-12"], [1, "card", "custom-tabs", "mb-0"], [1, "row", "pt-2"], [1, "col-md-12"], [1, "form-group"], ["rows", "3", 1, "form-control"], [1, "btn", "btn-primary", "mt-2", 3, "click"], [1, "w-100"], [3, "formControl"], [3, "value", 4, "ngFor", "ngForOf"], [1, "btn", "btn-primary", 3, "click"], [3, "value"], ["mat-header-cell", "", "mat-sort-header", ""], ["mat-cell", ""], ["mat-header-cell", "", "mat-sort-header", "", 1, "text-nowrap"], ["mat-cell", "", 1, "text-nowrap"], [3, "routerLink"], [1, "sl-icon-info"], ["href", "javascript:void()", 1, "ml-1", 3, "click"], ["mat-cell", "", 1, "d-inline-block", 2, "width", "200px"], ["href", "javascript:void()", 3, "click"], ["ngbDropdown", "", "placement", "bottom", "container", "body", 1, "d-inline-block"], [1, "dropdown-item"], [1, "label", 3, "ngClass"], [1, "fas", "fa-euro-sign"], [1, "d-flex"], ["ngbDropdown", "", "placement", "bottom-right", "display", "dynamic", "container", "body", 1, "dropdown-menu-right"], ["id", "dropdownBasic1", "ngbDropdownToggle", "", 1, "btn", "btn-outline-primary", "btn-sm"], ["href", "javascript:void()", 1, "dropdown-item", 3, "click"], ["href", "javascript:void()", 1, "dropdown-item", "btn-sm", "mr-2", 3, "click"], [1, "btn", "btn-primary", "btn-sm", "ml-2", 3, "routerLink"], [1, "ti-eye"], ["mat-header-row", ""], ["mat-row", ""], [1, "mat-row"], ["colspan", "4", 1, "mat-cell"], [1, "mb-3"], ["name", "", "id", "", "cols", "30", "rows", "5", 1, "form-control"], [1, "input-group-append"], ["type", "button", 1, "btn", "mr-0", "btn-primary", "mt-2", 3, "click"], [1, "btn", "close-icon", 3, "click"], [3, "latitude", "longitude", "zoom"], [3, "latitude", "agmFitBounds", "longitude"]], template: function OrderlistComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 100, vars: 13, consts: [[1, "row"], ["userDelete", ""], ["review", ""], ["orderConfirm", ""], ["changedriver", ""], [1, "col-lg-12"], [1, "card"], [1, "card-body"], [1, "col-md-4"], [1, "mb-2"], ["type", "text", "id", "prenametext", "placeholder", "Search", 1, "form-control", 3, "ngModelOptions", "ngModel", "keyup", "ngModelChange"], [1, "col-md-8", "text-right"], [1, "d-block"], ["appearance", "fill", 3, "formGroup"], [3, "rangePicker"], ["matStartDate", "", "placeholder", "Start date", "formControlName", "start", 3, "keydown", "dateChange"], ["matEndDate", "", "placeholder", "End date", "formControlName", "end", 3, "keydown", "dateChange"], ["matSuffix", "", 3, "for"], ["picker", ""], [1, "mr-2", "d-inline-block"], [1, "btn", "btn-primary"], ["ngbDropdown", "", 1, "d-inline-block", "mb-2", "mr-2"], ["id", "dropdownBasic1", "ngbDropdownToggle", "", 1, "btn", "btn-outline-primary"], ["ngbDropdownMenu", "", "aria-labelledby", "dropdownBasic1"], [1, "dropdown-item", 3, "click"], [1, "table-responsive"], ["mat-table", "", "matSort", "", 1, "w-100", 3, "dataSource", "matSortChange"], ["matColumnDef", "serial_no"], ["mat-header-cell", "", "mat-sort-header", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "name"], ["mat-header-cell", "", "mat-sort-header", "", "class", "text-nowrap", 4, "matHeaderCellDef"], ["mat-cell", "", "class", "text-nowrap", 4, "matCellDef"], ["matColumnDef", "id"], ["matColumnDef", "contact"], ["matColumnDef", "comment"], ["matColumnDef", "address"], ["mat-cell", "", "class", "d-inline-block", "style", "width:200px;", 4, "matCellDef"], ["matColumnDef", "orderdate"], ["matColumnDef", "deliverydate"], ["matColumnDef", "foodStatus"], ["matColumnDef", "orderStatus"], ["matColumnDef", "totalSales"], ["matColumnDef", "action"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], ["class", "mat-row", 4, "matNoDataRow"], [1, "col-md-12", "text-right"], [3, "length", "pageSizeOptions", "page"], ["accept", ""], ["comment", ""], ["map", ""], [1, "modal-body"], [1, "btn-group"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-primary", "mr-2", 3, "click"], ["type", "button", "aria-label", "Close", 1, "btn", "btn-seconadary", 3, "click"], ["type", "button", "aria-label", "Close", 1, "close-icon", 3, "click"], [1, "mdi", "mdi-close"], [1, "col-lg-12", "col-xlg-12", "col-md-12"], [1, "card", "custom-tabs", "mb-0"], [1, "row", "pt-2"], [1, "col-md-12"], [1, "form-group"], ["rows", "3", 1, "form-control"], [1, "btn", "btn-primary", "mt-2", 3, "click"], [1, "w-100"], [3, "formControl"], [3, "value", 4, "ngFor", "ngForOf"], [1, "btn", "btn-primary", 3, "click"], [3, "value"], ["mat-header-cell", "", "mat-sort-header", ""], ["mat-cell", ""], ["mat-header-cell", "", "mat-sort-header", "", 1, "text-nowrap"], ["mat-cell", "", 1, "text-nowrap"], [3, "routerLink"], [1, "sl-icon-info"], ["href", "javascript:void()", 1, "ml-1", 3, "click"], ["mat-cell", "", 1, "d-inline-block", 2, "width", "200px"], ["href", "javascript:void()", 3, "click"], ["ngbDropdown", "", "placement", "bottom", "container", "body", 1, "d-inline-block"], [1, "dropdown-item"], [1, "label", 3, "ngClass"], [1, "fas", "fa-euro-sign"], [1, "d-flex"], ["ngbDropdown", "", "placement", "bottom-right", "display", "dynamic", "container", "body", 1, "dropdown-menu-right"], ["id", "dropdownBasic1", "ngbDropdownToggle", "", 1, "btn", "btn-outline-primary", "btn-sm"], ["href", "javascript:void()", 1, "dropdown-item", 3, "click"], ["href", "javascript:void()", 1, "dropdown-item", "btn-sm", "mr-2", 3, "click"], [1, "btn", "btn-primary", "btn-sm", "ml-2", 3, "routerLink"], [1, "ti-eye"], ["mat-header-row", ""], ["mat-row", ""], [1, "mat-row"], ["colspan", "4", 1, "mat-cell"], [1, "mb-3"], ["name", "", "id", "", "cols", "30", "rows", "5", 1, "form-control"], [1, "input-group-append"], ["type", "button", 1, "btn", "mr-0", "btn-primary", "mt-2", 3, "click"], [1, "btn", "close-icon", 3, "click"], [3, "latitude", "longitude", "zoom"], [3, "latitude", "agmFitBounds", "longitude"]], template: function OrderlistComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, OrderlistComponent_ng_template_1_Template, 8, 0, "ng-template", null, 1, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, OrderlistComponent_ng_template_3_Template, 11, 0, "ng-template", null, 2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
@@ -39906,6 +39988,7 @@ OrderlistComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "div", 25);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "table", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("matSortChange", function OrderlistComponent_Template_table_matSortChange_50_listener($event) { return ctx.sortData($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](51, 27);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](52, OrderlistComponent_th_52_Template, 2, 0, "th", 28);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](53, OrderlistComponent_td_53_Template, 2, 1, "td", 29);
@@ -39932,7 +40015,7 @@ OrderlistComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](69, 38);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](70, OrderlistComponent_th_70_Template, 2, 0, "th", 31);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](71, OrderlistComponent_td_71_Template, 3, 3, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](71, OrderlistComponent_td_71_Template, 3, 4, "td", 32);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](72, 39);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](73, OrderlistComponent_th_73_Template, 2, 0, "th", 31);
@@ -42566,6 +42649,11 @@ class ProfileComponent {
                         }
                     }
                 }
+            }
+            else if (res.statusCode == 401) {
+                localStorage.removeItem('token');
+                this.router.navigate(['/login']);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire('Oops', res.message, 'error');
             }
             else {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_6___default.a.fire('Oops', res.message, 'error');
