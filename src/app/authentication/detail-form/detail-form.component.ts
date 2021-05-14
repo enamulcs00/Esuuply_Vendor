@@ -233,6 +233,7 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
   
       this.service.getApi(`admin/getProfile`).subscribe((res:any)=>{
         console.log('Res of get profile ',res)
+        
         if(res.statusCode==200){
           this.profileData = res.data
           this.ProfilePic = res.data.image,
@@ -263,6 +264,11 @@ export class DetailFormComponent implements OnInit ,AfterViewInit{
           this.formForShop.get('address').setValue(res.data.location.address)
           
         }
+        else if(res.statusCode==401){
+          localStorage.removeItem('token')
+          this.router.navigate(['/login'])
+          Swal.fire('Oops',res.message,'error')
+          } 
         else {
           Swal.fire('Oops',res.message,'error')
         }

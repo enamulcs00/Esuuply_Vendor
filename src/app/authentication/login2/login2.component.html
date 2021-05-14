@@ -120,31 +120,31 @@
                 *ngIf="submitted && errorHandlingSignup('email', 'required')">
                 Email is required!
             </p>
-                <p class="text-danger"
+                <p class="text-danger err_box"
                 *ngIf="errorHandlingSignup('email', 'pattern')">
                 Email is invalid!
             </p>
-                <p class="text-danger"
+                <p class="text-danger err_box"
                 *ngIf="submitted && errorHandlingSignup('password', 'required')">
                 Password is required!
             </p>
-            <p class="text-danger"
+            <p class="text-danger err_box"
             *ngIf="isphoneLogin && errorHandlingphone('phone', 'required')">
             Phone number is required!
         </p>
-            <p class="text-danger"
+            <p class="text-danger err_box"
             *ngIf="errorHandlingphone('phone', 'pattern')">
             Phone number is invalid!
         </p>
-        <p class="text-danger"
+        <p class="text-danger err_box"
             *ngIf="errorHandlingphone('phone', 'maxlength')">
             Maximum length of phone number should be 15!
         </p>
-        <p class="text-danger"
+        <p class="text-danger err_box"
             *ngIf="errorHandlingphone('phone', 'minlength')">
             Minimum length of phone number should be 7!
         </p>
-            <p class="text-danger"
+            <p class="text-danger err_box"
             *ngIf="isphoneLogin && errorHandlingphone('password', 'required')">
             Password is required!
         </p>

@@ -242,6 +242,11 @@ sun:FormArray
                 end: x.end
                }));
              }}}}
+             else if(res.statusCode==401){
+              localStorage.removeItem('token')
+              this.router.navigate(['/login'])
+              Swal.fire('Oops',res.message,'error')
+              } 
         else {
           Swal.fire('Oops',res.message,'error')
         }

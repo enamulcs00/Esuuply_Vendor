@@ -191,7 +191,7 @@
                                 </div>
                                 <div class="form-group text-center ">
                                     <div class="col-xs-12 p-b-20 ">
-                                        <button class="btn btn-block btn-lg btn-theme" type="button" (click)="phoneSignUp()">SIGN UP</button>
+                                        <button class="btn btn-block btn-lg btn-theme" type="button" (click)="phoneSignUp(otp)">SIGN UP</button>
                                     </div>
                                     <!-- <div class="form-group m-b-0 m-t-10 ">
                                         <div class="col-sm-12 text-center text-white">
@@ -215,3 +215,16 @@
         </div>
     </div>
 </div>
+<ng-template #otp let-modal>
+   
+    <div class="modal-body"> 
+        <button class="close-icon" (click)="modal.dismiss()"><i class="mdi mdi-close"></i></button>
+        <h3>OTP</h3>
+        <ng-otp-input  class="otp-box" (onInputChange)="onOtpChange($event)"  [config]="{length:4}"></ng-otp-input>
+        <div class="d-flex mt-3 align-items-center">
+            <button class="btn btn-primary"  (click)="gotoVerify()">Submit</button>
+            <a href="javascript:void()" class="ml-auto" (click)="sendOtp()">Resend</a>
+        </div>
+    </div>
+  
+  </ng-template> 
