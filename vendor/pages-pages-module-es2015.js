@@ -28152,7 +28152,7 @@ class FoodCategoriesComponent {
         }
         this.submitted = true;
         let url = `admin/categories/${this.deleteId}`;
-        if (this.addCategoryForm.valid && (this.startTime < this.endTime)) {
+        if (this.addCategoryForm.valid) {
             const body = {
                 name: this.addCategoryForm.controls["name"].value,
                 description: this.addCategoryForm.controls["description"].value,
@@ -28176,7 +28176,7 @@ class FoodCategoriesComponent {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Failed', error.error.message, 'error');
             });
         }
-        else if (this.addCategoryForm.invalid || (this.startTime > this.endTime || this.startTime == this.endTime)) {
+        else if (this.addCategoryForm.invalid) {
             //   Swal.fire('Invalid Form','Please fill all field correctly','error')
         }
     }
@@ -28192,7 +28192,7 @@ class FoodCategoriesComponent {
         console.log("Add Called");
         this.submitted = true;
         let url = `admin/categories`;
-        if ((this.addCategoryForm.valid) && (this.startTime < this.endTime)) {
+        if (this.addCategoryForm.valid) {
             const body = {
                 name: this.addCategoryForm.controls["name"].value,
                 description: this.addCategoryForm.controls["description"].value,
@@ -28216,7 +28216,7 @@ class FoodCategoriesComponent {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a.fire('Failed', error.error.message, 'error');
             });
         }
-        else if (this.addCategoryForm.invalid || (this.startTime >= this.endTime)) {
+        else if (this.addCategoryForm.invalid) {
             //   Swal.fire('Invalid Form','Please fill all field correctly','error')
         }
     }
